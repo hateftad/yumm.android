@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Yumm</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="placeText" />
+    <string name="locationButton" />
+    <string name="variousText" />
+    <string name="searchButton">Sök</string>
+    <string name="placesTop">Hitta Restauranger nära</string>
+    <string name="kitchenTop">Vad är du sugen på? (valfritt)</string>
+    <string name="placesApiKey">AIzaSyCo9Aepp27_I_H-EgbxGl2zBumVYM3bNFU</string>
+	<string name="imageDesc">restaurant logo</string>
+    <!-- might be debug key -->
+    <string name="mapsApiKey">0LlITXNysSKElLxvZs8UTEo_RX0Qtze5pxVkI3w</string>
+
+    <string-array name="KitchenArray">
+        <item>Turkisk</item>
+        <item>Kurdisk</item>
+        <item>Jamaicanskt</item>
+        <item>Svenskt</item>
+        <item>Kinesiskt</item>
+        <item>Japanskt</item>
+    </string-array>
+
+    <string name="title_activity_start">Yumm</string>
+
+</resources>

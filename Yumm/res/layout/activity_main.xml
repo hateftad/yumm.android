@@ -1,0 +1,67 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCompletePlaces"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="36dp"
+        android:ems="10"
+        android:text="@string/placeText" >
+
+        <requestFocus />
+    </AutoCompleteTextView>
+
+    <Button
+        android:id="@+id/locationButton"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/autoCompletePlaces"
+        android:layout_toRightOf="@+id/autoCompletePlaces"
+        android:onClick="onLocationButtonClick"
+        android:text="@string/locationButton" />
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteVarious"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/autoCompletePlaces"
+        android:layout_marginTop="51dp"
+        android:layout_toLeftOf="@+id/locationButton"
+        android:ems="10"
+        android:text="@string/variousText" />
+
+    <Button
+        android:id="@+id/searchButton"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/locationButton"
+        android:layout_marginBottom="20dp"
+        android:onClick="onSearchButtonClick"
+        android:text="@string/searchButton" />
+
+    <TextView
+        android:id="@+id/placesTopText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/locationButton"
+        android:layout_alignLeft="@+id/autoCompletePlaces"
+        android:text="@string/placesTop" />
+
+    <TextView
+        android:id="@+id/kitchenTopText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/autoCompleteVarious"
+        android:layout_below="@+id/autoCompletePlaces"
+        android:layout_marginTop="31dp"
+        android:text="@string/kitchenTop" />
+</RelativeLayout>

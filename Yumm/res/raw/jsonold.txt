@@ -1,0 +1,407 @@
+[
+	{
+	"www": "http://bollapa.com/", 
+	"description": "Alltid f\u00e4rska r\u00e5varor fr\u00e5n din lokala fiskk\u00e4lla.\r\nYakiniku och bentol\u00e5dor.", 
+	"menu": 
+		[
+			["Sushi", 
+				[
+					["4-bitars", "40", null], 
+					["6-bitars", "80", null], 
+					["10-bitars", "105", null], 
+					["14-bitars", "115", null], 
+					["Ninjutsu master (45 bitar)", "240", "V\u00e5ran v\u00e4rsting. G\u00e5r inte av f\u00f6r hackor!"]
+				]
+			], 
+			["Bento", 
+				[
+					["Bento-san", "90", "Roliga l\u00e5dan"], 
+					["Bento-khun", "90", "Helt bissart roligt i denna l\u00e5da"], 
+					["Bento-sama", "90", "Extremt rolig l\u00e5da, kanske roligast av alla"]
+				]
+			]
+		], 
+		"public_url": "sushi-yo", 
+		"menu_headers": ["Sushi", "Bento"], 
+		"phone": "08-643 03 03", 
+		"location": "59.332051,18.074334", 
+		"address": "Karlbergsv\u00e4gen 118", 
+		"price_range": "40 - 240", 
+		"favorite_count": 1, 
+		"name": "Sushi Garden"
+	}, 
+	{
+	"www": "http://www.raw.se/", 
+	"description": "Japan m\u00f6ter Europa i en stilren restaurang med r\u00e5het i fokus.
+	\r\n\r\nH\u00e4r hittar du b\u00e5de sushi och grillat. 
+	P\u00e5 Raw \u00e4r menyn l\u00e4cker och f\u00f6r det mesta r\u00e5.\r\nMen sushi och sashimin 
+	samsas med varmr\u00e4tter fr\u00e5n grillen, b\u00e5de k\u00f6tt och skaldjur.
+	\r\nTill maten funkar en Japansk \u00f6l, vin eller en sakecocktail bra.", 
+	"menu": 
+		[
+			["F\u00d6RR\u00c4TTER", 
+				[
+					["Edamame", "62", "Sojab\u00f6nor"], 
+					["Tempurafriterade gr\u00f6nsaker/sj\u00f6gr\u00e4s", "96", null], 
+					["Flamberad Sashimi", "118", "Tonfisk, lax, hamachi, sv\u00e4rdfisk"], 
+					["Biff tataki", "98", "Med smak av kardemumma, vitl\u00f6k, chili & wasabi"], 
+					["Grillade Pilgrimsmusslor", "104", "Med philadelphiar\u00f6ra & forellrom"], 
+					["Friterad Hamachil", "102", "Med panco, koriander,chili & ponzus\u00e5s"]
+				]
+			], 
+			["MAKI, SASHIMI & SUSHI", 
+				[
+					["Kockens val (Sashimi)", "244", "4 olika fiskar, bl\u00e4ckfisksallad & algsallad"], 
+					["Kockens val (Sushi)", "202", "10 nigiri, 2 maki & gunkan"], 
+					["Kombi sushi", "194", "4 friterade ekologiska r\u00e4kor,4 laxnigiri & 4 krabb/laxmaki"], 
+					["Laxsashimi", "212", "lax, bl\u00e4ckfisksallad & algsalladSalmon sashimi"], 
+					["Sushi mix", "188", "3 friterade ekologiska r\u00e4kor,3 laxnigiri, 2 tonfisknigiri,2 avocadonigiri"], 
+					["Laxmaki liten", "98", "friterad laxmaki med forellrom"], 
+					["Laxmaki stor", "184", "friterad laxmaki med forellrom"], 
+					["Halstrad lax & tonfisk", "234", "lax med sesamfr\u00f6, tonfisk med smak av kaffe, bl\u00e4ckfisksallad & algsallad"], 
+					["R\u00e4kmaki liten", "108", "friterade ekologiska r\u00e4kor medsweet chilis\u00e5s"], 
+					["R\u00e4kmaki stor", "204", "friterade ekologiska r\u00e4kor medsweet chilis\u00e5s"], 
+					["Raw sushi", "208", "2 krabbmaki, 3 laxnigiri, 3 tonfisk nigiri, 3 friterade ekologiska r\u00e4kor & 1 gunkan"], 
+					["Sumo 48 bitar", "588", "2 krabbmaki, 3 laxnigiri, 3 tonfisk nigiri, 3 friterade ekologiska r\u00e4kor & 1 gunkan"], 
+					["Tonfiskmaki liten", "108", "getost, grillad paprika, persilja, chili, gurka & avocado"], 
+					["Tonfiskmaki stor", "204", "getost, grillad paprika, persilja, chili, gurka & avocado"], 
+					["Torimaki liten", "92", "friterad kyckling, ruccola & chilimajon\u00e4s med BBQ s\u00e5sdeep"], 
+					["Torimaki stor", "174", "friterad kyckling, ruccola & chilimajon\u00e4s med BBQ s\u00e5sdeep"]
+				]
+			], 
+			["GRILLAT", 
+				[
+					["K\u00f6tt", "212", "Entrec\u00f4te, kyckling, ankbr\u00f6st & biff"], 
+					["Kyckling Yakitori", "182", "Grillad kyckling med teriyakis\u00e5s"], 
+					["Raw Bento", "249", "Krispig lax, karage, sushi & sashimi"], 
+					["Fisk & Skaldjur", "228", "Lax, ekologiska r\u00e4kor, h\u00e4lleflundra & pilgrimsmusslor"], 
+					["Grillad Tonfisk", "206", "Med rostade gr\u00f6nsaker"], ["Krispig lax", "164", "Friterad lax med kimchees\u00e5s"]
+				]
+			], 
+			["DIVERSE", 
+				[
+					["Misosoppa", "28", null], 
+					["Kimcheesallad", "38", null], 
+					["Bl\u00e4ckfisksallad", "46", null], 
+					["Algsallad", "42", null], ["B\u00f6ngroddsallad", "38", null], 
+					["Ris", "20", null]
+				]
+			], 
+			["RAW MENY", 
+				[
+					["Sushi Laxnigiri, tonfisknigiri & friterad ekologisk r\u00e4ka Grill Ekologiska r\u00e4kor, 
+					kyckling, ankbr\u00f6st & h\u00e4lleflundra Efterr\u00e4tt Chokladmousse med hallonpur\u00e9", "336", null]
+				]
+			], 
+			["LUNCH", 
+				[
+					["Sashimi kockens val", "198", "4 olika fiskar, bl\u00e4ckfisksallad,algsallad"], 
+					["Sashimi lax", "168", "Bl\u00e4ckfisksallad, algsallad"]
+				]
+			], 
+			["VARMT", 
+				[
+					["Krispylax", "96", "Friterad lax med kimcheesallad"], 
+					["Karage", "96", "Friterad kyckling med chilibeans\u00e5s"], 
+					["Ljummen skaldjurssallad", "98", "med glasnudlar & senapsdressing"], 
+					["Dumplings", "98", "Fl\u00e4sk, sallad med ponzus\u00e5s"], 
+					["Yakiniku", "102", "Stekt entrecot\u00e9 med yakinikus\u00e5s"], 
+					["Raw bento", "156", "Krispiglax, karage, sushi, sashimi"]
+				]
+			], 
+			["SUSHI", 
+				[
+					["Kombi sushi", "118", "3 lax, 3 friterad r\u00e4ka, 3 maki"], 
+					["Sushi Kockens val", "158", "9 nigiri, 3 maki, 1 gunkan"], 
+					["Stor sushi", "128", "8 nigiri, 4 maki"], 
+					["Mellan sushi", "108", "6 nigiri, 4 maki"], 
+					["Liten sushi", "88", "5 nigiri, 3 maki"], 
+					["Lax & maki", "98", "6 nigiri, 4 maki"], 
+					["Lax sushi", "98", "9 lax nigiri"]
+				]
+			], 
+			["DIVERSE", 
+				[
+					["Karage", "20", null], 
+					["Krispy lax", "20", null], 
+					["Ris", "10", null], 
+					["Kimcheesallad/b\u00f6ngroddsallad", "38", null], 
+					["Bl\u00e4ckfisksallad/algsallad", "38", null]
+				]
+			], 
+			["DRYCK", 
+				[
+					["Coca-Cola", "18", null], 
+					["Fanta", "18", null], 
+					["Sprite", "18", null], 
+					["Loka Naturell", "18", null], 
+					["Loka Citron", "18", null]
+				]
+			], 
+			["DESSERT", 
+				[
+					["Choco Ball", "116", "Sp\u00e4nnande chokladboll fylld med chokladmousse, hallonsorbet, brownie & crumble"], 
+					["Champagne Treon", "112", "Vit choklad & Champagnekr\u00e4m p\u00e5 browniebotten"], 
+					["Chokladpralin", "30", "Hallon Chokladpralin"], 
+					["Cocos Panacotta", "98", "med svartvinb\u00e4r & Japansk glass"], 
+					["Glass/Sorbet", "42", null]
+				]
+			], 
+			["TAKE AWAY", 
+				[
+					["Krispylax", "88", null], 
+					["Karage", "88", null], 
+					["Yakiniku", "98", null], 
+					["Raw bento", "156", null], 
+					["Stor sushi", "128", "8 nigiri, 4 maki"], 
+					["Mellan sushi", "108", "6 nigiri, 4 maki"], 
+					["Liten sushi", "88", "5 nigiri, 3 maki"], 
+					["Lax sushi", "98", "9 lax nigiri"], 
+					["Lax & maki", "98", "6 lax nigiri, 4 maki"], 
+					["Kombi sushi", "118", "3 lax, 3 ekologiska friterade r\u00e4kor, 3 maki"], 
+					["Sushi kockens val", "158", "10 nigiri, 2 maki, 1 gunkan"], 
+					["Lax och Avokado", "108", "5 laxnigiri & 5 avokadonigiri"], 
+					["Lax & R\u00e4ka", "135", "5 laxnigiri & 5 ekologiska friterade r\u00e4kor"], 
+					["Sashimi", "168", "Lax, bl\u00e4ckfisksallad, algsallad"], 
+					["Sashimi kockes val", "198", "4 olika fiskar, bl\u00e4ckfisksallad, algsallad"]
+				]
+			]
+		], 
+		"public_url": "raw", 
+		"menu_headers": ["F\u00d6RR\u00c4TTER", "MAKI, SASHIMI & SUSHI", "GRILLAT", "DIVERSE", "RAW MENY", "LUNCH", "VARMT", "SUSHI", "DIVERSE", "DRYCK", "DESSERT", "TAKE AWAY"], 
+		"phone": "08309680", 
+		"location": "59.340099,18.034113", 
+		"address": "R\u00f6rstrandsgatan 9", 
+		"price_range": "10 - 588", 
+		"favorite_count": 1, "name": "Sushi RAW"
+	}, 
+	{
+	"www": "", 
+	"description": "S\u00f6derorts b\u00e4sta pizzeria?", 
+	"menu": 
+		[
+			["ITALIENSKA PIZZOR", 
+				[
+					["Margherita varianter", "79", "Tomats\u00e5s, Ost"], 
+					["Funghivarianter", "89", "Tomats\u00e5s, Ost, Champinjoner (f\u00e4rska)"], 
+					["Vesuviovarianter", "89", "Tomats\u00e5s, Ost, Skinka"], 
+					["Sultanvarianter", "89", "Tomats\u00e5s, Ost, K\u00f6ttf\u00e4rs, Tomater (f\u00e4rska)"], 
+					["Capricciosavarianter", "89", "Tomats\u00e5s, Ost, Skinka, Champinjoner (f\u00e4rska)"], 
+					["Orientalevarianter", "89", "Tomats\u00e5s, Ost, K\u00f6ttf\u00e4rs, L\u00f6k"], 
+					["Altonovarianter", "89", "Tomats\u00e5s, Ost, Tonfisk, L\u00f6k"], 
+					["Melodivarianter", "95", "Tomats\u00e5s, Ost, Skinka, Tonfisk, L\u00f6k, Tomater (f\u00e4rska)"], 
+					["Campaniolavarianter", "85", "Tomats\u00e5s, Ost, Salami, L\u00f6k"], 
+					["Biancavarianter", "105", "Tomats\u00e5s, Ost, Oxfil\u00e9, Champinjoner (f\u00e4rska), Tomater (f\u00e4rska), Feferoni, L\u00f6k, Bearnaises\u00e5s"], 
+					["Kebabpizzavarianter", "100", "Tomats\u00e5s, Ost, L\u00f6k, Feferoni, Tomater (f\u00e4rska), Kebabk\u00f6tt (n\u00f6tk\u00f6tt), Vitl\u00f6kss\u00e5s"], 
+					["Vegetariskavarianter", "85", "Tomats\u00e5s, Ost, L\u00f6k, Tomater (f\u00e4rska), Oliver"], 
+					["Ananasvarianter", "89", "Tomats\u00e5s, Ost, Skinka, Ananas"], 
+					["Quattro formaggivarianter", "99", "Tomats\u00e5s, Ost, Camembertost, F\u00e5rost, Gorgonzolaost, Mozzarellaost"], 
+					["Hawaiivarianter", "99", "Tomats\u00e5s, Ost, Skinka, Ananas, Banan, Curry"], 
+					["La Bussolavarianter", "89", "Tomats\u00e5s, Ost, Skinka, R\u00e4kor"], 
+					["Caruselvarianter", "99", "Tomats\u00e5s, Ost, K\u00f6ttf\u00e4rs, Bacon, L\u00f6k, Tomater (f\u00e4rska)"], 
+					["Paradisovarianter", "99", "Tomats\u00e5s, Ost, R\u00e4kor, Champinjoner (f\u00e4rska), L\u00f6k"], 
+					["Romeovarianter", "99", "Tomats\u00e5s, Ost, Bacon, \u00c4gg, L\u00f6k"], 
+					["Mamma Miavarianter", "99", "Tomats\u00e5s, Ost, Salami, K\u00f6ttf\u00e4rs, Paprika (f\u00e4rsk), L\u00f6k"], 
+					["J\u00e4garpizzavarianter", "95", "Tomats\u00e5s, Ost, Salami, J\u00e4gerkorv, Vitl\u00f6k (f\u00e4rsk)"], 
+					["Kycklingpizzavarianter", "99", "Tomats\u00e5s, Ost, Kyckling, Ananas, Curry"], 
+					["La Picatavarianter", "99", "Tomats\u00e5s, Ost, K\u00f6ttf\u00e4rs, Kyckling, Oliver, L\u00f6k"], 
+					["La Combinatavarianter", "105", "Tomats\u00e5s, Ost, Skinka, Salami, R\u00e4kor, Champinjoner (f\u00e4rska), Vitl\u00f6k (f\u00e4rsk), Feferoni"], 
+					["Quattro Stagionivarianter", "99", "Tomats\u00e5s, Ost, Skinka, Champinjoner (f\u00e4rska), Musslor, Kron\u00e4rtskocka, Oliver"], 
+					["Molta carnevarianter", "109", "Tomats\u00e5s, Ost, Skinka, Salami, Oxfil\u00e9, K\u00f6ttf\u00e4rs, Bacon, Feferoni"], 
+					["Marinaravarianter", "95", "Tomats\u00e5s, Ost, R\u00e4kor, Musslor"]
+				]
+			], 
+			["MOZZARELLAPIZZOR", 
+				[
+					["Crudovarianter", "100", "Tomats\u00e5s, Ost, Parmaskinka, Ruccolasallad, Paprika (f\u00e4rsk), Oliver"], 
+					["Ulrikavarianter", "100", "Tomats\u00e5s, Ost, Oxfil\u00e9, Champinjoner (f\u00e4rska), Tomater (f\u00e4rska), Paprika (f\u00e4rsk), Bearnaises\u00e5s"], 
+					["Scampivarianter", "100", "Tomats\u00e5s, Ost, Scampi, Persilja, Vitl\u00f6k (f\u00e4rsk)"], 
+					["Spenatvarianter", "100", "Tomats\u00e5s, Ost, Parmaskinka, Champinjoner (f\u00e4rska), Spenat, Vitl\u00f6k (f\u00e4rsk)"], 
+					["Hornstullvarianter", "100", "Tomats\u00e5s, Ost, Parmaskinka, Champinjoner (f\u00e4rska), Vitl\u00f6k (f\u00e4rsk), Purjol\u00f6k"], 
+					["Paesana specialvarianter", "100", "Tomats\u00e5s, Ost, Parmaskinka, Champinjoner (f\u00e4rska), Basilika"], 
+					["Meza Lunavarianter", "100", "Tomats\u00e5s, Ost, Skinka, Parmaskinka, Ruccolasallad"], 
+					["Salaminovarianter", "100", "Tomats\u00e5s, Ost, Salami, Parmaskinka, Basilika"]
+				]
+			], 
+			["SPECIALPIZZOR", 
+				[
+					["Vegetarisk specialvarianter", "99", "Tomats\u00e5s, Ost, Champinjoner (f\u00e4rska), L\u00f6k, Kron\u00e4rtskocka, Sparris, Paprika (f\u00e4rsk), Oliver"], 
+					["Havets specialvarianter", "99", "Tomats\u00e5s, Ost, Tonfisk, R\u00e4kor, Musslor"], 
+					["\u00c4lvsj\u00f6 specialvarianter", "109", "Tomats\u00e5s, Ost, Oxfil\u00e9, L\u00f6k, Feferoni, Tomater (f\u00e4rska), Bearnaises\u00e5s"], 
+					["Fl\u00e4skfil\u00e9 specialvarianter", "105", "Tomats\u00e5s, Ost, Fl\u00e4skfil\u00e9, Champinjoner (f\u00e4rska), L\u00f6k, Paprika (f\u00e4rsk), Feferoni, Tomater (f\u00e4rska), Bearnaises\u00e5s"], 
+					["Chiochiovarianter", "109", "Tomats\u00e5s, Ost, Oxfil\u00e9, Fl\u00e4skfil\u00e9, Tomater (f\u00e4rska)"], 
+					["Canada specialvarianter", "105", "Tomats\u00e5s, Ost, Pommes frites, Kebabk\u00f6tt (n\u00f6tk\u00f6tt), Vitl\u00f6kss\u00e5s"], 
+					["Nima specialvarianter", "105", "Tomats\u00e5s, Ost, Tomater (f\u00e4rska), Gurka, Isbergssallad, Kebabk\u00f6tt (n\u00f6tk\u00f6tt), Vitl\u00f6kss\u00e5s"], 
+					["Hammarby specialvarianter", "109", "Tomats\u00e5s, Ost, Fl\u00e4skfil\u00e9 (marinerad), Oxfil\u00e9 (marinerad), Champinjoner (f\u00e4rska), Paprika (f\u00e4rsk), Tomater (f\u00e4rska), Bearnaises\u00e5s"]
+				]
+			], 
+			["INBAKADE PIZZOR", 
+				[
+					["Calzone (inbakad)", "85", "Tomats\u00e5s, Ost, Skinka"], 
+					["Calzone special (inbakad)", "95", "Tomats\u00e5s, Ost, Skinka, Champinjoner (f\u00e4rska)"], 
+					["Flygande Tefat (dubbelinbakad)", "105", "Tomats\u00e5s, Ost, Skinka, R\u00e4kor, Champinjoner (f\u00e4rska)"], 
+					["Fardello (inbakad)", "99", "Tomats\u00e5s, Ost, K\u00f6ttf\u00e4rs, F\u00e5rost, L\u00f6k, Tomater (f\u00e4rska)"]
+				]
+			], 
+			["HALVINBAKADE PIZZOR", 
+				[
+					["Shish kebab (halvinbakad)", "109", "Tomats\u00e5s, Ost, Oxfil\u00e9, L\u00f6k, Paprika (f\u00e4rsk), Tomater (f\u00e4rska), Bearnaises\u00e5s"], 
+					["Ub\u00e5tspizza 1 (halvinbakad)", "109", "Tomats\u00e5s, Ost, Champinjoner (f\u00e4rska), Kebabk\u00f6tt (n\u00f6tk\u00f6tt), L\u00f6k, Tomater (f\u00e4rska), Vitl\u00f6kss\u00e5s"], 
+					["Ub\u00e5tspizza 2 (halvinbakad)", "114", "Tomats\u00e5s, Ost, Skinka, Kebabk\u00f6tt (n\u00f6tk\u00f6tt), Isbergssallad, Tomater (f\u00e4rska), Jalape\u00f1os, L\u00f6k, Vitl\u00f6kss\u00e5s"], 
+					["Ub\u00e5tspizza 3 (halvinbakad)", "117", "Tomats\u00e5s, Ost, Oxfil\u00e9, Fl\u00e4skfil\u00e9, Isbergssallad, Tomater (f\u00e4rska), L\u00f6k, Paprika (f\u00e4rsk), Bearnaises\u00e5s"], 
+					["Ub\u00e5tspizza 4 (halvinbakad)", "117", "Tomats\u00e5s, Ost, Skinka, Jalape\u00f1os, Kebabk\u00f6tt (n\u00f6tk\u00f6tt), Vitl\u00f6kss\u00e5s"]
+				]
+			], 
+			["MEXIKANSKA PIZZOR", 
+				[
+					["Mexicanavarianter", "100", "(Stark). Tomats\u00e5s, Ost, K\u00f6ttf\u00e4rs, Chili, Vitl\u00f6k (f\u00e4rsk), Tacokryddmix, Tacos\u00e5s"], 
+					["Acapulcovarianter", "104", "(Stark). Tomats\u00e5s, Ost, Oxfil\u00e9, Champinjoner (f\u00e4rska), Tacokryddmix, L\u00f6k, Vitl\u00f6k (f\u00e4rsk), Jalape\u00f1os, Tacos\u00e5s"], 
+					["Aztekavarianter", "100", "(Stark). Tomats\u00e5s, Ost, Skinka, Tacokryddmix, Jalape\u00f1os, Tacos\u00e5s"]
+				]
+			], 
+			["AMERIKANSKA PIZZOR", 
+				[
+					["Capri (small)varianter", "103", "Tomats\u00e5s, Ost, Skinka, Champinjoner (f\u00e4rska)"], 
+					["Campi (small)varianter", "103", "Tomats\u00e5s, Ost, Salami, L\u00f6k, Paprika (f\u00e4rsk)"], 
+					["Frutti di Mare (small)varianter", "103", "Tomats\u00e5s, Ost, Tonfisk, R\u00e4kor, Musslor, L\u00f6k"], 
+					["Vegetarian pan (small)varianter", "103", "Tomats\u00e5s, Ost, Champinjoner (f\u00e4rska), Paprika (f\u00e4rsk), L\u00f6k, Tomater (f\u00e4rska), Oliver"], 
+					["Hawaii American (small)varianter", "103", "Tomats\u00e5s, Ost, Skinka, R\u00e4kor, Ananas, Curry"], 
+					["Beach Lovers (small)varianter", "105", "Tomats\u00e5s, Ost, Oxfil\u00e9, K\u00f6ttf\u00e4rs, L\u00f6k, Bearnaises\u00e5s"], 
+					["Hot Express (small)varianter", "105", "Tomats\u00e5s, Ost, Salami, K\u00f6ttf\u00e4rs, Champinjoner (f\u00e4rska), Paprika (f\u00e4rsk), L\u00f6k, Oliver, Feferoni"], 
+					["Mexikansk panpizza (small)varianter", "105", "(Stark). Tomats\u00e5s, Ost, K\u00f6ttf\u00e4rs, Champinjoner (f\u00e4rska), Chili, L\u00f6k, Tacokryddmix, Tacos\u00e5s"], 
+					["Super pan (small)varianter", "105", "Tomats\u00e5s, Ost, Oxfil\u00e9, Bacon, Tomater (f\u00e4rska), Paprika (f\u00e4rsk)"], 
+					["Chicken mex (small)varianter", "105", "Tomats\u00e5s, Ost, Kyckling, Champinjoner (f\u00e4rska), Jalape\u00f1os, Oliver, Tacokryddmix, L\u00f6k, Tacos\u00e5s"], 
+					["Americana (small)varianter", "105", "Tomats\u00e5s, Ost, Salami, Bacon, L\u00f6k, Feferoni"], 
+					["Du Chef pan (small)varianter", "109", "Tomats\u00e5s, Ost, K\u00f6ttf\u00e4rs, Champinjoner (f\u00e4rska), L\u00f6k"]
+				]
+			], 
+			["KEBABR\u00c4TTER", 
+				[
+					["Kebab med br\u00f6d", "79", "Kebabk\u00f6tt (n\u00f6tk\u00f6tt), Feferoni, Isbergssallad, Gurka, Tomater (f\u00e4rska), Vitl\u00f6kss\u00e5s"], 
+					["Kebabrulle", "85", "Kebabk\u00f6tt (n\u00f6tk\u00f6tt), Feferoni, Isbergssallad, Gurka, Tomater (f\u00e4rska), Vitl\u00f6kss\u00e5s"], 
+					["Kebabtallrik med pommes", "94", "Kebabk\u00f6tt (n\u00f6tk\u00f6tt), Feferoni, Isbergssallad, Gurka, Tomater (f\u00e4rska), Vitl\u00f6kss\u00e5s"], 
+					["Kebabtallrik med ris", "94", "Kebabk\u00f6tt (n\u00f6tk\u00f6tt), Feferoni, Isbergssallad, Gurka, Tomater (f\u00e4rska), Vitl\u00f6kss\u00e5s"], 
+					["Kycklingrulle", "90", "Kyckling, Feferoni, Isbergssallad, Gurka, Tomater (f\u00e4rska), Vitl\u00f6kss\u00e5s"], 
+					["Falafel med br\u00f6d", "79", "Falafel, Feferoni, Isbergssallad, Gurka, Tomater (f\u00e4rska), Vitl\u00f6kss\u00e5s"], 
+					["Falafeltallrik med pommes", "94", "Falafel, Feferoni, Isbergssallad, Gurka, Tomater (f\u00e4rska), Vitl\u00f6kss\u00e5s"]
+				]
+			], 
+			["HAMBURGARE", 
+				[
+					["Hamburgare 150 g", "80", "Gurka, Tomater (f\u00e4rska), Senap, Ketchup, Isbergssallad, Hamburgerdressing"], 
+					["Hamburgertallrik 150 g", "90", "Pommes frites, Gurka, Tomater (f\u00e4rska), Senap, Ketchup, Isbergssallad, Hamburgerdressing"]
+				]
+			], 
+			["HUSMANSKOST", 
+				[
+					["K\u00f6ttbullar med mos", "109", "Bruns\u00e5s, Lingonsylt"], 
+					["Pytt i panna", "105", "R\u00f6dbetor, \u00c4gg"], 
+					["Korv stroganoff med ris", "105", null], 
+					["Fl\u00e4sknoisette med stekt potatis", "109", "R\u00f6dl\u00f6k, Isbergssallad, Tomater (f\u00e4rska), Gurka, Bearnaises\u00e5s"]
+				]
+			], 
+			["THAIR\u00c4TTER", 
+				[
+					["Kyckling med cashewn\u00f6tter", "119", "Kyckling, Mor\u00f6tter, Cashewn\u00f6tter, Zucchini, Blomk\u00e5l, Paprika (f\u00e4rsk), Broccoli"], 
+					["Strimlad biff med cashewn\u00f6tter", "119", "Strimlad biff, Mor\u00f6tter, Cashewn\u00f6tter, Zucchini, Blomk\u00e5l, Paprika (f\u00e4rsk), Broccoli"], 
+					["Fl\u00e4skfil\u00e9 med cashewn\u00f6tter", "119", "Fl\u00e4skfil\u00e9, Mor\u00f6tter, Cashewn\u00f6tter, Zucchini, Blomk\u00e5l, Paprika (f\u00e4rsk), Broccoli"], 
+					["R\u00f6d panaeng med kyckling", "119", "Kyckling, V\u00e5rl\u00f6k, Kokosmj\u00f6lk, Mor\u00f6tter, Zucchini, Blomk\u00e5l, Broccoli, Paprika (f\u00e4rsk), Currys\u00e5s"], 
+					["R\u00f6d panaeng med strimlad biff", "119", "Strimlad biff, V\u00e5rl\u00f6k, Kokosmj\u00f6lk, Mor\u00f6tter, Zucchini, Blomk\u00e5l, Broccoli, Paprika (f\u00e4rsk), Currys\u00e5s"], 
+					["R\u00f6d panaeng med fl\u00e4skfil\u00e9", "119", "Fl\u00e4skfil\u00e9, V\u00e5rl\u00f6k, Kokosmj\u00f6lk, Mor\u00f6tter, Zucchini, Blomk\u00e5l, Broccoli, Paprika (f\u00e4rsk), Currys\u00e5s"]
+				]
+			], 
+			["PAJR\u00c4TTER", 
+				[
+					["Skink- och broccolipaj", "69", "Ost, Skinka, Broccoli"], 
+					["Ost- och skinkpaj", "69", "Ost, Skinka"], 
+					["K\u00f6ttf\u00e4rspaj", "69", "K\u00f6ttf\u00e4rs, Ost"], 
+					["Skaldjurspaj", "69", "R\u00e4kor, Ost"], 
+					["Fetaost- och spenatpaj", "69", "Ost, Fetaost, Spenat"], 
+					["V\u00e4sterbottenpaj", "69", "V\u00e4sterbottenost"], 
+					["Lax- och spenatpaj", "69", "Ost, Lax, Spenat"], 
+					["Tacopaj", "69", "Tacof\u00e4rs, Ost"], 
+					["Quiche- och lorainepaj", "69", "K\u00f6ttf\u00e4rs, Paprika (f\u00e4rsk), Tacos\u00e5s"]
+				]
+			], 
+			["PASTAR\u00c4TTER", 
+				[
+					["Spaghetti Bolognese", "99", "K\u00f6ttf\u00e4rss\u00e5s"], 
+					["Spaghetti Frutti di Mare", "99", "Crabfish, R\u00e4kor, Musslor, Vitl\u00f6k, Oliver"], 
+					["Spaghetti Carbonara", "99", "Skinka, \u00c4gg"], 
+					["Pasta med biff", "99", "Biff"], 
+					["Pasta med strimlad fl\u00e4skfil\u00e9", "89", "Fl\u00e4skfil\u00e9"], 
+					["Pasta Roberto", "109", "Oxfil\u00e9"], 
+					["Hemlagad lasagne", "89", "K\u00f6ttf\u00e4rs, Bechamels\u00e5s, Ost"], 
+					["Pasta med kyckling", "99", "Kyckling, Curry"], 
+					["Pasta vegetarisk", "99", "Aubergine, Broccoli, Oliver, Mor\u00f6tter, Zucchini"]
+				]
+			], 
+			["SALLADER", 
+				[
+					["Avokadosallad", "105", "Avokado, Skinka, \u00c4gg, Rhode Islands\u00e5s (i burk), Citron, Majs, Tomater (f\u00e4rska), Gurka, R\u00f6dl\u00f6k, Isbergssallad"], 
+					["Skinksallad", "99", "Skinka, Citron, Rhode Islands\u00e5s (i burk), Majs, R\u00f6dl\u00f6k, Tomater (f\u00e4rska), Gurka, Isbergssallad"], 
+					["Tonfisksallad", "99", "Tonfisk, Citron, \u00c4gg, Rhode Islands\u00e5s (i burk), Majs, R\u00f6dl\u00f6k, Tomater (f\u00e4rska), Gurka, Isbergssallad"], 
+					["Grekisk sallad", "99", "F\u00e5rost, Oliver, Vinegrette (i burk), Citron, Majs, Tomater (f\u00e4rska), Gurka, R\u00f6dl\u00f6k, Isbergssallad"], 
+					["Vegetarisk sallad", "99", "Champinjoner (f\u00e4rska), R\u00f6dbetor, Rhode Islands\u00e5s (i burk), Citron, Majs, Tomater (f\u00e4rska), Gurka, R\u00f6dl\u00f6k, Isbergssallad"], 
+					["Kebabsallad", "99", "Kebabk\u00f6tt (n\u00f6tk\u00f6tt), Citron, Feferoni, Majs, R\u00f6dl\u00f6k, Tomater (f\u00e4rska), Gurka, Isbergssallad, Vitl\u00f6kss\u00e5s (i burk)"], 
+					["V\u00e4stkustsallad", "99", "Crabfish, R\u00e4kor, Musslor, \u00c4gg, Rhode Islands\u00e5s (i burk), Citron, Tomater (f\u00e4rska), Gurka, R\u00f6dl\u00f6k, Majs, Isbergssallad"], 
+					["R\u00e4ksallad", "99", "R\u00e4kor, \u00c4gg, Oliver, Rhode Islands\u00e5s (i burk), Citron, Majs, Tomater (f\u00e4rska), Gurka, R\u00f6dl\u00f6k, Isbergssallad"], 
+					["Express mixsallad", "99", "Skinka, J\u00e4gerkorv, R\u00e4kor, Rhode Islands\u00e5s (i burk), Citron, Majs, Tomater (f\u00e4rska), Gurka, R\u00f6dl\u00f6k, Isbergssallad"], 
+					["Kycklingsallad", "99", "Kyckling, Ananas, Citron, Rhode Islands\u00e5s (i burk), Majs, R\u00f6dl\u00f6k, Tomater (f\u00e4rska), Gurka, Isbergssallad"], 
+					["Amerikansk sallad", "99", "Skinka, Bacon, Rhode Islands\u00e5s (i burk), Citron, Majs, Tomater (f\u00e4rska), Gurka, R\u00f6dl\u00f6k, Isbergssallad"]
+				]
+			], 
+			["TILLBEH\u00d6R", 
+				[
+					["Pizzasallad", "10", null], 
+					["Pommes frites", "40", null], 
+					["Vitl\u00f6ksbr\u00f6d", "30", null], 
+					["Vitl\u00f6ksbr\u00f6d med ost", "40", null], 
+					["Grillchips 300 g", "35", null], 
+					["Sourcream & Onion-chips 300 g", "35", null]
+				]
+			], 
+			["GLASS", 
+				[
+					["Daimglass", "25", null]
+				]
+			], 
+			["Magnumv25", 
+				[
+					["Magnum Almond", "29", null], 
+					["Magnum Temptation", "30", null], 
+					["Cornetto", "25", null], 
+					["Cornetto Freestyle", "34", null], 
+					["Gb Sandwich", "20", null], 
+					["88:an", "20", null], 
+					["Twister", "18", null], 
+					["Piggelin", "12", null], 
+					["Tiptop", "30", null], 
+					["Nogger Classic", "22", null], 
+					["Milk time", "20", null], 
+					["Solero", "20", null], 
+					["Calippo", "20", null], 
+					["Choklad 0,5 liter", "50", null], 
+					["Jordgubb 0,5 liter", "50", null], 
+					["Vanilj 0,5 liter", "50", null], 
+					["Choklad 0,95 liter", "60", null], 
+					["Jordgubb 0,95 liter", "60", null], 
+					["Vanilj 0,95 liter", "60", null]
+				]
+			], 
+			["S\u00c5SER", 
+				[
+					["Bearnaises\u00e5s 10 cl", "10", null], 
+					["Rhode Islands\u00e5s 10 cl", "10", null], 
+					["Tacos\u00e5s 10 cl", "10", null], 
+					["Tzatzikis\u00e5s 10 cl", "15", null], 
+					["Vinegrette 10 cl", "10", null], 
+					["Vitl\u00f6kss\u00e5s 10 cl", "10", null]
+				]
+			], 
+			["DRYCKER", 
+				[
+					["Coca-Cola 33 cl", "12", null], 
+					["Coca-Cola light 33 cl", "12", null], 
+					["Fanta 33 cl", "12", null], 
+					["Sprite 33 cl", "12", null], ["Pepsi max 33 cl", "12", null], ["Loka naturelle 33 cl", "12", null], ["Coca-Cola 50 cl", "22", null], ["Coca-Cola light 50 cl", "22", null], ["Fanta 50 cl", "22", null], ["Sprite 50 cl", "22", null], ["Loka naturelle 50 cl", "22", null], ["Monster 50 cl", "29", null], ["Falcon 50 cl", "22", null], ["Coca-Cola 2 liter", "40", null], ["Coca-Cola light 2 liter", "40", null], ["Fanta 2 liter", "40", null], ["Sprite 2 liter", "40", null], ["Loka naturelle 2 liter", "40", null]]]], "public_url": "alvsjopizzaexpress", "menu_headers": ["ITALIENSKA PIZZOR", "MOZZARELLAPIZZOR", "SPECIALPIZZOR", "INBAKADE PIZZOR", "HALVINBAKADE PIZZOR", "MEXIKANSKA PIZZOR", "AMERIKANSKA PIZZOR", "KEBABR\u00c4TTER", "HAMBURGARE", "HUSMANSKOST", "THAIR\u00c4TTER", "PAJR\u00c4TTER", "PASTAR\u00c4TTER", "SALLADER", "TILLBEH\u00d6R", "GLASS", "Magnumv25", "S\u00c5SER", "DRYCKER"], "phone": "0853332493", "location": "59.280846,18.009639", "address": "Pr\u00e4stg\u00e5rdsgr\u00e4nd 11", "price_range": "10 - 119", "favorite_count": 0, "name": "\u00c4lsvj\u00f6 Pizza Express"}, {"www": "http://chokladbollen.se/", "description": "Hos oss kan ni avnjuta en egen komponerad sallad, rykande f\u00e4rsk pasta eller grillade sm\u00f6rg\u00e5sar. Avsluta g\u00e4rna med en god cappuccino och en av alla v\u00e5ra egentillverkade chokladbollar.", "menu": [["SM\u00d6RG\u00c5SAR", [["Parmaskinka", "69", "Mozzarella och philadelphia."], ["Salami", "69", "Brie och philadelphia."], ["Mozzarella", "69", "Pesto och soltorkade tomater."], ["Kalkon", "69", "Philadelphia och dijonsenap."], ["Kyckling", "69", "Halloumi, grillad paprika och philadelphia."], ["Ch\u00e9vre", "69", "Valn\u00f6tter, honug och philadelphia."], ["R\u00e4ksm\u00f6rg\u00e5s", "69", "Med handskalade r\u00e4kor."]]], ["VARMA R\u00c4TTER", [["H\u00f6lsotallrik", "89", "Med kyckling eller r\u00f6kor. Bulgur, sallad, paprika, keso, avokado, cashewn\u00f6tter, valnr."]]], ["F\u00c4RSK PASTA", [["Bolognese", "89", "K\u00f6ttf\u00e4rss\u00e5s"], ["Carbonara", "89", "Bacon, svartpeppar, gr\u00e4dde."], ["Lasagne", "89", null], ["Kalkon", "89", "Soltorkad tomat, champinjoner, pesto, gr\u00e4dde."], ["Kyckling", "89", "Bacon, champinjoner, timjan, gr\u00e4dde, tomat."], ["Pesto", "89", "Pinjen\u00f6tter, parmesan, olivolja."], ["Lax", "89", "Mozzarella, f\u00e4rsk basilika, tomats\u00e5s"], ["Feta", "89", "Champinjoner, oliver, tomats\u00e5s"], ["Kyckling", "99", "Ch\u00e9vre, soltorkad tomat, spenat, pinjen\u00f6tter, gr\u00e4dde."], ["Salami", "99", "Fetaost, grillade gr\u00f6nsaker, tomats\u00e5s"], ["Tortellini", "99", "Gorgonzola, pinjen\u00f6tter, babyspenat, gr\u00e4dde."], ["Tigerr\u00e4kor", "109", "Chili, vitl\u00f6k, basilika, tomat, olivolja."]]], ["SALLADER", [["Mixa din egen sallad fr\u00e5n", "89", "V\u00e4lj mellan 40 olika ingredienser."], ["R\u00e4kor", "89", "Mozzarella, \u00e4gg, quinoa, r\u00f6d l\u00f6k, tomat, romansallad, pepparrotsdressing."], ["Kyckling", "89", "Fetaost, soltorkade tomater, champinjoner, majs, bulgur, mixsallad, mango/currydressing."], ["Tonfisk", "89", "R\u00f6d l\u00f6k, tomat, b\u00f6nor, pasta, mixsallad, vitl\u00f6ksdressing."], ["Fetaost", "89", "Mozzarella, avokado, quinoa, valn\u00f6tter, kalamata-oliver, tomat, mixsallad, vitl\u00f6ksdressing."], ["Halloumi", "89", "Kalamata oliver, paprika, tomat, bulgur, soltorkade tomater, mixsallad, balsamico."], ["Ch\u00f6vre", "89", "Valn\u00f6tter, quinoa, majs, morot, torkad frukt, mixsallad, honungsbalsamico."]]], ["VARMA DRYCKER", [["Kaffe", "22", null], ["Te", "22", null], ["Cappucino", "25", null], ["Latte", "30", null], ["Macchiato enkel", "20", null], ["Espresso enkel", "18", null], ["Espresso dubbel", "22", null], ["Macchiato dubbel", "25", null], ["Varm Choklad", "32", null], ["Chai Latte", "35", null], ["Chai The med skummad mj\u00f6lk", "25", null], ["Sojamj\u00f6lk Syrup och gr\u00e4dde", "5", null]]], ["KALLA DRYCKER", [["L\u00e4sk", "20", null], ["Mineralvatten", "20", null], ["Vitamindryck", "33", null], ["F\u00e4rkpressad Apelsinjuice", "30", null], ["Smoothie", "30", null], ["Is-Te", "30", null], ["L\u00e4tt\u00f6l", "20", null], ["Pago", "25", null], ["MER (tetra)", "15", null]]]], "public_url": "chokladbollen", "menu_headers": ["SM\u00d6RG\u00c5SAR", "VARMA R\u00c4TTER", "F\u00c4RSK PASTA", "SALLADER", "VARMA DRYCKER", "KALLA DRYCKER"], "phone": "08309196", "location": "59.341747,18.038299", "address": "SANKT ERIKSGATAN 92", "price_range": "5 - 109", "favorite_count": 0, "name": "Cafe Chokladbollen"}, {"www": "", "description": "Den b\u00e4sta pepparn!", "menu": [["Fisk", [["Bento-khun", "90", "Helt bissart roligt i denna l\u00e5da"]]]], "public_url": "peppar", "menu_headers": ["Fisk"], "phone": "0736458836", "location": "59.322051,18.0721234", "address": "vasagatan 21", "price_range": "90 - 90", "favorite_count": 0, "name": "Restaurang Peppar"}, {"www": "", "description": "Den b\u00e4sta fisken", "menu": [["Sushi", [["Bento-sama", "90", "Extremt rolig l\u00e5da, kanske roligast av alla"]]]], "public_url": "martinsplace", "menu_headers": ["Sushi"], "phone": "0734647738", "location": "59.323051,18.073234", "address": "Kungsgatan 43", "price_range": "90 - 90", "favorite_count": 0, "name": "Martins Place"}]	

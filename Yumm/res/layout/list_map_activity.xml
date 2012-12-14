@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" 
+    android:orientation="vertical"
+    >
+
+    <com.google.android.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="fill_parent"
+        android:layout_height="208dp"
+        android:apiKey="@string/mapsApiKey"
+        android:clickable="true" >
+    </com.google.android.maps.MapView>
+
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="wrap_content"
+        android:layout_height="200dip"
+        android:drawSelectorOnTop="false"
+        android:scrollbars="vertical" >
+    </ListView>
+ </LinearLayout>
