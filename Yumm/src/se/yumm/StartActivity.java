@@ -10,28 +10,19 @@ import se.yumm.asyncTasks.GetPlaces;
 import se.yumm.handlers.LinearLayoutHandler;
 import se.yumm.listeners.FlingGestureListener;
 import se.yumm.poi.Restaurants;
-import se.yumm.utils.TAGS;
 import se.yumm.views.CustomHorizontalScrollView;
 import android.os.Bundle;
-import android.R.integer;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Point;
 import android.view.Display;
-import android.view.GestureDetector;
-import android.view.Gravity;
 import android.view.Menu;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.TranslateAnimation;
-import android.widget.HorizontalScrollView;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 
 @SuppressLint("NewApi")
 public class StartActivity extends Activity implements OnClickListener
@@ -61,7 +52,7 @@ public class StartActivity extends Activity implements OnClickListener
 		setContentView(R.layout.activity_start);
 		
 		m_horizView = (CustomHorizontalScrollView) findViewById(R.id.horizScrollView);
-		m_horizView.SetItemWidth(width);
+		m_horizView.SetItemWidth(width/3);
 		m_horizView.SetMaxItem(3);//setting maximum of 3 items for horscrollview
 		
 		GetPlaces g = new GetPlaces(this);
