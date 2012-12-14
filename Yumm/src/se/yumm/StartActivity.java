@@ -1,5 +1,10 @@
 package se.yumm;
 
+//*****************************
+/* @author Hatef Tadayon
+/*
+ * 
+ */
 import java.util.ArrayList;
 import se.yumm.asyncTasks.GetPlaces;
 import se.yumm.handlers.LinearLayoutHandler;
