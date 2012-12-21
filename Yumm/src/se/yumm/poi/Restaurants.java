@@ -30,7 +30,7 @@ public class Restaurants
 	private String m_location;
 
 	@SerializedName("menu")
-	private ArrayList<MenuCategory> m_menu;
+	private ArrayList<MenuItems> m_menu;
 
 	@SerializedName("menu_headers")
 	private ArrayList<String> m_menuHeaders;
@@ -40,6 +40,8 @@ public class Restaurants
 
 	@SerializedName("favorite_count")
 	private int m_favouriteCount;
+	
+	private String m_publicUrl;
 
 	public Restaurants()
 	{
@@ -50,6 +52,8 @@ public class Restaurants
 		m_description = null;
 		m_webpage = null;
 		m_location = null;
+		m_menuHeaders = new ArrayList<String>();
+		m_menu = new ArrayList<MenuItems>();
 	}
 
 	public String getName()
@@ -93,11 +97,11 @@ public class Restaurants
 		return m_location;
 	}
 
-	public void setLocation(double latitude, double longitude)
+	public void setLocation(String location)
 	{
 		// this.m_location.setLatitude(latitude);
 		// this.m_location.setLongitude(longitude);
-		m_location = latitude + "," + longitude;
+		m_location = location;
 	}
 
 	public String getDescription()
@@ -125,9 +129,9 @@ public class Restaurants
 		return m_menuHeaders;
 	}
 
-	public void setMenuHeaders(ArrayList<String> m_menuHeaders)
+	public void setMenuHeaders(String menuHdr)
 	{
-		this.m_menuHeaders = m_menuHeaders;
+		this.m_menuHeaders.add(menuHdr);
 	}
 
 	public String getPriceRng()
@@ -148,5 +152,21 @@ public class Restaurants
 	public void setFavouriteCount(int m_favouriteCount)
 	{
 		this.m_favouriteCount = m_favouriteCount;
+	}
+
+	public String getPublicUrl() {
+		return m_publicUrl;
+	}
+
+	public void setPublicUrl(String m_publicUrl) {
+		this.m_publicUrl = m_publicUrl;
+	}
+
+	public ArrayList<MenuItems> getMenuItems() {
+		return m_menu;
+	}
+
+	public void setMenuItems(MenuItems menuItem) {
+		this.m_menu.add(menuItem);
 	}
 }

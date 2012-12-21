@@ -4,11 +4,31 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" 
     android:id="@+id/topLayer">
-    <!--  
-      <ListView android:id="@+id/startList" 
-        android:layout_width="fill_parent" 
-        android:layout_height="fill_parent">
+    
+
+	<se.yumm.views.HorizontalPager
+	    android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/real_view_switcher">
         
-    </ListView>
-	-->
+	    <ImageView 
+	        android:id="@+id/firstPageImage"
+	        android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/imageDesc"
+            android:src="@drawable/ic_launcher" 
+            android:paddingRight="10dip"/>
+	    <TextView
+                android:id="@+id/horizRestText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center" />
+
+         <TextView
+		      android:id="@+id/horizRestText2"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:gravity="center" />
+	    
+	 </se.yumm.views.HorizontalPager>
 </LinearLayout>

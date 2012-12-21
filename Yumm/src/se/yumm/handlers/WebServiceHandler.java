@@ -1,8 +1,7 @@
 package se.yumm.handlers;
 
-import java.io.BufferedReader;
+
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -10,42 +9,50 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.UsernamePasswordCredentials;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.util.EntityUtils;
+import org.apache.http.cookie.Cookie;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import se.yumm.R;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.PersistentCookieStore;
+import com.loopj.android.http.RequestParams;
 
+import se.yumm.R;
+import se.yumm.asyncTasks.GetPlaces;
+
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 public class WebServiceHandler
 {
-
+	//URLS
 	private static final String PLACES_API_BASE = "https://maps.googleapis.com/maps/api/place";
 	private static final String TYPE_AUTOCOMPLETE = "/autocomplete";
 	private static final String OUT_JSON = "/json";
-
-	public static ArrayList<String> AutoCompletePlaces(String input,
-			Context context)
+	private static final String YUMM_JSON = "/places/?q=&json=true";
+	private static final String LOGIN = "/login/";
+	
+	//Member Variables
+	private Activity m_context;
+	private PersistentCookieStore m_cookieStore;
+	private Cookie m_cookie;
+	private String m_responseString = null;
+	private boolean m_loggedIn;
+	
+	public WebServiceHandler(Activity context)
+	{
+		m_context = context;
+		m_cookieStore = new PersistentCookieStore(context);
+	}
+	
+	public ArrayList<String> AutoCompletePlaces(String input)
 	{
 		// should not store apiKey with application, but for now
-		String key = context.getResources().getString(R.string.placesApiKey);
+		String key = m_context.getResources().getString(R.string.placesApiKey);
 
 		ArrayList<String> resultList = null;
 
@@ -108,66 +115,84 @@ public class WebServiceHandler
 		return resultList;
 	}
 
-	public static ArrayList<String> GetRestaurantsList(Context context)
+	public void LoginClient()
 	{
-		ArrayList<String> fetchsosfromID = new ArrayList<String>();
-		String result = "";
-		InputStream is = null;
-
-		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-		nameValuePairs.add(new BasicNameValuePair("username", "%@"));
-		nameValuePairs.add(new BasicNameValuePair("password", "%@"));
-
-		try
-		{
-			DefaultHttpClient httpclient = new DefaultHttpClient();
-			httpclient.getCredentialsProvider().setCredentials(
-					new AuthScope(null, -1),
-					new UsernamePasswordCredentials("bob@bob.bob", "bob"));
-
-			HttpPost httppost = new HttpPost(
-					"http://yummapp.appspot.com/places");
-			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-
-			HttpResponse response = httpclient.execute(httppost);
-			HttpEntity entity = response.getEntity();
-			is = entity.getContent();
-		} catch (Exception e)
-		{
-			Log.e("log_tag", "Error in http connection " + e.toString());
-		}
-		// convert response to string
-		try
-		{
-			BufferedReader reader = new BufferedReader(new InputStreamReader(
-					is, "iso-8859-1"), 8);
-			StringBuilder sb = new StringBuilder();
-			String line = null;
-			while ((line = reader.readLine()) != null)
-			{
-				sb.append(line + "\n");
+		
+    	YummWebClient.GetClient().setCookieStore(m_cookieStore);
+    	
+    	String username = m_context.getResources().getString(R.string.username);
+    	String password = m_context.getResources().getString(R.string.password);
+    	
+    	RequestParams params = new RequestParams();
+		params.put("email", username);
+		params.put("password", password);
+		
+		YummWebClient.GetClient().addHeader("Content", "application/x-www-form-urlencoded");
+		YummWebClient.post(LOGIN, params, new AsyncHttpResponseHandler(){
+		    
+			public ProgressDialog m_dialog;
+			@Override
+			public void onStart() {
+				m_dialog = ProgressDialog.show(m_context, "Logging In..", "Please Wait", true, false);
 			}
-			is.close();
-			result = sb.toString();
-			Log.v("log_tag", "Append String " + result);
-		} catch (Exception e)
-		{
-			Log.e("log_tag", "Error converting result " + e.toString());
-		}
+			@Override
+			public void onSuccess(String response) 
+			{
+				System.out.println("Login Success!");
+				for (Cookie cookie : m_cookieStore.getCookies()) {
+					if(cookie.getName().equals("sid"))
+						m_cookie = cookie;
+				}
+				setLoggedIn(true);
+				m_dialog.dismiss();
+				RetrieveData(YUMM_JSON);
+			}
+			@Override
+			public void onFailure(Throwable e, String response) 
+			{
+				m_dialog.dismiss();
+				Toast.makeText(m_context, "Login Failed! Check Connection.", Toast.LENGTH_LONG).show();
+			}
+		});
+		
+	}
+	
+	public void RetrieveData(String url)
+	{
 
-		// parse json data
-		try
-		{
+		YummWebClient.GetClient().addHeader("Cookie", "name="+m_cookie.getValue());
+		YummWebClient.get(url, null, new AsyncHttpResponseHandler(){
+			@Override
+		     public void onSuccess(String response) 
+		     {
+		    	 System.out.println("Retrieving Data Success!");
+		    	 setResponseString(response);
+		    	 GetPlaces gp = new GetPlaces(m_context);
+		    	 gp.execute(response);
+		    	 
+		     }
+		     @Override
+		     public void onFailure(Throwable e, String response) 
+		     {
+		        System.out.println("Retrieving Data Failed");
+		     }
+		});
 
-			JSONObject json_data = new JSONObject(result);
+	}
 
-			Log.v("log_tag", "daily_data " + fetchsosfromID);
+	public String getResponseString() {
+		return m_responseString;
+	}
 
-		} catch (JSONException e)
-		{
-			Log.e("log_tag", "Error parsing data " + e.toString());
-		}
-		return fetchsosfromID;
+	public void setResponseString(String m_responseString) {
+		this.m_responseString = m_responseString;
+	}
 
+	public boolean isLoggedIn() {
+		return m_loggedIn;
+	}
+
+	public void setLoggedIn(boolean m_loggedIn) {
+		this.m_loggedIn = m_loggedIn;
 	}
 }

@@ -37,8 +37,7 @@ public class PlacesAdapter extends ArrayAdapter<String>
 		super(context, layout, values);
 		this.m_context = context;
 		this.m_values = values;
-		m_horizontalLayout = (LinearLayout) m_context
-				.findViewById(R.id.horizRestLayout);
+		//m_horizontalLayout = (LinearLayout) m_context.findViewById(R.id.horizRestLayout);
 	}
 
 	@Override

@@ -5,6 +5,7 @@ import java.util.List;
 
 import se.yumm.R;
 import se.yumm.poi.Restaurants;
+import se.yumm.utils.PropertiesManager;
 import se.yumm.utils.TAGS;
 import se.yumm.views.CustomHorizontalScrollView;
 import android.app.Activity;
@@ -50,25 +51,34 @@ public class HorizontalScrollAdapter extends ArrayAdapter<Restaurants>
 		
 		Restaurants list = m_restaurants.get(position);
 		
+		//int w = PropertiesManager.GetInstance().m_windowWidth;
+		
 		TextView t = (TextView) horView.findViewById(R.id.horizRestText);
-		TextView t2 = (TextView) horView.findViewById(R.id.horizRestText2);
-		// TextView t3 = (TextView)
-		// horView.findViewById(R.id.horizRestImageText);
+		//TextView t2 = (TextView) horView.findViewById(R.id.horizRestText2);
 		ImageView iv = (ImageView) horView.findViewById(R.id.horizRestImage);
 		t.setText("Namn : " + list.getName() + "\n" + "Rating : "
 				+ list.getFavouriteCount() + "/10 \n");
-		t2.setText("Typ av kök: Japanskt");
-		// t3.setText("Deliciouis");
-
+		//t.setWidth(w);
+		//t2.setText("Typ av kök: Japanskt");
+		//t2.setWidth(w);
+		
 		iv.setImageResource(R.drawable.hotspicy);
 		// m_restaurants.get(position);
 		 
-		//LinearLayout layout = (LinearLayout) m_context.findViewById(R.id.topLayer);
-		//CHorizontalScrollView hsv =  (CHorizontalScrollView) layout.findViewWithTag(TAGS.HSV);
+		//LinearLayout layout = (LinearLayout) m_context.findViewById(R.id.horizRestLayout);
+		CustomHorizontalScrollView hsv =  (CustomHorizontalScrollView) m_context.findViewById(R.id.horizScrollView);
 		
-		//ImageView iv = (ImageView) hsv.findViewWithTag(TAGS.IMAGE);
-		//iv.setImageResource(R.drawable.redfish);
+		/*
+		ImageView iv = (ImageView) hsv.findViewWithTag(TAGS.IMAGE);
+		iv.setImageResource(R.drawable.redfish);
 		
+		TextView t1 = (TextView) hsv.findViewWithTag(TAGS.TEXT1);
+		TextView t2 = (TextView) hsv.findViewWithTag(TAGS.TEXT1);
+		
+		t1.setText("Namn : " + list.getName() + "\n" + "Rating : "
+				+ list.getFavouriteCount() + "/10 \n");
+		t2.setText("Typ av kök: Japanskt");
+		*/
 		
 		return horView;
 	}

@@ -1,6 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/jimbo"
-    android:layout_width="fill_parent"
+    android:layout_width="wrap_content"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
@@ -11,39 +11,34 @@
     </ListView>
     <se.yumm.views.CustomHorizontalScrollView
         android:id="@+id/horizScrollView"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         >
-
+        
         <LinearLayout
             android:id="@+id/horizRestLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:orientation="horizontal" >
-			  
-            <ImageView
-                android:id="@+id/horizRestImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/imageDesc"
-                android:src="@drawable/ic_launcher" 
-                android:paddingRight="10dip"> 
-             </ImageView>
-
+			   
+			<ImageView android:id="@+id/horizRestImage"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:contentDescription="horizontalImage"/>
+            
             <TextView
                 android:id="@+id/horizRestText"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
                 android:gravity="center" 
-                android:paddingLeft="10dip"/>
-
+                android:paddingLeft="50dip"/>
+<!-- 
             <TextView
                 android:id="@+id/horizRestText2"
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center" 
-                android:paddingLeft="20dip"/>
-            
+                android:gravity="center" />
+             -->
         </LinearLayout>
     </se.yumm.views.CustomHorizontalScrollView>
 

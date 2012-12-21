@@ -6,23 +6,42 @@ package se.yumm;
  * 
  */
 import java.util.ArrayList;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.PersistentCookieStore;
+import com.loopj.android.http.RequestParams;
+
 import se.yumm.asyncTasks.GetPlaces;
 import se.yumm.handlers.LinearLayoutHandler;
+import se.yumm.handlers.WebServiceHandler;
+import se.yumm.handlers.YummWebClient;
 import se.yumm.listeners.FlingGestureListener;
 import se.yumm.poi.Restaurants;
+import se.yumm.utils.PropertiesManager;
+import se.yumm.utils.TAGS;
 import se.yumm.views.CustomHorizontalScrollView;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.graphics.Point;
 import android.view.Display;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 @SuppressLint("NewApi")
 public class StartActivity extends Activity implements OnClickListener
@@ -33,30 +52,30 @@ public class StartActivity extends Activity implements OnClickListener
 	private LinearLayoutHandler m_layoutHandler;
 	private ListView m_listView;
 	private CustomHorizontalScrollView m_horizView;
+	private ProgressDialog m_dialog;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		
-		Display disp = getWindowManager().getDefaultDisplay();
-		Point point  = new Point();
-		disp.getSize(point);
-		int width = point.x;
-		int height = point.y;
-		
-		
-		//m_horizView = new CHorizontalScrollView(this, 3, width);
-		//m_horizView.setTag(TAGS.HSV);
-		
 		setContentView(R.layout.activity_start);
 		
-		m_horizView = (CustomHorizontalScrollView) findViewById(R.id.horizScrollView);
-		m_horizView.SetItemWidth(width/3);
-		m_horizView.SetMaxItem(3);//setting maximum of 3 items for horscrollview
+		WebServiceHandler webHandler = new WebServiceHandler(this);
+		Point point  = new Point();
 		
-		GetPlaces g = new GetPlaces(this);
-		g.execute("http://yummapp.appspot.com/places/?q=&json=true");
+		Display disp = getWindowManager().getDefaultDisplay();
+		disp.getSize(point);
+		int width = PropertiesManager.GetInstance().m_windowWidth = point.x;
+		int height = PropertiesManager.GetInstance().m_windowHeight = point.y;
+		
+		m_horizView = (CustomHorizontalScrollView) findViewById(R.id.horizScrollView);
+		m_horizView.SetItemWidth(width);
+		m_horizView.SetMaxItem(2);//setting maximum of 3 items for horscrollview
+		
+		//m_dialog = ProgressDialog.show(this, "Logging In..", "Please Wait", true, false);
+		webHandler.LoginClient();
+		
 		
 	}
 
@@ -74,26 +93,5 @@ public class StartActivity extends Activity implements OnClickListener
 		
 
 	}
-
-	public void animateSwipe(boolean right)
-	{
-		TranslateAnimation anim = null;
-
-		LinearLayout layout = (LinearLayout) this
-				.findViewById(R.id.horizRestLayout);
-
-		if (right)
-		{
-			anim = new TranslateAnimation(0.0f, layout.getWidth(), 0.0f, 0.0f);
-		} else
-		{
-			anim = new TranslateAnimation(0.0f, -layout.getWidth(), 0.0f, 0.0f);
-		}
-
-		anim.setDuration(250);
-		anim.setInterpolator(new AccelerateInterpolator(1.0f));
-
-		layout.startAnimation(anim);
-	}
-
+	
 }

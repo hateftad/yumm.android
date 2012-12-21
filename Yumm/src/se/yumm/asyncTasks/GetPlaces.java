@@ -21,14 +21,12 @@ public class GetPlaces extends AsyncTask<String, Void, ArrayList<Restaurants>>
 {
 
 	private final Activity m_context;
-	private JsonHandler m_jsonHdlr;
 	private ArrayList<Restaurants> m_rList;
 	private ListView m_listView;
 
 	public GetPlaces(Activity context)
 	{
 		m_context = context;
-		m_jsonHdlr = new JsonHandler(context);
 		m_rList = null;
 	}
 
@@ -38,18 +36,20 @@ public class GetPlaces extends AsyncTask<String, Void, ArrayList<Restaurants>>
 
 		ArrayList<Restaurants> list = null;
 		String result = null;
-
+		JsonHandler json = new JsonHandler(m_context);
+		json.JsonSorter(params[0]);
+		/*
 		try
 		{
-			result = m_jsonHdlr.JsonFromRawFile();
-			list = m_jsonHdlr.GetListFromGson(result);
+			
+			result = json.JsonFromRawFile();
+			list = json.GetListFromGson(result);
 
 		} catch (IOException e)
 		{
-
+			
 		}
-		// json.WebCall(params[0]);
-		// return json.GetJsonFromURL(params[0]);
+		*/
 		return list;
 	}
 

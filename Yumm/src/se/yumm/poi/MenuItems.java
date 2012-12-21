@@ -13,6 +13,8 @@ public class MenuItems
 
 	@SerializedName("desc")
 	private String m_description;
+	
+	private boolean m_isHeader;
 
 	// private List<String> m_ingredients;
 	// private int m_rating;
@@ -24,7 +26,14 @@ public class MenuItems
 		// m_ingredients = null;
 		m_price = 0;
 		// m_rating = 0;
-
+	}
+	
+	public MenuItems(String name, int price, String description, boolean header)
+	{
+		m_dishName = name;
+		m_price = price;
+		m_description = description;
+		m_isHeader = header;
 	}
 
 	public String getDishName()
@@ -64,6 +73,14 @@ public class MenuItems
 	public void setDescription(String m_description)
 	{
 		this.m_description = m_description;
+	}
+
+	public boolean isHeader() {
+		return m_isHeader;
+	}
+
+	public void setIsHeader(boolean m_isHeader) {
+		this.m_isHeader = m_isHeader;
 	}
 
 }

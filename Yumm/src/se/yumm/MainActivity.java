@@ -122,7 +122,7 @@ public class MainActivity extends Activity implements TextWatcher
 		if (count % 3 == 1)
 		{
 			m_listAdapter.clear();
-			AutoCompletePlaces task = new AutoCompletePlaces(getBaseContext(),
+			AutoCompletePlaces task = new AutoCompletePlaces(this,
 					m_locationText);
 			task.execute(m_locationText.getText().toString());
 		}

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import se.yumm.R;
 import se.yumm.handlers.WebServiceHandler;
+import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -14,10 +15,10 @@ public class AutoCompletePlaces extends
 		AsyncTask<String, Void, ArrayList<String>>
 {
 
-	private Context m_context;
+	private Activity m_context;
 	private AutoCompleteTextView m_locationText;
 
-	public AutoCompletePlaces(Context context, AutoCompleteTextView textView)
+	public AutoCompletePlaces(Activity context, AutoCompleteTextView textView)
 	{
 		m_context = context;
 		m_locationText = textView;
@@ -26,8 +27,9 @@ public class AutoCompletePlaces extends
 	@Override
 	protected ArrayList<String> doInBackground(String... params)
 	{
+		WebServiceHandler webHandler = new WebServiceHandler(m_context);
 		// TODO Auto-generated method stub
-		return WebServiceHandler.AutoCompletePlaces(params[0], m_context);
+		return webHandler.AutoCompletePlaces(params[0]);
 	}
 
 	@Override
