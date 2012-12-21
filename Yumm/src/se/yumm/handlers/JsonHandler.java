@@ -147,7 +147,6 @@ public class JsonHandler
 			Log.v("YUMM", e.toString());
 		}
 		return restList;
-
 	}
 
 	
