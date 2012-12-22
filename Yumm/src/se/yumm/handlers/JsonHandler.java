@@ -10,14 +10,12 @@ import java.io.Writer;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 import se.yumm.R;
@@ -96,11 +94,8 @@ public class JsonHandler
 		return list;
 	}
 	
-	@SuppressWarnings("unused")
-	public List<Restaurants> JsonSorter(String jsonString)
+	public ArrayList<Restaurants> JsonSorter(String jsonString)
 	{
-		Restaurants restaurant = null;
-		MenuItems menuitems = null;
 		ArrayList<Restaurants> restList = new ArrayList<Restaurants>();
 		try
 		{
@@ -109,7 +104,7 @@ public class JsonHandler
 
 			for (int i = 0; i < restArray.length(); i++)
 			{
-				restaurant = new Restaurants();
+				Restaurants restaurant = new Restaurants();
 				JSONObject rest = restArray.getJSONObject(i);
 				restaurant.setName(rest.getString(NAME));
 				restaurant.setDescription(rest.getString(DESCRIPTION));
@@ -148,7 +143,6 @@ public class JsonHandler
 		}
 		return restList;
 	}
-
 	
 	
 }

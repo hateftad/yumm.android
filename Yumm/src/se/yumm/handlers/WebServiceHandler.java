@@ -19,13 +19,17 @@ import com.loopj.android.http.PersistentCookieStore;
 import com.loopj.android.http.RequestParams;
 
 import se.yumm.R;
-import se.yumm.asyncTasks.GetPlaces;
+import se.yumm.poi.Restaurants;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
+/*
+ * Class is working Asynchronously, using AsynHttpClient.
+ * Makes use of YummWebClient where BASEURL is hardcoded
+ */
+
 
 public class WebServiceHandler
 {
@@ -42,6 +46,7 @@ public class WebServiceHandler
 	private Cookie m_cookie;
 	private String m_responseString = null;
 	private boolean m_loggedIn;
+	private ArrayList<Restaurants> m_retaurants;
 	
 	public WebServiceHandler(Activity context)
 	{
@@ -49,6 +54,7 @@ public class WebServiceHandler
 		m_cookieStore = new PersistentCookieStore(context);
 	}
 	
+	//temporary method needs to be moved
 	public ArrayList<String> AutoCompletePlaces(String input)
 	{
 		// should not store apiKey with application, but for now
@@ -115,6 +121,7 @@ public class WebServiceHandler
 		return resultList;
 	}
 
+	//method might need more modularity, but for now
 	public void LoginClient()
 	{
 		
@@ -135,6 +142,7 @@ public class WebServiceHandler
 			public void onStart() {
 				m_dialog = ProgressDialog.show(m_context, "Logging In..", "Please Wait", true, false);
 			}
+			
 			@Override
 			public void onSuccess(String response) 
 			{
@@ -150,6 +158,7 @@ public class WebServiceHandler
 			@Override
 			public void onFailure(Throwable e, String response) 
 			{
+				setLoggedIn(false);
 				m_dialog.dismiss();
 				Toast.makeText(m_context, "Login Failed! Check Connection.", Toast.LENGTH_LONG).show();
 			}
@@ -162,24 +171,28 @@ public class WebServiceHandler
 
 		YummWebClient.GetClient().addHeader("Cookie", "name="+m_cookie.getValue());
 		YummWebClient.get(url, null, new AsyncHttpResponseHandler(){
+			
 			@Override
 		     public void onSuccess(String response) 
 		     {
 		    	 System.out.println("Retrieving Data Success!");
 		    	 setResponseString(response);
-		    	 GetPlaces gp = new GetPlaces(m_context);
-		    	 gp.execute(response);
-		    	 
+		    	 if(isLoggedIn())
+		    	 {
+		    		 RestaurantHandler rh = new RestaurantHandler(m_context);
+		    		 rh.RestaurantsFromJson(response);
+		    	 }
 		     }
 		     @Override
 		     public void onFailure(Throwable e, String response) 
 		     {
 		        System.out.println("Retrieving Data Failed");
+		        Toast.makeText(m_context, "Retreiving Data Failed! Check Connection.", Toast.LENGTH_LONG).show();
 		     }
 		});
 
 	}
-
+	
 	public String getResponseString() {
 		return m_responseString;
 	}
@@ -194,5 +207,13 @@ public class WebServiceHandler
 
 	public void setLoggedIn(boolean m_loggedIn) {
 		this.m_loggedIn = m_loggedIn;
+	}
+
+	public ArrayList<Restaurants> getRetaurants() {
+		return m_retaurants;
+	}
+
+	public void setRetaurants(ArrayList<Restaurants> m_retaurants) {
+		this.m_retaurants = m_retaurants;
 	}
 }

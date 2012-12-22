@@ -1,6 +1,6 @@
 package se.yumm.views;
 
-import android.R.integer;
+import se.yumm.utils.PropertiesManager;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
@@ -41,6 +41,8 @@ public class CustomHorizontalScrollView extends HorizontalScrollView implements
 	{
 		gestureDetector = new GestureDetector(m_context, this);
 		this.setOnTouchListener(this);
+		m_maxItem = PropertiesManager.GetInstance().m_maxItems;
+		m_itemWidth = PropertiesManager.GetInstance().m_windowWidth;
 	}
 	public CustomHorizontalScrollView(Context context, int maxItem, int itemWidth)
 	{
@@ -99,6 +101,7 @@ public class CustomHorizontalScrollView extends HorizontalScrollView implements
 	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
 			float velocityY)
 	{
+		
 		if (flingDisable)
 		{
 			return false;

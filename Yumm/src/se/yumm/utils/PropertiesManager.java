@@ -5,6 +5,7 @@ public class PropertiesManager {
 	
 	public int m_windowWidth;
 	public int m_windowHeight;
+	public int m_maxItems;
 	
 	private PropertiesManager(){}
 	

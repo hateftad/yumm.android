@@ -24,21 +24,23 @@
 			<ImageView android:id="@+id/horizRestImage"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
-			    android:contentDescription="horizontalImage"/>
+			    android:contentDescription="horizontalImage"
+			    android:padding="30dip"/>
             
             <TextView
                 android:id="@+id/horizRestText"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:gravity="center" 
-                android:paddingLeft="50dip"/>
-<!-- 
+                android:padding="30dip"/>
+ 
             <TextView
                 android:id="@+id/horizRestText2"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center" />
-             -->
+                android:gravity="center" 
+                android:padding="30dip"/>
+             
         </LinearLayout>
     </se.yumm.views.CustomHorizontalScrollView>
 

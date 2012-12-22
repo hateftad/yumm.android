@@ -52,7 +52,6 @@ public class StartActivity extends Activity implements OnClickListener
 	private LinearLayoutHandler m_layoutHandler;
 	private ListView m_listView;
 	private CustomHorizontalScrollView m_horizView;
-	private ProgressDialog m_dialog;
 	
 
 	@Override
@@ -60,20 +59,20 @@ public class StartActivity extends Activity implements OnClickListener
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_start);
-		
-		WebServiceHandler webHandler = new WebServiceHandler(this);
+	
 		Point point  = new Point();
-		
 		Display disp = getWindowManager().getDefaultDisplay();
 		disp.getSize(point);
-		int width = PropertiesManager.GetInstance().m_windowWidth = point.x;
-		int height = PropertiesManager.GetInstance().m_windowHeight = point.y;
 		
-		m_horizView = (CustomHorizontalScrollView) findViewById(R.id.horizScrollView);
-		m_horizView.SetItemWidth(width);
-		m_horizView.SetMaxItem(2);//setting maximum of 3 items for horscrollview
+		//settings for CustomHorizontalScrollView, Major Hack :)
+		//on TODO list
+		PropertiesManager.GetInstance().m_windowWidth = point.x;
+		PropertiesManager.GetInstance().m_windowHeight = point.y;
+		PropertiesManager.GetInstance().m_maxItems = 3;
 		
-		//m_dialog = ProgressDialog.show(this, "Logging In..", "Please Wait", true, false);
+		//logs in and retrieves initial data, most probably going to change this
+		//and use a different way
+		WebServiceHandler webHandler = new WebServiceHandler(this);
 		webHandler.LoginClient();
 		
 		

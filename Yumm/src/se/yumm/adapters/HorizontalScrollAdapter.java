@@ -51,34 +51,24 @@ public class HorizontalScrollAdapter extends ArrayAdapter<Restaurants>
 		
 		Restaurants list = m_restaurants.get(position);
 		
-		//int w = PropertiesManager.GetInstance().m_windowWidth;
 		
 		TextView t = (TextView) horView.findViewById(R.id.horizRestText);
-		//TextView t2 = (TextView) horView.findViewById(R.id.horizRestText2);
+		TextView t2 = (TextView) horView.findViewById(R.id.horizRestText2);
 		ImageView iv = (ImageView) horView.findViewById(R.id.horizRestImage);
-		t.setText("Namn : " + list.getName() + "\n" + "Rating : "
-				+ list.getFavouriteCount() + "/10 \n");
-		//t.setWidth(w);
-		//t2.setText("Typ av kök: Japanskt");
-		//t2.setWidth(w);
 		
-		iv.setImageResource(R.drawable.hotspicy);
-		// m_restaurants.get(position);
-		 
-		//LinearLayout layout = (LinearLayout) m_context.findViewById(R.id.horizRestLayout);
+		t.setText("Namn : " + list.getName() + "\n" 
+				+ "Favorite Count : "+ list.getFavouriteCount() + "\n"
+				+ "Typ av kök: Japanskt");
+
+		t2.setText("Telefon : " + list.getPhoneNr() + "\n" +
+				   "Address : " + list.getAddress() + "\n" +
+				   "Leveransvillkor : Hemkörning");
+		if((position % 2)==0)
+			iv.setImageResource(R.drawable.hotspicy);
+		else
+			iv.setImageResource(R.drawable.redfish);
+		
 		CustomHorizontalScrollView hsv =  (CustomHorizontalScrollView) m_context.findViewById(R.id.horizScrollView);
-		
-		/*
-		ImageView iv = (ImageView) hsv.findViewWithTag(TAGS.IMAGE);
-		iv.setImageResource(R.drawable.redfish);
-		
-		TextView t1 = (TextView) hsv.findViewWithTag(TAGS.TEXT1);
-		TextView t2 = (TextView) hsv.findViewWithTag(TAGS.TEXT1);
-		
-		t1.setText("Namn : " + list.getName() + "\n" + "Rating : "
-				+ list.getFavouriteCount() + "/10 \n");
-		t2.setText("Typ av kök: Japanskt");
-		*/
 		
 		return horView;
 	}

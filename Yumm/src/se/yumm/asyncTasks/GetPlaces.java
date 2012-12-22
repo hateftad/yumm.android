@@ -1,20 +1,14 @@
 package se.yumm.asyncTasks;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import se.yumm.R;
 import se.yumm.adapters.HorizontalScrollAdapter;
 import se.yumm.handlers.JsonHandler;
-import se.yumm.handlers.LinearLayoutHandler;
 import se.yumm.poi.Restaurants;
-import se.yumm.utils.TAGS;
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.os.AsyncTask;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 
 public class GetPlaces extends AsyncTask<String, Void, ArrayList<Restaurants>>
@@ -35,7 +29,7 @@ public class GetPlaces extends AsyncTask<String, Void, ArrayList<Restaurants>>
 	{
 
 		ArrayList<Restaurants> list = null;
-		String result = null;
+		//String result = null;
 		JsonHandler json = new JsonHandler(m_context);
 		json.JsonSorter(params[0]);
 		/*
