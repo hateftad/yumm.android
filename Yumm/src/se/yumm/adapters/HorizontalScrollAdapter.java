@@ -48,25 +48,20 @@ public class HorizontalScrollAdapter extends ArrayAdapter<Restaurants> implement
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
-		if(convertView == null)
-		{
+		//if(convertView == null)
+		//{
 			LayoutInflater inflater = (LayoutInflater) m_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			//View horView = inflater.inflate(R.layout.activity_start, parent, false);
-			convertView =  inflater.inflate(R.layout.activity_start, parent, false);
-		}
+			View horView = inflater.inflate(R.layout.activity_start, parent, false);
+			//convertView =  inflater.inflate(R.layout.activity_start, parent, false);
+		//}
 		int width = PropertiesManager.GetInstance().m_windowWidth;
-		int maxItem = PropertiesManager.GetInstance().m_maxItems;
-		
-		CustomHorizontalScrollView hsv =  (CustomHorizontalScrollView) m_context.findViewById(R.id.horizScrollView);
-		hsv.SetItemWidth(width);
-		hsv.SetMaxItem(maxItem);
 		
 		Restaurants list = m_restaurants.get(position);
 		
 		
-		TextView t = (TextView) convertView.findViewById(R.id.horizRestText);
-		TextView t2 = (TextView) convertView.findViewById(R.id.horizRestText2);
-		ImageView iv = (ImageView) convertView.findViewById(R.id.horizRestImage);
+		TextView t = (TextView) horView.findViewById(R.id.horizRestText);
+		TextView t2 = (TextView) horView.findViewById(R.id.horizRestText2);
+		ImageView iv = (ImageView) horView.findViewById(R.id.horizRestImage);
 		LayoutParams layoutParams = iv.getLayoutParams();
 		layoutParams.height = m_context.getResources().getDimensionPixelSize(R.dimen.placeholder_height);
 		
@@ -84,7 +79,7 @@ public class HorizontalScrollAdapter extends ArrayAdapter<Restaurants> implement
 		else
 			iv.setImageResource(R.drawable.redfish);
 		
-		return convertView;
+		return horView;
 	}
 
 	public List<Restaurants> getRestaurants()
