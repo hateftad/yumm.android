@@ -27,5 +27,6 @@
     <string name="title_activity_start">Yumm</string>
     <string name="username">bob@bob.bob</string>
     <string name="password">bob</string>
+    <string name="image1">image frontpage</string>
 
 </resources>

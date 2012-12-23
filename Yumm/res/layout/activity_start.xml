@@ -13,6 +13,8 @@
         android:id="@+id/horizScrollView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:background="@color/light_grey"
         >
         
         <LinearLayout
@@ -20,27 +22,38 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:orientation="horizontal" >
-			   
-			<ImageView android:id="@+id/horizRestImage"
+			<RelativeLayout
+ 			    android:id="@+id/horiz2ndSlide"
+ 			    android:orientation="vertical"
+ 			    android:layout_width="fill_parent"
+ 			    android:layout_height="wrap_content" >
+ 			       
+			<ImageView
+			    android:id="@+id/horizRestImage"
 			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:contentDescription="horizontalImage"
-			    android:padding="30dip"/>
+			    android:layout_height="fill_parent"
+			    android:contentDescription="@string/image1"
+			    android:paddingLeft="10dip"
+			    android:paddingRight="10dip"
+			    android:paddingTop="10dip" />
             
             <TextView
                 android:id="@+id/horizRestText"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:gravity="center" 
-                android:padding="30dip"/>
- 
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/horizRestImage"
+                android:layout_marginLeft="10dip"
+                android:paddingRight="30dip"
+                android:background="@color/white"
+                android:textSize="12sp" />
+
+  			</RelativeLayout>
             <TextView
                 android:id="@+id/horizRestText2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center" 
-                android:padding="30dip"/>
-             
+                android:gravity="fill" 
+                android:padding="50dip"/>
         </LinearLayout>
     </se.yumm.views.CustomHorizontalScrollView>
 

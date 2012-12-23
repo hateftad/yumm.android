@@ -5,55 +5,24 @@ package se.yumm;
 /*
  * 
  */
-import java.util.ArrayList;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-
-import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.PersistentCookieStore;
-import com.loopj.android.http.RequestParams;
-
-import se.yumm.asyncTasks.GetPlaces;
-import se.yumm.handlers.LinearLayoutHandler;
 import se.yumm.handlers.WebServiceHandler;
-import se.yumm.handlers.YummWebClient;
-import se.yumm.listeners.FlingGestureListener;
-import se.yumm.poi.Restaurants;
 import se.yumm.utils.PropertiesManager;
-import se.yumm.utils.TAGS;
-import se.yumm.views.CustomHorizontalScrollView;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.graphics.Point;
 import android.view.Display;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.view.WindowManager;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-@SuppressLint("NewApi")
+
 public class StartActivity extends Activity implements OnClickListener
 {
-		
-	private ArrayList<Restaurants> m_restaurants;
-	private FlingGestureListener m_gLstr;
-	private LinearLayoutHandler m_layoutHandler;
-	private ListView m_listView;
-	private CustomHorizontalScrollView m_horizView;
 	
 
+	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -64,11 +33,11 @@ public class StartActivity extends Activity implements OnClickListener
 		Display disp = getWindowManager().getDefaultDisplay();
 		disp.getSize(point);
 		
-		//settings for CustomHorizontalScrollView, Major Hack :)
+		//settings for CustomHorizontalScrollView, minor Hack :)
 		//on TODO list
 		PropertiesManager.GetInstance().m_windowWidth = point.x;
 		PropertiesManager.GetInstance().m_windowHeight = point.y;
-		PropertiesManager.GetInstance().m_maxItems = 3;
+		PropertiesManager.GetInstance().m_maxItems = 2;
 		
 		//logs in and retrieves initial data, most probably going to change this
 		//and use a different way

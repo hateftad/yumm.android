@@ -9,9 +9,19 @@ package se.yumm;
 
 public final class R {
     public static final class array {
-        public static final int KitchenArray=0x7f060000;
+        public static final int KitchenArray=0x7f080000;
     }
     public static final class attr {
+    }
+    public static final class color {
+        public static final int light_grey=0x7f050000;
+        public static final int white=0x7f050001;
+    }
+    public static final class dimen {
+        public static final int padding_large=0x7f060002;
+        public static final int padding_medium=0x7f060001;
+        public static final int padding_small=0x7f060000;
+        public static final int placeholder_height=0x7f060003;
     }
     public static final class drawable {
         public static final int hotspicy=0x7f020000;
@@ -19,28 +29,29 @@ public final class R {
         public static final int redfish=0x7f020002;
     }
     public static final class id {
-        public static final int LinearLayout1=0x7f09000f;
-        public static final int addressText=0x7f090011;
-        public static final int autoCompletePlaces=0x7f090000;
-        public static final int autoCompleteVarious=0x7f090002;
-        public static final int firstPageImage=0x7f090014;
-        public static final int horizRestImage=0x7f09000a;
-        public static final int horizRestLayout=0x7f090009;
-        public static final int horizRestText=0x7f09000b;
-        public static final int horizRestText2=0x7f09000c;
-        public static final int horizScrollView=0x7f090008;
-        public static final int jimbo=0x7f090006;
-        public static final int kitchenTopText=0x7f090005;
-        public static final int listView1=0x7f09000e;
-        public static final int locationButton=0x7f090001;
-        public static final int mapView=0x7f09000d;
-        public static final int menu_settings=0x7f090015;
-        public static final int placesTopText=0x7f090004;
-        public static final int real_view_switcher=0x7f090013;
-        public static final int restaurantName=0x7f090010;
-        public static final int searchButton=0x7f090003;
-        public static final int startPageListView=0x7f090007;
-        public static final int topLayer=0x7f090012;
+        public static final int LinearLayout1=0x7f0b0010;
+        public static final int addressText=0x7f0b0012;
+        public static final int autoCompletePlaces=0x7f0b0000;
+        public static final int autoCompleteVarious=0x7f0b0002;
+        public static final int firstPageImage=0x7f0b0015;
+        public static final int horiz2ndSlide=0x7f0b000a;
+        public static final int horizRestImage=0x7f0b000b;
+        public static final int horizRestLayout=0x7f0b0009;
+        public static final int horizRestText=0x7f0b000c;
+        public static final int horizRestText2=0x7f0b000d;
+        public static final int horizScrollView=0x7f0b0008;
+        public static final int jimbo=0x7f0b0006;
+        public static final int kitchenTopText=0x7f0b0005;
+        public static final int listView1=0x7f0b000f;
+        public static final int locationButton=0x7f0b0001;
+        public static final int mapView=0x7f0b000e;
+        public static final int menu_settings=0x7f0b0016;
+        public static final int placesTopText=0x7f0b0004;
+        public static final int real_view_switcher=0x7f0b0014;
+        public static final int restaurantName=0x7f0b0011;
+        public static final int searchButton=0x7f0b0003;
+        public static final int startPageListView=0x7f0b0007;
+        public static final int topLayer=0x7f0b0013;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -51,8 +62,8 @@ public final class R {
         public static final int starting_view=0x7f030005;
     }
     public static final class menu {
-        public static final int activity_main=0x7f080000;
-        public static final int activity_start=0x7f080001;
+        public static final int activity_main=0x7f0a0000;
+        public static final int activity_start=0x7f0a0001;
     }
     public static final class raw {
         public static final int json=0x7f040000;
@@ -60,23 +71,24 @@ public final class R {
         public static final int jsonold=0x7f040002;
     }
     public static final class string {
-        public static final int app_name=0x7f050000;
-        public static final int hello_world=0x7f050001;
-        public static final int imageDesc=0x7f05000a;
-        public static final int kitchenTop=0x7f050008;
-        public static final int locationButton=0x7f050004;
+        public static final int app_name=0x7f070000;
+        public static final int hello_world=0x7f070001;
+        public static final int image1=0x7f07000f;
+        public static final int imageDesc=0x7f07000a;
+        public static final int kitchenTop=0x7f070008;
+        public static final int locationButton=0x7f070004;
         /**  might be debug key 
          */
-        public static final int mapsApiKey=0x7f05000b;
-        public static final int menu_settings=0x7f050002;
-        public static final int password=0x7f05000e;
-        public static final int placeText=0x7f050003;
-        public static final int placesApiKey=0x7f050009;
-        public static final int placesTop=0x7f050007;
-        public static final int searchButton=0x7f050006;
-        public static final int title_activity_start=0x7f05000c;
-        public static final int username=0x7f05000d;
-        public static final int variousText=0x7f050005;
+        public static final int mapsApiKey=0x7f07000b;
+        public static final int menu_settings=0x7f070002;
+        public static final int password=0x7f07000e;
+        public static final int placeText=0x7f070003;
+        public static final int placesApiKey=0x7f070009;
+        public static final int placesTop=0x7f070007;
+        public static final int searchButton=0x7f070006;
+        public static final int title_activity_start=0x7f07000c;
+        public static final int username=0x7f07000d;
+        public static final int variousText=0x7f070005;
     }
     public static final class style {
         /** 
@@ -100,10 +112,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f070000;
+        public static final int AppBaseTheme=0x7f090000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f070001;
+        public static final int AppTheme=0x7f090001;
     }
 }
