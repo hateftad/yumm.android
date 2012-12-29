@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import se.yumm.R;
 import se.yumm.adapters.HorizontalScrollAdapter;
+import se.yumm.adapters.StartPageAdapter;
 import se.yumm.poi.Restaurants;
 import android.app.Activity;
 import android.os.AsyncTask;
@@ -51,8 +52,12 @@ public class RestaurantHandler {
 		{
 			setRestaurants(result);
 			ListView listView = (ListView) m_context.findViewById(R.id.startPageListView);
+			/*
 			HorizontalScrollAdapter pAdapter = new HorizontalScrollAdapter(
 					m_context, R.layout.activity_start, m_restaurants);
+			*/
+			StartPageAdapter pAdapter = new StartPageAdapter(m_context);
+			pAdapter.updateRestaurants(result);
 			listView.setAdapter(pAdapter);
 
 		}

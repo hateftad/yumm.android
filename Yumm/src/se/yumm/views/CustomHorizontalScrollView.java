@@ -21,11 +21,12 @@ public class CustomHorizontalScrollView extends HorizontalScrollView implements
 	private Context m_context;
 	private GestureDetector gestureDetector;
 	private int m_scrollTo = 0;
-	private int m_maxItem;
+	private int m_maxItem = 0;
 	private int m_activeItem = 0;
 	private float m_prevScrollX = 0;
 	private boolean m_start = true;
-	private int m_itemWidth;
+	private boolean m_singleTap = false;
+	private int m_itemWidth = 0;
 	private float m_currentScrollX;
 	private boolean flingDisable = true;
 
@@ -116,8 +117,8 @@ public class CustomHorizontalScrollView extends HorizontalScrollView implements
 		}
 		ptx1 = e1.getX();
 		ptx2 = e2.getX();
+		
 		// right to left
-
 		if (ptx1 - ptx2 > SWIPE_MIN_DISTANCE
 				&& Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) 
 		{
@@ -126,7 +127,8 @@ public class CustomHorizontalScrollView extends HorizontalScrollView implements
 
 			returnValue = true;
 
-		} 
+		}
+		
 		else if (ptx2 - ptx1 > SWIPE_MIN_DISTANCE
 				&& Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) 
 		{
@@ -135,9 +137,12 @@ public class CustomHorizontalScrollView extends HorizontalScrollView implements
 
 			returnValue = true;
 		}
+		
 		m_scrollTo = m_activeItem * m_itemWidth;
 		this.smoothScrollTo(0, m_scrollTo);
+		
 		return returnValue;
+		//return false;
 	}
 
 	@Override
@@ -151,14 +156,19 @@ public class CustomHorizontalScrollView extends HorizontalScrollView implements
 		Boolean returnValue = gestureDetector.onTouchEvent(event);
 
 		int x = (int) event.getRawX();
-
+		
 		switch (event.getAction())
 		{
+			case MotionEvent.ACTION_DOWN:
+				m_singleTap = true;
+			break;
+				
 			case MotionEvent.ACTION_MOVE:
 				if (m_start)
 				{
 					this.m_prevScrollX = x;
 					m_start = false;
+					m_singleTap = false;
 				}
 			break;
 			
@@ -176,6 +186,10 @@ public class CustomHorizontalScrollView extends HorizontalScrollView implements
 				{
 					if (m_activeItem > 0)
 						m_activeItem = m_activeItem - 1;
+				}
+				if((Math.abs(x - this.m_prevScrollX)) < minFactor && m_singleTap)
+				{
+					System.out.println("Sinlge click");
 				}
 				System.out.println("horizontal : " + m_activeItem);
 				m_scrollTo = m_activeItem * m_itemWidth;

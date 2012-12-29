@@ -30,8 +30,8 @@ public class HorizontalScrollAdapter extends ArrayAdapter<Restaurants> implement
 	static class ViewHolder
 	{
 		public TextView contactDetails;
-		public TextView rating;
-		public ImageView rstImg;
+		public TextView imageSubText;
+		public ImageView restaurantImg;
 	}
 
 	public HorizontalScrollAdapter(Activity context, int resourceId,
@@ -57,6 +57,8 @@ public class HorizontalScrollAdapter extends ArrayAdapter<Restaurants> implement
 		int width = PropertiesManager.GetInstance().m_windowWidth;
 		
 		Restaurants list = m_restaurants.get(position);
+		//CustomHorizontalScrollView chsv = (CustomHorizontalScrollView) m_context.findViewById(R.id.horizScrollView);
+		
 		
 		
 		TextView t = (TextView) horView.findViewById(R.id.horizRestText);
@@ -67,7 +69,7 @@ public class HorizontalScrollAdapter extends ArrayAdapter<Restaurants> implement
 		
 		t.setText(list.getName() + "\n" 
 				+ "Japanskt "+ list.getFavouriteCount());
-		t.setWidth(width);
+		//t.setWidth(iv.getWidth());
 		
 		t2.setText("Telefon : " + list.getPhoneNr() + "\n" +
 				   "Address : " + list.getAddress() + "\n" +

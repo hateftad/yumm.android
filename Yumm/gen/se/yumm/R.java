@@ -30,10 +30,10 @@ public final class R {
     }
     public static final class id {
         public static final int LinearLayout1=0x7f0b0010;
+        public static final int add_option=0x7f0b0014;
         public static final int addressText=0x7f0b0012;
         public static final int autoCompletePlaces=0x7f0b0000;
         public static final int autoCompleteVarious=0x7f0b0002;
-        public static final int firstPageImage=0x7f0b0015;
         public static final int horiz2ndSlide=0x7f0b000a;
         public static final int horizRestImage=0x7f0b000b;
         public static final int horizRestLayout=0x7f0b0009;
@@ -45,13 +45,11 @@ public final class R {
         public static final int listView1=0x7f0b000f;
         public static final int locationButton=0x7f0b0001;
         public static final int mapView=0x7f0b000e;
-        public static final int menu_settings=0x7f0b0016;
+        public static final int menu_settings=0x7f0b0013;
         public static final int placesTopText=0x7f0b0004;
-        public static final int real_view_switcher=0x7f0b0014;
         public static final int restaurantName=0x7f0b0011;
         public static final int searchButton=0x7f0b0003;
         public static final int startPageListView=0x7f0b0007;
-        public static final int topLayer=0x7f0b0013;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -59,7 +57,6 @@ public final class R {
         public static final int auto_comp_list=0x7f030002;
         public static final int list_map_activity=0x7f030003;
         public static final int row_view=0x7f030004;
-        public static final int starting_view=0x7f030005;
     }
     public static final class menu {
         public static final int activity_main=0x7f0a0000;

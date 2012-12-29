@@ -99,7 +99,7 @@ public class JsonHandler
 		ArrayList<Restaurants> restList = new ArrayList<Restaurants>();
 		try
 		{
-			//List<Restaurants> restList = null;
+			
 			JSONArray restArray = new JSONArray(jsonString);
 
 			for (int i = 0; i < restArray.length(); i++)

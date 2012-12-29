@@ -121,7 +121,7 @@ public class WebServiceHandler
 		return resultList;
 	}
 
-	//method might need more modularity, but for now
+	//method might be split up more, but for now
 	public void LoginClient()
 	{
 		
