@@ -1,7 +1,9 @@
 package se.yumm.views;
 
+import se.yumm.ListMapActivity;
 import se.yumm.utils.PropertiesManager;
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.GestureDetector.OnGestureListener;
@@ -18,7 +20,7 @@ public class CustomHorizontalScrollView extends HorizontalScrollView implements
 	private static final int SWIPE_THRESHOLD_VELOCITY = 300;
 	private static final int SWIPE_PAGE_ON_FACTOR = 10;
 
-	private Context m_context;
+	private final Context m_context;
 	private GestureDetector gestureDetector;
 	private int m_scrollTo = 0;
 	private int m_maxItem = 0;
@@ -35,22 +37,25 @@ public class CustomHorizontalScrollView extends HorizontalScrollView implements
 	public CustomHorizontalScrollView(Context context, AttributeSet attrs)
 	{
 		super(context, attrs);
+		m_context = context;
 		init();
 	}
 	
+	public CustomHorizontalScrollView(Context context, int maxItem, int itemWidth)
+	{
+		super(context);
+		m_context = context;
+		this.m_maxItem = maxItem;
+		this.m_itemWidth = itemWidth;
+		init();
+	}
+	//band aid solution
 	public void init()
 	{
 		gestureDetector = new GestureDetector(m_context, this);
 		this.setOnTouchListener(this);
 		m_maxItem = PropertiesManager.GetInstance().m_maxItems;
 		m_itemWidth = PropertiesManager.GetInstance().m_windowWidth;
-	}
-	public CustomHorizontalScrollView(Context context, int maxItem, int itemWidth)
-	{
-		super(context);
-		this.m_maxItem = maxItem;
-		this.m_itemWidth = itemWidth;
-		init();
 	}
 	//these are for snapping features
 	public void SetMaxItem(int max)
@@ -142,7 +147,7 @@ public class CustomHorizontalScrollView extends HorizontalScrollView implements
 		this.smoothScrollTo(0, m_scrollTo);
 		
 		return returnValue;
-		//return false;
+
 	}
 
 	@Override
@@ -156,6 +161,7 @@ public class CustomHorizontalScrollView extends HorizontalScrollView implements
 		Boolean returnValue = gestureDetector.onTouchEvent(event);
 
 		int x = (int) event.getRawX();
+		float xcord = event.getX();
 		
 		switch (event.getAction())
 		{
@@ -168,12 +174,12 @@ public class CustomHorizontalScrollView extends HorizontalScrollView implements
 				{
 					this.m_prevScrollX = x;
 					m_start = false;
-					m_singleTap = false;
 				}
+				
 			break;
 			
 			case MotionEvent.ACTION_UP:
-				m_start = true;
+				
 				this.m_currentScrollX = x;
 				int minFactor = m_itemWidth / SWIPE_PAGE_ON_FACTOR;
 
@@ -187,14 +193,21 @@ public class CustomHorizontalScrollView extends HorizontalScrollView implements
 					if (m_activeItem > 0)
 						m_activeItem = m_activeItem - 1;
 				}
-				if((Math.abs(x - this.m_prevScrollX)) < minFactor && m_singleTap)
+				float b = Math.abs(m_prevScrollX - m_currentScrollX);
+				if(m_singleTap && m_start)
 				{
-					System.out.println("Sinlge click");
+					
+					//int id = ;
+					//System.out.println(id);
+					m_singleTap = false;
+					//Intent in = new Intent(m_context, ListMapActivity.class);
+					//m_context.startActivity(in);
 				}
 				System.out.println("horizontal : " + m_activeItem);
 				m_scrollTo = m_activeItem * m_itemWidth;
 				this.smoothScrollTo(m_scrollTo, 0);
 				returnValue = true;
+				m_start = true;
 			break;
 		}
 		

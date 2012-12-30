@@ -181,6 +181,7 @@ public class WebServiceHandler
 		    	 {
 		    		 RestaurantHandler rh = new RestaurantHandler(m_context);
 		    		 rh.RestaurantsFromJson(response);
+		    		 setRetaurants(rh.getRestaurants());
 		    	 }
 		     }
 		     @Override

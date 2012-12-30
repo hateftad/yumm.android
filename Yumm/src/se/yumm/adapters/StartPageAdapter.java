@@ -62,17 +62,21 @@ public class StartPageAdapter extends BaseAdapter {
 		{
 			convertView = View.inflate(m_context, R.layout.activity_start, null);
 		}
+		
 		int width = PropertiesManager.GetInstance().m_windowWidth;
+		
 		ImageView imgView = ViewHolder.get(convertView, R.id.horizRestImage);
 		TextView subText = ViewHolder.get(convertView, R.id.horizRestText);
 		TextView contactText = ViewHolder.get(convertView, R.id.horizRestText2);
+		
 		LayoutParams layoutParams = imgView.getLayoutParams();
 		layoutParams.height = m_context.getResources().getDimensionPixelSize(R.dimen.placeholder_height);
+		
 		Restaurants rest = (Restaurants) getItem(position);
 		
 		subText.setText(rest.getName() + "\n" 
 				+ "Japanskt "+ rest.getFavouriteCount());
-		//t.setWidth(iv.getWidth());
+		//subText.setWidth(imgView.getWidth());
 		
 		contactText.setText("Telefon : " + rest.getPhoneNr() + "\n" +
 				   "Address : " + rest.getAddress() + "\n" +

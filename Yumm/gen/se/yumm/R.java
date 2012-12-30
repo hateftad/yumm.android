@@ -29,27 +29,31 @@ public final class R {
         public static final int redfish=0x7f020002;
     }
     public static final class id {
-        public static final int LinearLayout1=0x7f0b0010;
-        public static final int add_option=0x7f0b0014;
-        public static final int addressText=0x7f0b0012;
+        public static final int LinearLayout1=0x7f0b0014;
+        public static final int add_option=0x7f0b0018;
+        public static final int addressText=0x7f0b0016;
+        public static final int alphaSortBtn=0x7f0b0007;
         public static final int autoCompletePlaces=0x7f0b0000;
         public static final int autoCompleteVarious=0x7f0b0002;
-        public static final int horiz2ndSlide=0x7f0b000a;
-        public static final int horizRestImage=0x7f0b000b;
-        public static final int horizRestLayout=0x7f0b0009;
-        public static final int horizRestText=0x7f0b000c;
-        public static final int horizRestText2=0x7f0b000d;
-        public static final int horizScrollView=0x7f0b0008;
-        public static final int jimbo=0x7f0b0006;
+        public static final int closestSortBtn=0x7f0b0009;
+        public static final int frameLayout=0x7f0b0006;
+        public static final int horiz2ndSlide=0x7f0b000e;
+        public static final int horizRestImage=0x7f0b000f;
+        public static final int horizRestLayout=0x7f0b000d;
+        public static final int horizRestText=0x7f0b0010;
+        public static final int horizRestText2=0x7f0b0011;
+        public static final int horizScrollView=0x7f0b000c;
+        public static final int jimbo=0x7f0b000a;
         public static final int kitchenTopText=0x7f0b0005;
-        public static final int listView1=0x7f0b000f;
+        public static final int listView1=0x7f0b0013;
         public static final int locationButton=0x7f0b0001;
-        public static final int mapView=0x7f0b000e;
-        public static final int menu_settings=0x7f0b0013;
+        public static final int mapView=0x7f0b0012;
+        public static final int menu_settings=0x7f0b0017;
         public static final int placesTopText=0x7f0b0004;
-        public static final int restaurantName=0x7f0b0011;
+        public static final int ratingSortBtn=0x7f0b0008;
+        public static final int restaurantName=0x7f0b0015;
         public static final int searchButton=0x7f0b0003;
-        public static final int startPageListView=0x7f0b0007;
+        public static final int startPageListView=0x7f0b000b;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -68,23 +72,26 @@ public final class R {
         public static final int jsonold=0x7f040002;
     }
     public static final class string {
+        public static final int alphaSort=0x7f070007;
         public static final int app_name=0x7f070000;
+        public static final int closestSort=0x7f070009;
         public static final int hello_world=0x7f070001;
-        public static final int image1=0x7f07000f;
-        public static final int imageDesc=0x7f07000a;
-        public static final int kitchenTop=0x7f070008;
+        public static final int image1=0x7f070012;
+        public static final int imageDesc=0x7f07000d;
+        public static final int kitchenTop=0x7f07000b;
         public static final int locationButton=0x7f070004;
         /**  might be debug key 
          */
-        public static final int mapsApiKey=0x7f07000b;
+        public static final int mapsApiKey=0x7f07000e;
         public static final int menu_settings=0x7f070002;
-        public static final int password=0x7f07000e;
+        public static final int password=0x7f070011;
         public static final int placeText=0x7f070003;
-        public static final int placesApiKey=0x7f070009;
-        public static final int placesTop=0x7f070007;
+        public static final int placesApiKey=0x7f07000c;
+        public static final int placesTop=0x7f07000a;
+        public static final int ratingSort=0x7f070008;
         public static final int searchButton=0x7f070006;
-        public static final int title_activity_start=0x7f07000c;
-        public static final int username=0x7f07000d;
+        public static final int title_activity_start=0x7f07000f;
+        public static final int username=0x7f070010;
         public static final int variousText=0x7f070005;
     }
     public static final class style {

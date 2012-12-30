@@ -8,6 +8,9 @@
     <string name="locationButton" />
     <string name="variousText" />
     <string name="searchButton">Sök</string>
+    <string name="alphaSort">name A-Z</string>
+    <string name="ratingSort">rating</string>
+    <string name="closestSort">närmast</string>
     <string name="placesTop">Hitta Restauranger nära</string>
     <string name="kitchenTop">Vad är du sugen på? (valfritt)</string>
     <string name="placesApiKey">AIzaSyCo9Aepp27_I_H-EgbxGl2zBumVYM3bNFU</string>

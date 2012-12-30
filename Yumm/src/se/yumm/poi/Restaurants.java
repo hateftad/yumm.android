@@ -27,7 +27,7 @@ public class Restaurants
 	private String m_webpage;
 
 	@SerializedName("location")
-	private String m_location;
+	private Location m_location;
 
 	@SerializedName("menu")
 	private ArrayList<MenuItems> m_menu;
@@ -54,6 +54,7 @@ public class Restaurants
 		m_location = null;
 		m_menuHeaders = new ArrayList<String>();
 		m_menu = new ArrayList<MenuItems>();
+		m_location = new Location("yumm");
 	}
 
 	public String getName()
@@ -92,16 +93,17 @@ public class Restaurants
 		this.m_phoneNr = m_phoneNr;
 	}
 
-	public String getLocation()
+	public Location getLocation()
 	{
 		return m_location;
 	}
 
 	public void setLocation(String location)
 	{
-		// this.m_location.setLatitude(latitude);
-		// this.m_location.setLongitude(longitude);
-		m_location = location;
+		String coord[] = location.split(",");
+		m_location.setLatitude(Double.parseDouble(coord[0]));
+		m_location.setLongitude(Double.parseDouble(coord[1]));
+		//m_location = location;
 	}
 
 	public String getDescription()

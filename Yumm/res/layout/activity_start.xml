@@ -1,62 +1,89 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/jimbo"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/frameLayout"
     android:layout_width="wrap_content"
-    android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom" >
 
-    <ListView android:id="@+id/startPageListView" 
-        android:layout_width="fill_parent" 
-        android:layout_height="fill_parent">
-        
-    </ListView>
-    <se.yumm.views.CustomHorizontalScrollView
-        android:id="@+id/horizScrollView"
-        android:layout_width="fill_parent"
+    <Button
+        android:id="@+id/alphaSortBtn"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scrollbars="none"
-        android:background="@color/light_grey"
-        >
-        
-        <LinearLayout
-            android:id="@+id/horizRestLayout"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="horizontal" >
-			<RelativeLayout
- 			    android:id="@+id/horiz2ndSlide"
- 			    android:orientation="vertical"
- 			    android:layout_width="fill_parent"
- 			    android:layout_height="wrap_content" >
- 			       
-			<ImageView
-			    android:id="@+id/horizRestImage"
-			    android:layout_width="wrap_content"
-			    android:layout_height="fill_parent"
-			    android:contentDescription="@string/image1"
-			    android:paddingLeft="10dip"
-			    android:paddingRight="10dip"
-			    android:paddingTop="10dip" />
-            
-            <TextView
-                android:id="@+id/horizRestText"
-                android:layout_width="fill_parent"
+        android:layout_gravity="bottom"
+        android:text="@string/alphaSort" />
+
+    <Button
+        android:id="@+id/ratingSortBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:text="@string/ratingSort" />
+
+    <Button
+        android:id="@+id/closestSortBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:text="@string/closestSort" />
+
+    <LinearLayout
+        android:id="@+id/jimbo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/startPageListView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+        </ListView>
+
+        <se.yumm.views.CustomHorizontalScrollView
+            android:id="@+id/horizScrollView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/light_grey"
+            android:scrollbars="none" >
+
+            <LinearLayout
+                android:id="@+id/horizRestLayout"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/horizRestImage"
-                android:layout_marginLeft="10dip"
-                android:paddingRight="30dip"
-                android:background="@color/white"
-                android:textSize="12sp" />
+                android:orientation="horizontal" >
 
-  			</RelativeLayout>
-            <TextView
-                android:id="@+id/horizRestText2"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="fill" 
-                android:padding="50dip"/>
-        </LinearLayout>
-    </se.yumm.views.CustomHorizontalScrollView>
+                <RelativeLayout
+                    android:id="@+id/horiz2ndSlide"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
 
-    
+                    <ImageView
+                        android:id="@+id/horizRestImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/image1"
+                        android:paddingLeft="10dip"
+                        android:paddingRight="10dip"
+                        android:paddingTop="10dip" />
 
-</LinearLayout>
+                    <TextView
+                        android:id="@+id/horizRestText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/horizRestImage"
+                        android:layout_marginLeft="10dip"
+                        android:background="@color/white"
+                        android:paddingRight="30dip"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/horizRestText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="fill"
+                    android:padding="50dip" />
+            </LinearLayout>
+        </se.yumm.views.CustomHorizontalScrollView>
+    </LinearLayout>
+
+</FrameLayout>

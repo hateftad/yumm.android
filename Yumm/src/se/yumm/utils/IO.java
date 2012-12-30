@@ -30,7 +30,7 @@ public class IO
 
 		tempString = input.split(seperate);
 		String[] outString = new String[tempString.length];
-
+		
 		String newStr = tempString[0].replaceAll("\\[", "");
 		for (int i = 0; i < tempString.length; i++)
 		{
