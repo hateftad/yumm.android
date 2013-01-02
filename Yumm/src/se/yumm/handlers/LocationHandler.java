@@ -108,18 +108,20 @@ public class LocationHandler implements LocationListener
 
 	public boolean locationUpdate()
 	{
+		
 		try
 		{
 			List<Address> address = m_geocoder.getFromLocation(
 					m_location.getLatitude(), m_location.getLongitude(), 1);
-
-			m_address = address.get(0);
-
-		} catch (IOException e)
+			//m_address = address.get(0);
+		}
+		
+		catch (IOException e)
 		{
 			Log.d("Yumm", "GetLocationText", e);
 			return false;
 		}
+		
 		return true;
 	}
 

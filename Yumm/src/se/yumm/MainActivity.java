@@ -3,7 +3,7 @@ package se.yumm;
 import se.yumm.asyncTasks.AutoCompletePlaces;
 import se.yumm.handlers.JsonHandler;
 import se.yumm.handlers.LocationHandler;
-import se.yumm.handlers.WebServiceHandler;
+//import se.yumm.handlers.WebServiceHandler;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;

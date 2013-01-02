@@ -9,17 +9,21 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
+import org.apache.http.Header;
+import org.apache.http.client.HttpClient;
 import org.apache.http.cookie.Cookie;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.PersistentCookieStore;
 import com.loopj.android.http.RequestParams;
 
 import se.yumm.R;
 import se.yumm.poi.Restaurants;
+import se.yumm.utils.URLS;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -39,19 +43,22 @@ public class WebServiceHandler
 	private static final String OUT_JSON = "/json";
 	private static final String YUMM_JSON = "/places/?q=&json=true";
 	private static final String LOGIN = "/login/";
+	private static final String PROXIMITY = "/places/proximity/?location=";
+	private static final String RADIUS = "&json=true&radius=100000";
 	
 	//Member Variables
 	private Activity m_context;
 	private PersistentCookieStore m_cookieStore;
 	private Cookie m_cookie;
-	private String m_responseString = null;
 	private boolean m_loggedIn;
-	private ArrayList<Restaurants> m_retaurants;
+	private RestaurantHandler m_restHndlr;
 	
 	public WebServiceHandler(Activity context)
 	{
 		m_context = context;
 		m_cookieStore = new PersistentCookieStore(context);
+		m_restHndlr = new RestaurantHandler(context);
+		YummWebClient.GetClient().setCookieStore(m_cookieStore);
 	}
 	
 	//temporary method needs to be moved
@@ -125,15 +132,12 @@ public class WebServiceHandler
 	public void LoginClient()
 	{
 		
-    	YummWebClient.GetClient().setCookieStore(m_cookieStore);
-    	
     	String username = m_context.getResources().getString(R.string.username);
     	String password = m_context.getResources().getString(R.string.password);
     	
     	RequestParams params = new RequestParams();
 		params.put("email", username);
 		params.put("password", password);
-		
 		YummWebClient.GetClient().addHeader("Content", "application/x-www-form-urlencoded");
 		YummWebClient.post(LOGIN, params, new AsyncHttpResponseHandler(){
 		    
@@ -146,7 +150,6 @@ public class WebServiceHandler
 			@Override
 			public void onSuccess(String response) 
 			{
-				System.out.println("Login Success!");
 				for (Cookie cookie : m_cookieStore.getCookies()) {
 					if(cookie.getName().equals("sid"))
 						m_cookie = cookie;
@@ -168,22 +171,30 @@ public class WebServiceHandler
 	
 	public void RetrieveData(String url)
 	{
-
-		YummWebClient.GetClient().addHeader("Cookie", "name="+m_cookie.getValue());
+		if (!m_loggedIn) {
+			YummWebClient.AddHeader("Cookie", "name="+m_cookie.getValue());
+		}
+		
 		YummWebClient.get(url, null, new AsyncHttpResponseHandler(){
+			
+			public ProgressDialog m_dialog;
+			
+			@Override
+			public void onStart() {
+				m_dialog = ProgressDialog.show(m_context, "Retrieving...", "Please Wait", true, false);
+			}
 			
 			@Override
 		     public void onSuccess(String response) 
 		     {
 		    	 System.out.println("Retrieving Data Success!");
-		    	 setResponseString(response);
 		    	 if(isLoggedIn())
 		    	 {
-		    		 RestaurantHandler rh = new RestaurantHandler(m_context);
-		    		 rh.RestaurantsFromJson(response);
-		    		 setRetaurants(rh.getRestaurants());
+		    		 m_restHndlr.RestaurantsFromJson(response);
 		    	 }
+		    	 m_dialog.dismiss();
 		     }
+			
 		     @Override
 		     public void onFailure(Throwable e, String response) 
 		     {
@@ -194,12 +205,20 @@ public class WebServiceHandler
 
 	}
 	
-	public String getResponseString() {
-		return m_responseString;
-	}
+	public String UrlBuilder(String in, URLS tag )
+	{
+		String url = null;
+		
+		switch (tag) {
+		case CLOSEST:
+			url = PROXIMITY + in + RADIUS;
+			break;
 
-	public void setResponseString(String m_responseString) {
-		this.m_responseString = m_responseString;
+		default:
+			break;
+		}
+		
+		return url;
 	}
 
 	public boolean isLoggedIn() {
@@ -210,11 +229,12 @@ public class WebServiceHandler
 		this.m_loggedIn = m_loggedIn;
 	}
 
-	public ArrayList<Restaurants> getRetaurants() {
-		return m_retaurants;
+	public RestaurantHandler GetRestaurantHandler()
+	{
+		return m_restHndlr;
 	}
-
-	public void setRetaurants(ArrayList<Restaurants> m_retaurants) {
-		this.m_retaurants = m_retaurants;
+	public AsyncHttpClient GetClient()
+	{
+		return YummWebClient.GetClient();
 	}
 }

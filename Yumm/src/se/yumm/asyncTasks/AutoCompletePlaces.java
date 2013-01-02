@@ -3,7 +3,7 @@ package se.yumm.asyncTasks;
 import java.util.ArrayList;
 
 import se.yumm.R;
-import se.yumm.handlers.WebServiceHandler;
+//import se.yumm.handlers.WebServiceHandler;
 import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -27,9 +27,9 @@ public class AutoCompletePlaces extends
 	@Override
 	protected ArrayList<String> doInBackground(String... params)
 	{
-		WebServiceHandler webHandler = new WebServiceHandler(m_context);
+		//WebServiceHandler webHandler = new WebServiceHandler(m_context);
 		// TODO Auto-generated method stub
-		return webHandler.AutoCompletePlaces(params[0]);
+		return null;//webHandler.AutoCompletePlaces(params[0]);
 	}
 
 	@Override

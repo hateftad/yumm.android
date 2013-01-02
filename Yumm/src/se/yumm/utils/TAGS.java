@@ -1,5 +1,6 @@
 package se.yumm.utils;
 
+
 public enum TAGS
 {
 	HSV,
@@ -8,3 +9,4 @@ public enum TAGS
 	TEXT2,
 	LISTVIEW
 }
+

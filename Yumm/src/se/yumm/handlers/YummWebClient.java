@@ -7,8 +7,6 @@ import com.loopj.android.http.RequestParams;
 
 public class YummWebClient {
 
-	final static String username = "bob@bob.bob";
-	final static String password = "bob";
 	static String LOCAL_BASE_URL = "http://10.0.2.2:8080";
 	static String BASE_URL = "http://yummapp.appspot.com";
 	
@@ -33,11 +31,11 @@ public class YummWebClient {
 	public static void SetClient(AsyncHttpClient m_client) {
 		YummWebClient.m_client = m_client;
 	}
-	public static void SetHeaders()
+	public static void AddHeader(String header, String value)
 	{
-		
+		YummWebClient.m_client.addHeader(header, value);
 	    
 	}
-	
+
 
 }

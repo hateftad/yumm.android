@@ -6,27 +6,33 @@ package se.yumm;
  * 
  */
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
+import se.yumm.handlers.LocationHandler;
+import se.yumm.handlers.RestaurantHandler;
 import se.yumm.handlers.WebServiceHandler;
+import se.yumm.poi.Restaurants;
 import se.yumm.utils.PropertiesManager;
+import se.yumm.utils.URLS;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Point;
 import android.view.Display;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.ListView;
 
 
 public class StartActivity extends Activity implements OnClickListener
 {
 	private WebServiceHandler m_webHandler;
-
+	private LocationHandler m_locationhdlr;
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -48,6 +54,10 @@ public class StartActivity extends Activity implements OnClickListener
 		//most probably going to change this and write my own webhandler
 		m_webHandler = new WebServiceHandler(this);
 		m_webHandler.LoginClient();
+		//m_webHandler = new WebServices(this);
+		//m_webHandler.LoginClient();
+		
+		m_locationhdlr = new LocationHandler(this);
 		
 		Button btn = (Button) findViewById(R.id.alphaSortBtn);
 		btn.bringToFront();
@@ -56,9 +66,7 @@ public class StartActivity extends Activity implements OnClickListener
 			@Override
 			public void onClick(View v) 
 			{
-				if(m_webHandler.isLoggedIn())
-					System.out.println("A-Z");
-				
+				Sort(RestaurantHandler.NameComparator);
 			}
 		});
 		
@@ -68,9 +76,8 @@ public class StartActivity extends Activity implements OnClickListener
 			
 			@Override
 			public void onClick(View v) {
-				if(m_webHandler.isLoggedIn())
-					System.out.println("rating");
 				
+				Sort(RestaurantHandler.RatingComparator);
 			}
 		});
 		
@@ -81,7 +88,11 @@ public class StartActivity extends Activity implements OnClickListener
 			@Override
 			public void onClick(View v) {
 				if(m_webHandler.isLoggedIn())
-					System.out.println("Closest");
+				{
+					String location = Double.toString(m_locationhdlr.getLocation().getLongitude()) 
+							+ "," + Double.toString(m_locationhdlr.getLocation().getLatitude());
+					m_webHandler.RetrieveData(m_webHandler.UrlBuilder(location, URLS.CLOSEST));
+				}
 				
 			}
 		});
@@ -95,12 +106,37 @@ public class StartActivity extends Activity implements OnClickListener
 		getMenuInflater().inflate(R.menu.activity_start, menu);
 		return true;
 	}
-
 	@Override
-	public void onClick(View v)
+	protected void onResume()
 	{
-		
-
+		super.onResume();
+		m_locationhdlr.update();
 	}
 	
+	@Override
+	protected void onPause()
+	{
+		super.onPause();
+		m_locationhdlr.pause();
+	}
+	public void Sort(Comparator<Restaurants> method)
+	{
+		RestaurantHandler rh = m_webHandler.GetRestaurantHandler();
+		ArrayList<Restaurants> list = rh.getRestaurants();
+		if (rh.isAscending()) {
+			Collections.sort(list, method);
+		}
+		else
+		{
+			Collections.sort(list, Collections.reverseOrder(method));
+		}
+		rh.setAscending(!rh.isAscending());
+		rh.UpdateData(list);
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		
+	}
 }
