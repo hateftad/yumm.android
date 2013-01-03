@@ -12,6 +12,22 @@ public final class R {
         public static final int KitchenArray=0x7f080000;
     }
     public static final class attr {
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int maxItems=0x7f010000;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int onAction=0x7f010001;
     }
     public static final class color {
         public static final int light_grey=0x7f050000;
@@ -45,7 +61,7 @@ public final class R {
         public static final int horizScrollView=0x7f0b000c;
         public static final int jimbo=0x7f0b000a;
         public static final int kitchenTopText=0x7f0b0005;
-        public static final int listView1=0x7f0b0013;
+        public static final int listMapView=0x7f0b0013;
         public static final int locationButton=0x7f0b0001;
         public static final int mapView=0x7f0b0012;
         public static final int menu_settings=0x7f0b0017;
@@ -122,4 +138,49 @@ public final class R {
          */
         public static final int AppTheme=0x7f090001;
     }
+    public static final class styleable {
+        /** Attributes that can be used with a CustomHorizontalScrollView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #CustomHorizontalScrollView_maxItems se.yumm:maxItems}</code></td><td></td></tr>
+           <tr><td><code>{@link #CustomHorizontalScrollView_onAction se.yumm:onAction}</code></td><td></td></tr>
+           </table>
+           @see #CustomHorizontalScrollView_maxItems
+           @see #CustomHorizontalScrollView_onAction
+         */
+        public static final int[] CustomHorizontalScrollView = {
+            0x7f010000, 0x7f010001
+        };
+        /**
+          <p>This symbol is the offset where the {@link se.yumm.R.attr#maxItems}
+          attribute's value can be found in the {@link #CustomHorizontalScrollView} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:maxItems
+        */
+        public static final int CustomHorizontalScrollView_maxItems = 0;
+        /**
+          <p>This symbol is the offset where the {@link se.yumm.R.attr#onAction}
+          attribute's value can be found in the {@link #CustomHorizontalScrollView} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:onAction
+        */
+        public static final int CustomHorizontalScrollView_onAction = 1;
+    };
 }

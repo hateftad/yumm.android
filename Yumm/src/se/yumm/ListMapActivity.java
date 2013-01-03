@@ -1,6 +1,6 @@
 package se.yumm;
 
-import se.yumm.adapters.PlacesAdapter;
+import se.yumm.adapters.ListMapAdapter;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -20,12 +20,6 @@ public class ListMapActivity extends MapActivity
 	private MapController m_mapCtrl;
 	private ListView m_listView;
 
-	String[] values = new String[]
-	{ "Android", "iPhone", "WindowsMobile", "Blackberry", "WebOS", "Ubuntu",
-			"Windows7", "Max OS X", "Linux", "OS/2", "Android", "iPhone",
-			"WindowsMobile", "Blackberry", "WebOS", "Ubuntu", "Windows7",
-			"Max OS X", "Linux", "OS/2" };
-
 	@Override
 	public void onCreate(Bundle icicle)
 	{
@@ -34,11 +28,11 @@ public class ListMapActivity extends MapActivity
 		m_mapView = (MapView) findViewById(R.id.mapView);
 		m_mapView.setBuiltInZoomControls(true);
 		m_mapCtrl = m_mapView.getController();
-		m_listView = (ListView) findViewById(R.id.listView1);
+		m_listView = (ListView) findViewById(R.id.listMapView);
 
-		PlacesAdapter pAdapter = new PlacesAdapter(this, R.layout.row_view,
-				values);
-		m_listView.setAdapter(pAdapter);
+		ListMapAdapter pAdapter = new ListMapAdapter(this);
+		//pAdapter.updateRestaurants(restaurants);
+		//m_listView.setAdapter(pAdapter);
 
 		m_listView.setOnKeyListener(new OnKeyListener()
 		{

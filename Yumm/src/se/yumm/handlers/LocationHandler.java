@@ -32,13 +32,13 @@ public class LocationHandler implements LocationListener
 		// check if geocoder is present, usually not on emulator
 		if (Geocoder.isPresent())
 		{
-			Toast.makeText(m_context, " Cool ", Toast.LENGTH_SHORT).show();
+			Toast.makeText(m_context, " Geocoder Enabled ", Toast.LENGTH_SHORT).show();
 			m_geocoder = new Geocoder(context, Locale.getDefault());
 			// locationUpdate();
 			m_geoEnabled = true;
 		} else
 		{
-			Toast.makeText(m_context, "Not Cool ", Toast.LENGTH_SHORT).show();
+			Toast.makeText(m_context, "Geocoder disabled ", Toast.LENGTH_SHORT).show();
 			m_geoEnabled = false;
 		}
 
@@ -81,7 +81,7 @@ public class LocationHandler implements LocationListener
 		m_location = location;
 		if (m_geoEnabled)
 		{
-			locationUpdate();
+			//locationUpdate();
 		}
 	}
 
@@ -113,7 +113,7 @@ public class LocationHandler implements LocationListener
 		{
 			List<Address> address = m_geocoder.getFromLocation(
 					m_location.getLatitude(), m_location.getLongitude(), 1);
-			//m_address = address.get(0);
+			m_address = address.get(0);
 		}
 		
 		catch (IOException e)

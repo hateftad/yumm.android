@@ -1,9 +1,15 @@
 package se.yumm.views;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import se.yumm.ListMapActivity;
+import se.yumm.R;
+import se.yumm.listeners.ActionListener;
 import se.yumm.utils.PropertiesManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.GestureDetector.OnGestureListener;
@@ -31,6 +37,7 @@ public class CustomHorizontalScrollView extends HorizontalScrollView implements
 	private int m_itemWidth = 0;
 	private float m_currentScrollX;
 	private boolean flingDisable = true;
+	private ActionListener m_eventLstr = null;
 
 	
 
@@ -38,6 +45,39 @@ public class CustomHorizontalScrollView extends HorizontalScrollView implements
 	{
 		super(context, attrs);
 		m_context = context;
+		
+		TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.CustomHorizontalScrollView);
+		final int n = ta.length();
+		
+		for (int i = 0; i < n; i++) {
+			
+			int attr = ta.getIndex(i);
+			switch (attr) {
+			case R.styleable.CustomHorizontalScrollView_maxItems:
+				m_maxItem = ta.getInt(attr, 2);
+				break;
+			case R.styleable.CustomHorizontalScrollView_onAction:
+				if(context.isRestricted())
+				{
+					throw new IllegalStateException();
+				}
+				final String handlerName = ta.getString(attr);
+				if(handlerName != null)
+				{
+					/*
+					try {
+						m_eventLstr = getContext().getClass().getMethod(handlerName, View.class);
+					} catch (NoSuchMethodException e) {
+						e.printStackTrace();
+					}
+					*/
+				}
+				break;
+			default:
+				break;
+			}
+		}
+		
 		init();
 	}
 	
@@ -54,7 +94,7 @@ public class CustomHorizontalScrollView extends HorizontalScrollView implements
 	{
 		gestureDetector = new GestureDetector(m_context, this);
 		this.setOnTouchListener(this);
-		m_maxItem = PropertiesManager.GetInstance().m_maxItems;
+		//m_maxItem = PropertiesManager.GetInstance().m_maxItems;
 		m_itemWidth = PropertiesManager.GetInstance().m_windowWidth;
 	}
 	//these are for snapping features
@@ -161,7 +201,6 @@ public class CustomHorizontalScrollView extends HorizontalScrollView implements
 		Boolean returnValue = gestureDetector.onTouchEvent(event);
 
 		int x = (int) event.getRawX();
-		float xcord = event.getX();
 		
 		switch (event.getAction())
 		{
@@ -193,15 +232,30 @@ public class CustomHorizontalScrollView extends HorizontalScrollView implements
 					if (m_activeItem > 0)
 						m_activeItem = m_activeItem - 1;
 				}
-				float b = Math.abs(m_prevScrollX - m_currentScrollX);
 				if(m_singleTap && m_start)
 				{
 					
-					//int id = ;
-					//System.out.println(id);
 					m_singleTap = false;
-					//Intent in = new Intent(m_context, ListMapActivity.class);
-					//m_context.startActivity(in);
+					/*
+					if (this.m_eventLstr != null) {
+						try {
+							m_eventLstr.invoke(getContext(), View.class);
+						} catch (IllegalArgumentException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (IllegalAccessException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (InvocationTargetException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					*/
+					/*
+					Intent in = new Intent(m_context, ListMapActivity.class);
+					m_context.startActivity(in);
+					*/
 				}
 				System.out.println("horizontal : " + m_activeItem);
 				m_scrollTo = m_activeItem * m_itemWidth;
@@ -212,6 +266,11 @@ public class CustomHorizontalScrollView extends HorizontalScrollView implements
 		}
 		
 		return returnValue;
+	}
+	
+	public void OnComplete(View v)
+	{
+		System.out.println("KIR TO ROHET");
 	}
 
 }

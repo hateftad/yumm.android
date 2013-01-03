@@ -9,8 +9,6 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-import org.apache.http.Header;
-import org.apache.http.client.HttpClient;
 import org.apache.http.cookie.Cookie;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,7 +20,6 @@ import com.loopj.android.http.PersistentCookieStore;
 import com.loopj.android.http.RequestParams;
 
 import se.yumm.R;
-import se.yumm.poi.Restaurants;
 import se.yumm.utils.URLS;
 
 import android.app.Activity;

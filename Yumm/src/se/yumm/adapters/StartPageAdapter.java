@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 import se.yumm.R;
+import se.yumm.listeners.ActionListener;
 import se.yumm.poi.Restaurants;
 import se.yumm.utils.PropertiesManager;
 import se.yumm.utils.ThreadPreconditions;
@@ -11,6 +12,7 @@ import se.yumm.utils.ViewHolder;
 
 import android.content.Context;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.BaseAdapter;
@@ -21,8 +23,7 @@ public class StartPageAdapter extends BaseAdapter {
 
 	private List<Restaurants> m_restarauntList = Collections.emptyList();
 	private final Context m_context;
-	
-	
+	private ActionListener m_eventListener;
 	
 	public StartPageAdapter(Context context)
 	{
@@ -44,7 +45,7 @@ public class StartPageAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public Object getItem(int position) {
+	public Restaurants getItem(int position) {
 		// TODO Auto-generated method stub
 		return m_restarauntList.get(position);
 	}
@@ -72,7 +73,7 @@ public class StartPageAdapter extends BaseAdapter {
 		LayoutParams layoutParams = imgView.getLayoutParams();
 		layoutParams.height = m_context.getResources().getDimensionPixelSize(R.dimen.placeholder_height);
 		
-		Restaurants rest = (Restaurants) getItem(position);
+		Restaurants rest = getItem(position);
 		
 		subText.setText(rest.getName() + "\n" 
 				+ "Japanskt "+ rest.getFavouriteCount());
@@ -88,7 +89,21 @@ public class StartPageAdapter extends BaseAdapter {
 		else
 			imgView.setImageResource(R.drawable.redfish);
 		
+		imgView.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				m_eventListener.OnClicked(v);
+				
+			}
+		});
+		
 		return convertView;
 	}
-
+	
+	public void SetEventListener(ActionListener listener)
+	{
+		this.m_eventListener = listener;
+		
+	}
 }

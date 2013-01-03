@@ -7,17 +7,17 @@ package se.yumm;
  */
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.PriorityQueue;
 
 import se.yumm.handlers.LocationHandler;
 import se.yumm.handlers.RestaurantHandler;
 import se.yumm.handlers.WebServiceHandler;
+import se.yumm.listeners.ActionListener;
 import se.yumm.poi.Restaurants;
 import se.yumm.utils.PropertiesManager;
 import se.yumm.utils.URLS;
+import se.yumm.views.CustomHorizontalScrollView;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -26,7 +26,11 @@ import android.view.Display;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
 
 
 public class StartActivity extends Activity implements OnClickListener
@@ -58,6 +62,14 @@ public class StartActivity extends Activity implements OnClickListener
 		//m_webHandler.LoginClient();
 		
 		m_locationhdlr = new LocationHandler(this);
+		m_webHandler.GetRestaurantHandler().GetAdapter().SetEventListener(new ActionListener() {
+			
+			@Override
+			public void OnClicked(View v) {
+				System.out.println("Fek");
+				
+			}
+		});
 		
 		Button btn = (Button) findViewById(R.id.alphaSortBtn);
 		btn.bringToFront();
@@ -93,7 +105,6 @@ public class StartActivity extends Activity implements OnClickListener
 							+ "," + Double.toString(m_locationhdlr.getLocation().getLatitude());
 					m_webHandler.RetrieveData(m_webHandler.UrlBuilder(location, URLS.CLOSEST));
 				}
-				
 			}
 		});
 		
@@ -136,7 +147,8 @@ public class StartActivity extends Activity implements OnClickListener
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
+		
+		System.out.println("Clicked item nr "+v.getId());
 		
 	}
 }

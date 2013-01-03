@@ -17,8 +17,6 @@ public class RestaurantHandler {
 	private JsonHandler m_jsonHndlr;
 	private ArrayList<Restaurants> m_restaurants;
 	private StartPageAdapter m_pageAdapter;
-	@SuppressWarnings("unused")
-	private ListView m_listView;
 	private boolean m_ascending = true;
 	
 	
@@ -27,7 +25,6 @@ public class RestaurantHandler {
 		m_context = context;
 		m_jsonHndlr = new JsonHandler(m_context);
 		m_pageAdapter = new StartPageAdapter(m_context);
-		
 		
 		ListView listView = (ListView) m_context.findViewById(R.id.startPageListView);
 		listView.setAdapter(m_pageAdapter);
