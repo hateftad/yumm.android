@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/side_navigation_menu_item1"
+        android:icon="@drawable/ic_launcher"
+        android:title="@string/title1"/>
+    <item
+        android:id="@+id/side_navigation_menu_item2"
+        android:icon="@drawable/ic_launcher"
+        android:title="@string/title2"/>
+    <item
+        android:id="@+id/side_navigation_menu_item3"
+        android:icon="@drawable/ic_launcher"
+        android:title="@string/title3"/>
+    <item
+        android:id="@+id/side_navigation_menu_item4"
+        android:icon="@drawable/ic_launcher"
+        android:title="@string/title4"/>
+    <item
+        android:id="@+id/side_navigation_menu_item5"
+        android:icon="@drawable/ic_launcher"
+        android:title="@string/title5"/>
+    <item
+        android:id="@+id/side_navigation_menu_item6"
+        android:icon="@drawable/ic_launcher"
+        android:title="@string/title6"/>
+    <item
+        android:id="@+id/side_navigation_menu_item7"
+        android:icon="@drawable/ic_launcher"
+        android:title="@string/title7"/>
+    <item
+        android:id="@+id/side_navigation_menu_item8"
+        android:icon="@drawable/ic_launcher"
+        android:title="@string/title8"/>
+
+</menu>

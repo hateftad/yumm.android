@@ -1,5 +1,4 @@
-<FrameLayout 
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/frameLayout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -36,9 +35,7 @@
         <ListView
             android:id="@+id/startPageListView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" 
-            android:clickable="true"
-            android:focusable="true">
+            android:layout_height="wrap_content" >
         </ListView>
 
         <se.yumm.views.CustomHorizontalScrollView
@@ -46,10 +43,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/light_grey"
-            android:scrollbars="none" 
-            custom:maxItems = "2"
-            custom:onAction = "OnComplete"
-            >
+            android:scrollbars="none"
+            custom:maxItems="2"
+            custom:onAction="OnComplete" >
 
             <LinearLayout
                 android:id="@+id/horizRestLayout"
@@ -92,5 +88,10 @@
             </LinearLayout>
         </se.yumm.views.CustomHorizontalScrollView>
     </LinearLayout>
+
+    <se.yumm.views.SideNavigationView
+        android:id="@+id/side_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </FrameLayout>

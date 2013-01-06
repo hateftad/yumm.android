@@ -4,8 +4,8 @@ import java.util.Collections;
 import java.util.List;
 
 import se.yumm.R;
-import se.yumm.listeners.ActionListener;
-import se.yumm.poi.Restaurants;
+import se.yumm.items.Restaurants;
+import se.yumm.listeners.IActionListener;
 import se.yumm.utils.PropertiesManager;
 import se.yumm.utils.ThreadPreconditions;
 import se.yumm.utils.ViewHolder;
@@ -23,7 +23,7 @@ public class StartPageAdapter extends BaseAdapter {
 
 	private List<Restaurants> m_restarauntList = Collections.emptyList();
 	private final Context m_context;
-	private ActionListener m_eventListener;
+	private IActionListener m_eventListener;
 	
 	public StartPageAdapter(Context context)
 	{
@@ -93,7 +93,7 @@ public class StartPageAdapter extends BaseAdapter {
 			
 			@Override
 			public void onClick(View v) {
-				m_eventListener.OnClicked(v);
+				m_eventListener.OnComplete(v);
 				
 			}
 		});
@@ -101,7 +101,7 @@ public class StartPageAdapter extends BaseAdapter {
 		return convertView;
 	}
 	
-	public void SetEventListener(ActionListener listener)
+	public void SetEventListener(IActionListener listener)
 	{
 		this.m_eventListener = listener;
 		

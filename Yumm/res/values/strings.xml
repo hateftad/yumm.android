@@ -31,5 +31,12 @@
     <string name="username">bob@bob.bob</string>
     <string name="password">bob</string>
     <string name="image1">image frontpage</string>
-
+    <string name="title1">Hem</string>
+	<string name="title2">Lista</string>
+	<string name="title3">Karta</string>
+	<string name="title4">Beställningar</string>
+	<string name="title5">Favoriter</string>
+	<string name="title6">Min Profil</string>
+	<string name="title7">Om Yumm</string>
+	<string name="title8">Logga Ut</string>
 </resources>

@@ -4,9 +4,9 @@ import java.util.EventListener;
 
 import android.view.View;
 
-public interface ActionListener extends EventListener  {
+public interface IActionListener extends EventListener  {
 	
-	void OnClicked(View v);
+	void OnComplete(View v);
 
 
 }

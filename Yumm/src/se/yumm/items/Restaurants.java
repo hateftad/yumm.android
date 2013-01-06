@@ -1,12 +1,14 @@
-package se.yumm.poi;
+package se.yumm.items;
 
 import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 import android.location.Address;
 import android.location.Location;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Restaurants
+public class Restaurants implements Parcelable
 {
 
 	@SerializedName("name")
@@ -57,6 +59,65 @@ public class Restaurants
 		m_location = new Location("yumm");
 	}
 
+	public Restaurants(Parcel in) {
+		
+		
+		
+		m_name = in.readString();
+		m_address = in.readString();
+		m_phoneNr = in.readString();
+		m_description = in.readString();
+		m_priceRng = in.readString();
+		m_publicUrl = in.readString();
+		m_webpage = in.readString();
+		m_favouriteCount = in.readInt();
+		
+		if(m_location == null)
+		{
+			m_location = new Location("yumm");
+		}
+		//double lat = in.readDouble();
+		//double lon = in.readDouble();
+		setLocation(in.readDouble(), in.readDouble());
+		
+		if (m_menuHeaders == null) {
+			m_menuHeaders = new ArrayList<String>();
+		}
+		in.readStringList(m_menuHeaders);
+		
+		if (m_menu == null) {
+			m_menu = new ArrayList<MenuItems>();
+		}
+		in.readTypedList(m_menu, MenuItems.CREATOR);
+		
+		
+	}
+	
+
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel out, int flags) {
+			
+		out.writeString(getName());
+		out.writeString(getAddress());
+		out.writeString(getPhoneNr());
+		out.writeString(getDescription());
+		out.writeString(getPriceRng());
+		out.writeString(getPublicUrl());
+		out.writeString(getWebpage());
+		out.writeInt(getFavouriteCount());
+		out.writeDouble(getLocation().getLatitude());
+		out.writeDouble(getLocation().getLongitude());
+		out.writeStringList(getMenuHeaders());
+		out.writeTypedList(getMenuItems());
+
+	}
+
 	public String getName()
 	{
 		return m_name;
@@ -103,7 +164,12 @@ public class Restaurants
 		String coord[] = location.split(",");
 		m_location.setLatitude(Double.parseDouble(coord[0]));
 		m_location.setLongitude(Double.parseDouble(coord[1]));
-		//m_location = location;
+	}
+	
+	public void setLocation(double lat, double lon)
+	{
+		m_location.setLatitude(lat);
+		m_location.setLongitude(lon);
 	}
 
 	public String getDescription()
@@ -171,4 +237,15 @@ public class Restaurants
 	public void setMenuItems(MenuItems menuItem) {
 		this.m_menu.add(menuItem);
 	}
+
+	
+	public static final Parcelable.Creator<Restaurants> CREATOR = new Parcelable.Creator<Restaurants>() {
+        public Restaurants createFromParcel(Parcel in) {
+            return new Restaurants(in);
+        }
+
+        public Restaurants[] newArray(int size) {
+            return new Restaurants[size];
+        }
+    };
 }

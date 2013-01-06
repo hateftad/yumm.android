@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import se.yumm.R;
 import se.yumm.adapters.HorizontalScrollAdapter;
 import se.yumm.handlers.JsonHandler;
-import se.yumm.poi.Restaurants;
+import se.yumm.items.Restaurants;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;

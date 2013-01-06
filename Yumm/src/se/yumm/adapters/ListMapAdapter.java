@@ -1,10 +1,16 @@
 package se.yumm.adapters;
 
+/*
+* @author Hatef Tadayon
+*
+* 
+*/
+
 import java.util.Collections;
 import java.util.List;
 
 import se.yumm.R;
-import se.yumm.poi.Restaurants;
+import se.yumm.items.Restaurants;
 import se.yumm.utils.ThreadPreconditions;
 import se.yumm.utils.ViewHolder;
 import android.content.Context;
@@ -54,7 +60,7 @@ public class ListMapAdapter extends BaseAdapter
 	public View getView(int position, View convertView, ViewGroup parent) {
 		if (convertView == null) 
 		{
-			convertView = View.inflate(m_context, R.layout.list_map_activity, null);
+			convertView = View.inflate(m_context, R.layout.row_view, null);
 		}
 		
 		Restaurants rest = getItem(position);

@@ -1,33 +1,43 @@
 package se.yumm.handlers;
 
+/*
+* @author Hatef Tadayon
+*
+* 
+*/
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Locale;
 
 import se.yumm.R;
 import se.yumm.adapters.StartPageAdapter;
-import se.yumm.poi.Restaurants;
+import se.yumm.items.Restaurants;
+import se.yumm.listeners.IActionListener;
 import android.app.Activity;
+import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
 
 public class RestaurantHandler {
 	
-	private Activity m_context;
+	private Context m_context;
 	private JsonHandler m_jsonHndlr;
 	private ArrayList<Restaurants> m_restaurants;
-	private StartPageAdapter m_pageAdapter;
+	private BaseAdapter m_pageAdapter;
+	private IActionListener m_eventListener = null;
 	private boolean m_ascending = true;
 	
 	
-	public RestaurantHandler(Activity context)
+	public RestaurantHandler(Context context)
 	{
 		m_context = context;
 		m_jsonHndlr = new JsonHandler(m_context);
 		m_pageAdapter = new StartPageAdapter(m_context);
+		m_restaurants = new ArrayList<Restaurants>();
 		
-		ListView listView = (ListView) m_context.findViewById(R.id.startPageListView);
-		listView.setAdapter(m_pageAdapter);
+
 	}
 	
 	public void RestaurantsFromJson(String jsonString)
@@ -55,20 +65,17 @@ public class RestaurantHandler {
 		this.m_ascending = m_ascending;
 	}
 
-	public StartPageAdapter GetAdapter()
+	public BaseAdapter GetAdapter()
 	{
 		return m_pageAdapter;
 	}
 	
-	public void SetAdapter(StartPageAdapter adapter)
+	public void SetAdapter(BaseAdapter adapter)
 	{
 		this.m_pageAdapter = adapter;
 	}
 	
-	public void UpdateData(ArrayList<Restaurants> newRestaurants)
-	{
-		m_pageAdapter.updateRestaurants(newRestaurants);
-	}
+
 	private class GetRestaurantTask extends AsyncTask<String, Void, ArrayList<Restaurants>> {
 
 		@Override
@@ -80,8 +87,9 @@ public class RestaurantHandler {
 		@Override
 		protected void onPostExecute(ArrayList<Restaurants> result)
 		{
-			setRestaurants(result);	
-			m_pageAdapter.updateRestaurants(result);
+			setRestaurants(result);
+			m_eventListener.OnComplete(null);
+			//((StartPageAdapter) m_pageAdapter).updateRestaurants(result);
 		}
 	}
 	
@@ -117,6 +125,9 @@ public class RestaurantHandler {
 		}
 	};
 
-	
+	public void SetEventListener(IActionListener listener)
+	{
+		this.m_eventListener = listener;
+	}
 	
 }

@@ -55,7 +55,7 @@ public class WebServiceHandler
 		m_context = context;
 		m_cookieStore = new PersistentCookieStore(context);
 		m_restHndlr = new RestaurantHandler(context);
-		YummWebClient.GetClient().setCookieStore(m_cookieStore);
+		
 	}
 	
 	//temporary method needs to be moved
@@ -233,5 +233,9 @@ public class WebServiceHandler
 	public AsyncHttpClient GetClient()
 	{
 		return YummWebClient.GetClient();
+	}
+	public void SetCookieStore(PersistentCookieStore cookieStore)
+	{
+		YummWebClient.GetClient().setCookieStore(m_cookieStore);
 	}
 }

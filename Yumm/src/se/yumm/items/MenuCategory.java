@@ -1,4 +1,4 @@
-package se.yumm.poi;
+package se.yumm.items;
 
 import java.util.ArrayList;
 

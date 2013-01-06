@@ -1,8 +1,13 @@
-package se.yumm.poi;
+package se.yumm.items;
+
+
+
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
-public class MenuItems
+public class MenuItems implements Parcelable
 {
 
 	@SerializedName("dish")
@@ -82,5 +87,38 @@ public class MenuItems
 	public void setIsHeader(boolean m_isHeader) {
 		this.m_isHeader = m_isHeader;
 	}
+	
+	private MenuItems(Parcel in)
+	{
+		m_dishName = in.readString();
+		m_description = in.readString();
+		m_price = in.readInt();
+		m_isHeader = in.readByte() == 1;
+	}
+
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel out, int flags) {
+		
+		out.writeString(m_dishName);
+		out.writeString(m_description);
+		out.writeInt(m_price);
+		out.writeByte((byte)(m_isHeader ? 1 : 0));
+	}
+	
+	public static final Parcelable.Creator<MenuItems> CREATOR = new Parcelable.Creator<MenuItems>() {
+        public MenuItems createFromParcel(Parcel in) {
+            return new MenuItems(in);
+        }
+
+        public MenuItems[] newArray(int size) {
+            return new MenuItems[size];
+        }
+    };
 
 }

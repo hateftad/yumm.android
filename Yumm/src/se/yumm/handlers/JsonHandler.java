@@ -19,17 +19,18 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import se.yumm.R;
-import se.yumm.poi.MenuItems;
-import se.yumm.poi.Restaurants;
+import se.yumm.items.MenuItems;
+import se.yumm.items.Restaurants;
 
 import android.app.Activity;
+import android.content.Context;
 import android.util.Log;
 
 public class JsonHandler
 {
 
 	private InputStream m_inStream = null;
-	private final Activity m_context;
+	private final Context m_context;
 	
 	// TAGS
 	private static final String WEBSITE = "www";
@@ -48,10 +49,11 @@ public class JsonHandler
 
 
 	
-	public JsonHandler(Activity context)
+	public JsonHandler(Context m_context2)
 	{
-		this.m_context = context;
+		this.m_context = m_context2;
 	}
+
 
 	public String JsonFromRawFile() throws IOException
 	{
