@@ -9,10 +9,12 @@ package se.yumm;
 
 public final class R {
     public static final class anim {
-        public static final int side_navigation_fade_in=0x7f040000;
-        public static final int side_navigation_fade_out=0x7f040001;
-        public static final int side_navigation_in_from_left=0x7f040002;
-        public static final int side_navigation_out_to_left=0x7f040003;
+        public static final int on_scroll_button_fade_in=0x7f040000;
+        public static final int on_scroll_button_fade_out=0x7f040001;
+        public static final int side_navigation_fade_in=0x7f040002;
+        public static final int side_navigation_fade_out=0x7f040003;
+        public static final int side_navigation_in_from_left=0x7f040004;
+        public static final int side_navigation_out_to_left=0x7f040005;
     }
     public static final class array {
         public static final int KitchenArray=0x7f0a0000;
@@ -29,11 +31,12 @@ containing a value of this type.
     }
     public static final class color {
         public static final int light_grey=0x7f060000;
-        public static final int side_navigation_background=0x7f060003;
-        public static final int side_navigation_item_text_color=0x7f060006;
-        public static final int side_navigation_list_divider_color=0x7f060005;
-        public static final int side_navigation_outside_background=0x7f060004;
-        public static final int titleBarBackground=0x7f060002;
+        public static final int side_navigation_background=0x7f060004;
+        public static final int side_navigation_item_text_color=0x7f060007;
+        public static final int side_navigation_list_divider_color=0x7f060006;
+        public static final int side_navigation_outside_background=0x7f060005;
+        public static final int titleBarBackground=0x7f060003;
+        public static final int transparent=0x7f060002;
         public static final int white=0x7f060001;
     }
     public static final class dimen {
@@ -58,51 +61,52 @@ containing a value of this type.
         public static final int side_navigation_shadow=0x7f020003;
     }
     public static final class id {
-        public static final int RelativeLayout1=0x7f0c001a;
-        public static final int actionbar=0x7f0c0017;
+        public static final int RelativeLayout1=0x7f0c001b;
+        public static final int actionbar=0x7f0c0018;
         public static final int actionbar_actionIcons=0x7f0c0001;
         public static final int actionbar_item=0x7f0c0003;
         public static final int actionbar_title=0x7f0c0002;
-        public static final int add_option=0x7f0c0024;
-        public static final int addressText=0x7f0c001c;
-        public static final int alphaSortBtn=0x7f0c000b;
+        public static final int add_option=0x7f0c0025;
+        public static final int addressText=0x7f0c001d;
+        public static final int alphaSortBtn=0x7f0c000c;
         public static final int autoCompletePlaces=0x7f0c0004;
         public static final int autoCompleteVarious=0x7f0c0006;
-        public static final int closestSortBtn=0x7f0c000d;
+        public static final int closestSortBtn=0x7f0c000e;
         public static final int frameLayout=0x7f0c000a;
-        public static final int horiz2ndSlide=0x7f0c0012;
-        public static final int horizRestImage=0x7f0c0013;
-        public static final int horizRestLayout=0x7f0c0011;
-        public static final int horizRestText=0x7f0c0014;
-        public static final int horizRestText2=0x7f0c0015;
-        public static final int horizScrollView=0x7f0c0010;
-        public static final int jimbo=0x7f0c000e;
+        public static final int horiz2ndSlide=0x7f0c0013;
+        public static final int horizRestImage=0x7f0c0014;
+        public static final int horizRestLayout=0x7f0c0012;
+        public static final int horizRestText=0x7f0c0015;
+        public static final int horizRestText2=0x7f0c0016;
+        public static final int horizScrollView=0x7f0c0011;
+        public static final int jimbo=0x7f0c000f;
         public static final int kitchenTopText=0x7f0c0009;
         public static final int leftActionBarBtn=0x7f0c0000;
-        public static final int listMapView=0x7f0c0019;
+        public static final int linearLayout1=0x7f0c000b;
+        public static final int listMapView=0x7f0c001a;
         public static final int locationButton=0x7f0c0005;
-        public static final int mapView=0x7f0c0018;
-        public static final int menu_settings=0x7f0c0023;
+        public static final int mapView=0x7f0c0019;
+        public static final int menu_settings=0x7f0c0024;
         public static final int placesTopText=0x7f0c0008;
-        public static final int ratingSortBtn=0x7f0c000c;
-        public static final int restaurantName=0x7f0c001b;
+        public static final int ratingSortBtn=0x7f0c000d;
+        public static final int restaurantName=0x7f0c001c;
         public static final int searchButton=0x7f0c0007;
-        public static final int shadow=0x7f0c0020;
-        public static final int side_navigation_item_icon=0x7f0c0021;
-        public static final int side_navigation_item_text=0x7f0c0022;
-        public static final int side_navigation_listview=0x7f0c001f;
-        public static final int side_navigation_menu=0x7f0c001e;
-        public static final int side_navigation_menu_item1=0x7f0c0025;
-        public static final int side_navigation_menu_item2=0x7f0c0026;
-        public static final int side_navigation_menu_item3=0x7f0c0027;
-        public static final int side_navigation_menu_item4=0x7f0c0028;
-        public static final int side_navigation_menu_item5=0x7f0c0029;
-        public static final int side_navigation_menu_item6=0x7f0c002a;
-        public static final int side_navigation_menu_item7=0x7f0c002b;
-        public static final int side_navigation_menu_item8=0x7f0c002c;
-        public static final int side_navigation_outside_view=0x7f0c001d;
-        public static final int side_navigation_view=0x7f0c0016;
-        public static final int startPageListView=0x7f0c000f;
+        public static final int shadow=0x7f0c0021;
+        public static final int side_navigation_item_icon=0x7f0c0022;
+        public static final int side_navigation_item_text=0x7f0c0023;
+        public static final int side_navigation_listview=0x7f0c0020;
+        public static final int side_navigation_menu=0x7f0c001f;
+        public static final int side_navigation_menu_item1=0x7f0c0026;
+        public static final int side_navigation_menu_item2=0x7f0c0027;
+        public static final int side_navigation_menu_item3=0x7f0c0028;
+        public static final int side_navigation_menu_item4=0x7f0c0029;
+        public static final int side_navigation_menu_item5=0x7f0c002a;
+        public static final int side_navigation_menu_item6=0x7f0c002b;
+        public static final int side_navigation_menu_item7=0x7f0c002c;
+        public static final int side_navigation_menu_item8=0x7f0c002d;
+        public static final int side_navigation_outside_view=0x7f0c001e;
+        public static final int side_navigation_view=0x7f0c0017;
+        public static final int startPageListView=0x7f0c0010;
     }
     public static final class layout {
         public static final int actionbar=0x7f030000;

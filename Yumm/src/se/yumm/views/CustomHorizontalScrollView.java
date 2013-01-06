@@ -33,15 +33,32 @@ public class CustomHorizontalScrollView extends HorizontalScrollView implements
 	private int m_itemWidth = 0;
 	private float m_currentScrollX;
 	private boolean flingDisable = true;
-
+	AttributeSet m_attrs;
 	
 
 	public CustomHorizontalScrollView(Context context, AttributeSet attrs)
 	{
 		super(context, attrs);
 		m_context = context;
+		m_attrs = attrs;
+		load();
+	}
+	
+	
+	private void load() {
+		if (isInEditMode()) {
+			return;
+		}
+		init();
+	}
+	
+	private void init()
+	{
+		gestureDetector = new GestureDetector(m_context, this);
+		this.setOnTouchListener(this);
+		m_itemWidth = PropertiesManager.GetInstance().m_windowWidth;
 		
-		TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.CustomHorizontalScrollView);
+		TypedArray ta = m_context.obtainStyledAttributes(m_attrs, R.styleable.CustomHorizontalScrollView);
 		final int n = ta.length();
 		
 		for (int i = 0; i < n; i++) {
@@ -55,25 +72,6 @@ public class CustomHorizontalScrollView extends HorizontalScrollView implements
 				break;
 			}
 		}
-		
-		init();
-	}
-	
-	public CustomHorizontalScrollView(Context context, int maxItem, int itemWidth)
-	{
-		super(context);
-		m_context = context;
-		this.m_maxItem = maxItem;
-		this.m_itemWidth = itemWidth;
-		init();
-	}
-	//band aid solution
-	public void init()
-	{
-		gestureDetector = new GestureDetector(m_context, this);
-		this.setOnTouchListener(this);
-		//m_maxItem = PropertiesManager.GetInstance().m_maxItems;
-		m_itemWidth = PropertiesManager.GetInstance().m_windowWidth;
 	}
 	//these are for snapping features
 	public void SetMaxItem(int max)

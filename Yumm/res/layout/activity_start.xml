@@ -2,29 +2,38 @@
     android:id="@+id/frameLayout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_gravity="bottom" >
+    android:layout_gravity="bottom"
+    android:visibility="visible" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
 
     <Button
         android:id="@+id/alphaSortBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:text="@string/alphaSort" />
+        android:text="@string/alphaSort"/>
 
     <Button
         android:id="@+id/ratingSortBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
-        android:text="@string/ratingSort" />
+        android:text="@string/ratingSort"
+        android:contentDescription="@string/image1"  />
 
     <Button
         android:id="@+id/closestSortBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
-        android:text="@string/closestSort" />
-
+        android:text="@string/closestSort"
+        android:contentDescription="@string/image1"  />
+	</LinearLayout>
     <LinearLayout
         xmlns:custom="http://schemas.anrdoid.com/apk/res/se.yumm"
         android:id="@+id/jimbo"

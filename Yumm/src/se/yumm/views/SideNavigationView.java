@@ -245,9 +245,8 @@ public class SideNavigationView extends LinearLayout {
 				holder = (ViewHolder) convertView.getTag();
 			}
 			holder.image.setImageResource(menuItems.get(position).getIcon());
-			holder.image.bringToFront();
 			holder.text.setText(menuItems.get(position).getText());
-			holder.text.bringToFront();
+			
 			return convertView;
 		}
 
