@@ -6,6 +6,7 @@ import org.xmlpull.v1.XmlPullParser;
 
 import se.yumm.R;
 import se.yumm.listeners.ISideNavigationListener;
+import se.yumm.utils.PropertiesManager;
 
 import android.content.Context;
 import android.content.res.XmlResourceParser;
@@ -79,9 +80,17 @@ public class SideNavigationView extends LinearLayout {
 		outsideView.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				if(callback != null)
+				{
+					callback.onOutSideNavigationClick();
+				}
 				hideMenu();
+				
 			}
 		});
+		LayoutParams lp = (LayoutParams) listView.getLayoutParams();
+		lp.width = (int) (PropertiesManager.GetInstance().m_windowWidth * 0.85);
+
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -100,6 +109,7 @@ public class SideNavigationView extends LinearLayout {
 	public void setMenuClickCallback(ISideNavigationListener callback) {
 		this.callback = callback;
 	}
+	
 
 	/**
 	 * Setup of side menu items.

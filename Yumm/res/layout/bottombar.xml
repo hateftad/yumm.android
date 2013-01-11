@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bottom_bar_container"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/bottom_bar_height"
+    android:layout_marginBottom="5dip" >
+
+     <ImageView 
+        android:id = "@+id/name_sort_button"
+        android:layout_alignParentLeft="true"
+        android:layout_width = "wrap_content"
+        android:layout_height="fill_parent"
+        android:background = "@drawable/ic_launcher"
+        android:padding = "0dip"
+        android:contentDescription="@string/imageDesc"/>
+
+      <ImageView
+          android:id="@+id/location_sort_button"
+          android:layout_width="wrap_content"
+          android:layout_height="fill_parent"
+          android:layout_alignParentRight="true"
+          android:layout_alignParentTop="true"
+          android:background="@drawable/ic_launcher"
+          android:contentDescription="@string/imageDesc"
+          android:padding="0dip" />
+
+      <ImageView
+          android:id="@+id/rating_sort_button"
+          android:layout_width="wrap_content"
+          android:layout_height="fill_parent"
+          android:layout_alignParentTop="true"
+          android:layout_centerHorizontal="true"
+          android:background="@drawable/ic_launcher"
+          android:contentDescription="@string/imageDesc"
+          android:padding="0dip" />
+
+</RelativeLayout>

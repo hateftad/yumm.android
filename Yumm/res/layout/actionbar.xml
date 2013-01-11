@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/action_bar_container"
     android:layout_width="fill_parent"
     android:layout_height="@dimen/action_bar_height"
     android:layout_marginBottom="2dip" >
@@ -24,7 +25,7 @@
         android:layout_width="wrap_content" 
         android:layout_height="fill_parent"
         android:layout_toRightOf="@id/leftActionBarBtn" 
-        android:paddingLeft="10dip"
+        android:paddingLeft="50dip"
         android:paddingRight="10dip" android:textSize="16sp"
         android:textStyle="bold" android:textColor="@color/light_grey"
         android:lines="1" android:ellipsize="marquee"

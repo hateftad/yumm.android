@@ -22,7 +22,6 @@ import se.yumm.R;
 import se.yumm.items.MenuItems;
 import se.yumm.items.Restaurants;
 
-import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 

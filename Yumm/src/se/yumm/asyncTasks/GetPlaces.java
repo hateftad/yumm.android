@@ -2,21 +2,18 @@ package se.yumm.asyncTasks;
 
 import java.util.ArrayList;
 
-import se.yumm.R;
-import se.yumm.adapters.HorizontalScrollAdapter;
 import se.yumm.handlers.JsonHandler;
 import se.yumm.items.Restaurants;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
-import android.widget.ListView;
 
 public class GetPlaces extends AsyncTask<String, Void, ArrayList<Restaurants>>
 {
 
 	private final Activity m_context;
 	private ArrayList<Restaurants> m_rList;
-	private ListView m_listView;
+	//private ListView m_listView;
 
 	public GetPlaces(Activity context)
 	{
@@ -54,10 +51,10 @@ public class GetPlaces extends AsyncTask<String, Void, ArrayList<Restaurants>>
 
 		//LinearLayout layout = (LinearLayout) m_context.findViewById(R.id.topLayer);
 		//m_listView = (ListView) layout.findViewWithTag(TAGS.LISTVIEW);
-		m_listView = (ListView) m_context.findViewById(R.id.startPageListView);
-		HorizontalScrollAdapter pAdapter = new HorizontalScrollAdapter(
-				m_context, R.layout.activity_start, m_rList);
-		m_listView.setAdapter(pAdapter);
+		//m_listView = (ListView) m_context.findViewById(R.id.startPageListView);
+		//HorizontalScrollAdapter pAdapter = new HorizontalScrollAdapter(
+		//		m_context, R.layout.activity_start, m_rList);
+		//m_listView.setAdapter(pAdapter);
 
 	}
 

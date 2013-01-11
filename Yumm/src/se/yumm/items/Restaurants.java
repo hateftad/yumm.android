@@ -3,7 +3,6 @@ package se.yumm.items;
 import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
-import android.location.Address;
 import android.location.Location;
 import android.os.Parcel;
 import android.os.Parcelable;

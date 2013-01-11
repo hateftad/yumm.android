@@ -1,12 +1,9 @@
 package se.yumm.listeners;
 
-import se.yumm.StartActivity;
-import android.R.integer;
 import android.content.Context;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.View.OnTouchListener;
 
 public abstract class FlingGestureListener implements OnTouchListener

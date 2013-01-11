@@ -2,11 +2,8 @@ package se.yumm.handlers;
 
 import se.yumm.R;
 import se.yumm.utils.TAGS;
-import android.R.integer;
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.Gravity;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;

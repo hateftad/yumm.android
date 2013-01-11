@@ -10,19 +10,15 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Locale;
 
-import se.yumm.R;
 import se.yumm.adapters.StartPageAdapter;
 import se.yumm.items.Restaurants;
 import se.yumm.listeners.IActionListener;
-import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.BaseAdapter;
-import android.widget.ListView;
 
 public class RestaurantHandler {
 	
-	private Context m_context;
 	private JsonHandler m_jsonHndlr;
 	private ArrayList<Restaurants> m_restaurants;
 	private BaseAdapter m_pageAdapter;
@@ -32,12 +28,10 @@ public class RestaurantHandler {
 	
 	public RestaurantHandler(Context context)
 	{
-		m_context = context;
-		m_jsonHndlr = new JsonHandler(m_context);
-		m_pageAdapter = new StartPageAdapter(m_context);
+		m_jsonHndlr = new JsonHandler(context);
+		m_pageAdapter = new StartPageAdapter(context);
 		m_restaurants = new ArrayList<Restaurants>();
 		
-
 	}
 	
 	public void RestaurantsFromJson(String jsonString)

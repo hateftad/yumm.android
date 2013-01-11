@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import se.yumm.R;
 //import se.yumm.handlers.WebServiceHandler;
 import android.app.Activity;
-import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ArrayAdapter;

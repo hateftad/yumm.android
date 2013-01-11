@@ -1,4 +1,4 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/frameLayout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -6,37 +6,8 @@
     android:visibility="visible" >
 
     <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal" >
-
-    <Button
-        android:id="@+id/alphaSortBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:text="@string/alphaSort"/>
-
-    <Button
-        android:id="@+id/ratingSortBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:text="@string/ratingSort"
-        android:contentDescription="@string/image1"  />
-
-    <Button
-        android:id="@+id/closestSortBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:text="@string/closestSort"
-        android:contentDescription="@string/image1"  />
-	</LinearLayout>
-    <LinearLayout
         xmlns:custom="http://schemas.anrdoid.com/apk/res/se.yumm"
-        android:id="@+id/jimbo"
+        android:id="@+id/linearLayoutWithHorizView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
@@ -85,6 +56,7 @@
                         android:layout_marginLeft="10dip"
                         android:background="@color/white"
                         android:paddingRight="30dip"
+                        android:textColor="@color/black"
                         android:textSize="12sp" />
                 </RelativeLayout>
 
@@ -93,14 +65,26 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="fill"
-                    android:padding="50dip" />
+                    android:padding="50dip"
+                    android:textColor="@color/black" />
             </LinearLayout>
         </se.yumm.views.CustomHorizontalScrollView>
     </LinearLayout>
+
+    <se.yumm.views.BottomButtonBar
+        android:id="@+id/bottom_button_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_bar_height"
+        android:layout_above="@+id/linearLayoutWithHorizView"
+        android:layout_alignParentBottom="true"
+        android:focusable="true"
+        android:gravity="bottom" >
+
+    </se.yumm.views.BottomButtonBar>
 
     <se.yumm.views.SideNavigationView
         android:id="@+id/side_navigation_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-</FrameLayout>
+</RelativeLayout>
