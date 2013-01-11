@@ -19,7 +19,6 @@ import se.yumm.handlers.WebServiceHandler;
 import se.yumm.items.Restaurants;
 import se.yumm.listeners.IActionListener;
 import se.yumm.listeners.ISideNavigationListener;
-import se.yumm.utils.AnimationTags;
 import se.yumm.utils.PropertiesManager;
 import se.yumm.utils.URLS;
 import se.yumm.views.ActionBar;
