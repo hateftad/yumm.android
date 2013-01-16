@@ -53,7 +53,6 @@ public class WebServiceHandler
 	public WebServiceHandler(Activity context)
 	{
 		m_context = context;
-		m_cookieStore = new PersistentCookieStore(context);
 		m_restHndlr = new RestaurantHandler(context);
 		
 	}
@@ -147,6 +146,7 @@ public class WebServiceHandler
 			@Override
 			public void onSuccess(String response) 
 			{
+				
 				for (Cookie cookie : m_cookieStore.getCookies()) {
 					if(cookie.getName().equals("sid"))
 						m_cookie = cookie;
@@ -236,6 +236,7 @@ public class WebServiceHandler
 	}
 	public void SetCookieStore(PersistentCookieStore cookieStore)
 	{
-		YummWebClient.GetClient().setCookieStore(m_cookieStore);
+		this.m_cookieStore = cookieStore;
+		YummWebClient.GetClient().setCookieStore(cookieStore);
 	}
 }

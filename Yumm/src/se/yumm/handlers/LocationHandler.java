@@ -24,6 +24,11 @@ public class LocationHandler implements LocationListener
 	private LocationManager m_locationMgr;
 	private String m_provider;
 	private boolean m_geoEnabled = false;
+	
+	/*
+	 * y = 59.332598;
+     * x = 18.074781;
+	 */
 
 	public LocationHandler(Context context)
 	{
@@ -73,7 +78,12 @@ public class LocationHandler implements LocationListener
 	{
 		this.m_location = location;
 	}
-
+	
+	public float DistanceTo(Location dest)
+	{
+		return m_location.distanceTo(dest);
+	}
+	
 	@Override
 	public void onLocationChanged(Location location)
 	{

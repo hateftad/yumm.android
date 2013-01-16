@@ -90,7 +90,7 @@ public class SideNavigationView extends LinearLayout {
 		});
 		LayoutParams lp = (LayoutParams) listView.getLayoutParams();
 		lp.width = (int) (PropertiesManager.GetInstance().m_windowWidth * 0.85);
-
+		
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

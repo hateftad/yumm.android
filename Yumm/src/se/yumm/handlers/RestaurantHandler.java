@@ -29,7 +29,6 @@ public class RestaurantHandler {
 	public RestaurantHandler(Context context)
 	{
 		m_jsonHndlr = new JsonHandler(context);
-		m_pageAdapter = new StartPageAdapter(context);
 		m_restaurants = new ArrayList<Restaurants>();
 		
 	}
@@ -48,6 +47,7 @@ public class RestaurantHandler {
 	public void setRestaurants(ArrayList<Restaurants> m_restaurants) 
 	{
 		this.m_restaurants = m_restaurants;
+		
 	}
 	
 
@@ -83,7 +83,6 @@ public class RestaurantHandler {
 		{
 			setRestaurants(result);
 			m_eventListener.OnComplete(null);
-			//((StartPageAdapter) m_pageAdapter).updateRestaurants(result);
 		}
 	}
 	
@@ -115,7 +114,8 @@ public class RestaurantHandler {
 			{
 				return 1;
 			}
-			return -1;
+			else
+				return -1;
 		}
 	};
 

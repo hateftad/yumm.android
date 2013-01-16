@@ -1,11 +1,5 @@
 package se.yumm;
 
-/*
-* @author Hatef Tadayon
-*
-* 
-*/
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -15,12 +9,13 @@ import se.yumm.handlers.LocationHandler;
 import se.yumm.handlers.RestaurantHandler;
 import se.yumm.handlers.WebServiceHandler;
 import se.yumm.items.Restaurants;
+import se.yumm.listeners.IEventListener;
 import se.yumm.listeners.ISideNavigationListener;
 import se.yumm.utils.URLS;
 import se.yumm.views.ActionBar;
 import se.yumm.views.BottomButtonBar;
 import se.yumm.views.SideNavigationView;
-import android.content.Intent;
+import android.app.Activity;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
@@ -29,59 +24,38 @@ import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.AdapterView.OnItemClickListener;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.AbsListView.OnScrollListener;
+import android.widget.AdapterView.OnItemClickListener;
 
-import com.google.android.maps.GeoPoint;
-import com.google.android.maps.MapActivity;
-import com.google.android.maps.MapController;
-import com.google.android.maps.MapView;
+public class RestaurantListActivity extends BaseActivity{
 
-public class ListMapActivity extends MapActivity
-{
 
-	private MapView m_mapView;
-	private MapController m_mapCtrl;
-	private ActionBar m_actionBar;
 	private BottomButtonBar m_bottomBar;
-	private SideNavigationView m_sideNavigation;
-	private LocationHandler m_locationHndlr;
-	private WebServiceHandler m_webHandler;
-
-	@Override
-	public void onCreate(Bundle icicle)
+	private LinearLayout m_customListView;
+	
+	protected void onCreate(Bundle savedInstanceState)
 	{
-		super.onCreate(icicle);
+		super.onCreate(savedInstanceState);
 		
 		
 		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
-		setContentView(R.layout.list_map_activity);
+		setContentView(R.layout.restaurant_list_activity);
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.cutom_title);
-		
-		m_mapView = (MapView) findViewById(R.id.mapView);
-		m_mapView.setBuiltInZoomControls(true);
-		m_mapCtrl = m_mapView.getController();
-		
-		
-		m_locationHndlr = new LocationHandler(this);
 		
 		
 		ArrayList<Restaurants> restaurants = getIntent().getParcelableArrayListExtra("Restaurants");
 		boolean loggedIn = getIntent().getBooleanExtra("loggedIn", false);
 		
-		
-		//Location l = m_locationHndlr.getLocation();
-		AnimateToPoint(m_locationHndlr.getLocation());
-		
-		//m_mapCtrl.zoomIn();
-		
+		//sorting buttons
 		SetUpBottomButtons();
-		
+		//home and list button
 		SetUpActionBar();
-		
+		//slide in menu view
 		SetUpNavMenu();
 		
 		m_webHandler = new WebServiceHandler(getParent());
@@ -96,7 +70,7 @@ public class ListMapActivity extends MapActivity
 		listMapAdp.updateRestaurants(restaurants);
 		listMapAdp.setLocation(location);
 		rh.SetAdapter(listMapAdp);
-		ListView listView = (ListView) findViewById(R.id.listMapView);
+		ListView listView = (ListView) findViewById(R.id.restaurant_list_view);
 		listView.setAdapter(listMapAdp);
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
@@ -105,7 +79,7 @@ public class ListMapActivity extends MapActivity
 					long id) {
 				Restaurants r = rh.getRestaurants().get(position);
 				//Intent intent = new Intent(getApplicationContext());
-				AnimateToPoint(r.getLocation());
+				
 				
 			}
 		});
@@ -135,39 +109,43 @@ public class ListMapActivity extends MapActivity
 			}
 		});
 		
+		m_customListView = (LinearLayout) findViewById(R.id.RelativeLayoutRestList);
 	}
-
+	
 	@Override
-	protected boolean isRouteDisplayed()
+	protected void onStart()
 	{
-		// TODO Auto-generated method stub
-		return false;
+		super.onStart();
+		
 	}
+	
+	@Override
+	protected void onPause() {
+        super.onPause();
+
+	}
+	
 	
 	@Override
 	protected void onResume()
 	{
 		super.onResume();
-		m_locationHndlr.update();
-	}
 
+	}
+	
 	@Override
-	protected void onPause()
+	protected void onRestart()
 	{
-		super.onPause();
-		m_locationHndlr.pause();
+		super.onRestart();
 	}
 	
-	private void AnimateToPoint(Location location)
+	@Override
+	protected void onDestroy()
 	{
-		int lat = ((int)(location.getLatitude() * 1E6));
-		int lon = ((int)(location.getLongitude() * 1E6));
-		GeoPoint point = new GeoPoint(lat, lon);
-		m_mapCtrl.animateTo(point);
-		m_mapCtrl.setZoom(14);
+		super.onDestroy();
 	}
 	
-	public void Sort(Comparator<Restaurants> method)
+	private void Sort(Comparator<Restaurants> method)
 	{
 		RestaurantHandler rh = m_webHandler.GetRestaurantHandler();
 		ArrayList<Restaurants> list = rh.getRestaurants();
@@ -179,26 +157,18 @@ public class ListMapActivity extends MapActivity
 			Collections.sort(list, Collections.reverseOrder(method));
 		}
 		rh.setAscending(!rh.isAscending());
-		BaseAdapter la = rh.GetAdapter();
-		((ListMapAdapter) la).updateRestaurants(list);
+		BaseAdapter lp = rh.GetAdapter();
+		((ListMapAdapter) lp).updateRestaurants(list);
 
 	}
-
+	
 	private void SetUpNavMenu()
 	{
-
-		m_sideNavigation = (SideNavigationView) findViewById(R.id.side_navigation_view);
-		m_sideNavigation.setMenuItems(R.menu.side_navigation_menu);
-		m_sideNavigation.setMenuClickCallback(new ISideNavigationListener() {
-
+	
+		super.SetupNavMenu(new IEventListener() {
+			
 			@Override
-			public void onSideNavigationItemClick(int itemId) {
-				AnimateView(false);
-
-			}
-
-			@Override
-			public void onOutSideNavigationClick() {
+			public void onCloseClick() {
 				AnimateView(false);
 			}
 		});
@@ -207,37 +177,29 @@ public class ListMapActivity extends MapActivity
 	private void SetUpActionBar()
 	{
 		
-		View.OnClickListener homeButton = new OnClickListener() {
+		super.SetupActionBar(new IEventListener() {
+			
 			@Override
-			public void onClick(View v) {
-				
-				m_sideNavigation.toggleMenu();
-				AnimateView(m_sideNavigation.isShown());
-				
-
+			public void onCloseClick() {
+				AnimateView(false);
 			}
-		};
-		
-		m_actionBar = (ActionBar) findViewById(R.id.actionbar);
-		m_actionBar.setTitle(R.string.app_name);
-		m_actionBar.setHomeLogo(R.drawable.ic_launcher, homeButton);
+		});
 		
 		m_actionBar.addActionIcon(R.drawable.ic_launcher, new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(getApplicationContext(), RestaurantListActivity.class);
-				intent.putParcelableArrayListExtra("Restaurants", m_webHandler.GetRestaurantHandler().getRestaurants());
-				intent.putExtra("loggedIn", m_webHandler.isLoggedIn());
-				startActivity(intent);
+				System.out.println("new button");
 				
 			}
 		});
 		
 	}
 	
-	private void AnimateView(boolean sideBarShowing)
+	protected void AnimateView(boolean sideBarShowing)
 	{
+		super.AnimateView(sideBarShowing);
+		LinearLayout l = (LinearLayout) findViewById(R.id.linearlayoutListView);
 		Animation anim = null;
 		
 		if (sideBarShowing) {
@@ -245,17 +207,14 @@ public class ListMapActivity extends MapActivity
 			anim = AnimationUtils.loadAnimation(this, R.anim.underlying_view_out_to_right);
 			anim.setFillAfter(true);
 			
-			m_actionBar.Animate(R.anim.action_bar_out_to_right, getApplicationContext());
 			m_bottomBar.Animate(R.anim.bottom_button_fade_out, getApplicationContext());
-			//m_customListView.startAnimation(anim);
-			
+			m_customListView.startAnimation(anim);
+			l.startAnimation(anim);
 		}
 		else
 		{
-			//3
-			m_actionBar.Animate(R.anim.action_bar_in_from_left, getApplicationContext());
 			m_bottomBar.Animate(R.anim.bottom_button_fade_in, getApplicationContext());
-			//m_customListView.startAnimation(AnimationUtils.loadAnimation(this, R.anim.underlying_view_in_from_right));
+			m_customListView.startAnimation(AnimationUtils.loadAnimation(this, R.anim.underlying_view_in_from_right));
 		}
 		
 	}
@@ -280,7 +239,6 @@ public class ListMapActivity extends MapActivity
 				
 			}
 		});
-		
 		m_bottomBar.SetUpButton(3, R.drawable.ic_launcher, new OnClickListener() {
 			
 			@Override
@@ -298,6 +256,5 @@ public class ListMapActivity extends MapActivity
 		
 
 	}
-
-
+	
 }

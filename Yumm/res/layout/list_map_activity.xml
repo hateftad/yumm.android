@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout 
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutlistmap"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" 
-    android:orientation="vertical"
-    >
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <se.yumm.views.BottomButtonBar
+        android:id="@+id/bottom_button_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_bar_height"
+        android:layout_above="@id/layoutlistmap"
+        android:layout_alignParentBottom="true"
+        android:focusable="true"
+        android:gravity="bottom" >
+
+    </se.yumm.views.BottomButtonBar>
 
     <com.google.android.maps.MapView
         android:id="@+id/mapView"
         android:layout_width="fill_parent"
-        android:layout_height="208dp"
+        android:layout_height="200dp"
         android:apiKey="@string/mapsApiKey"
         android:clickable="true" >
     </com.google.android.maps.MapView>
@@ -17,8 +27,16 @@
     <ListView
         android:id="@+id/listMapView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
         android:drawSelectorOnTop="false"
         android:scrollbars="vertical" >
+
     </ListView>
- </LinearLayout>
+
+    <se.yumm.views.SideNavigationView
+        android:id="@+id/side_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</RelativeLayout>

@@ -18,6 +18,7 @@ import se.yumm.handlers.RestaurantHandler;
 import se.yumm.handlers.WebServiceHandler;
 import se.yumm.items.Restaurants;
 import se.yumm.listeners.IActionListener;
+import se.yumm.listeners.IEventListener;
 import se.yumm.listeners.ISideNavigationListener;
 import se.yumm.utils.PropertiesManager;
 import se.yumm.utils.URLS;
@@ -34,20 +35,21 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 
 
-public class StartActivity extends Activity 
+public class StartActivity extends BaseActivity 
 {
-	private WebServiceHandler m_webHandler;
-	private LocationHandler m_locationhdlr;
-	private ActionBar m_actionBar;
+	
 	private BottomButtonBar m_bottomBar;
-	private SideNavigationView m_sideNavigation;
+	private LinearLayout m_customListView;
 
 	// TODO fix library so it can support old API's
 	@SuppressLint("NewApi")
@@ -71,17 +73,15 @@ public class StartActivity extends Activity
 		setContentView(R.layout.activity_start);
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.cutom_title);
 		
-		m_locationhdlr = new LocationHandler(this);
 		
 		//sorting buttons
 		SetUpBottomButtons();
 		//home and list button
 		SetUpActionBar();
 		//slide in menu view
-		SetUpNavMenu();
+		SetupNavMenu();
 
-		//logs in and retrieves initial data and fills listview all in one go,
-		//most probably going to change this and use my own webhandler but not using it
+		//logs in and retrieves initial data 
 		m_webHandler = new WebServiceHandler(this);
 		m_webHandler.SetCookieStore(new PersistentCookieStore(this));
 		m_webHandler.LoginClient();
@@ -89,8 +89,7 @@ public class StartActivity extends Activity
 		//m_webHandler.LoginClient();
 		
 		final RestaurantHandler rh = m_webHandler.GetRestaurantHandler();
-		final BaseAdapter sPageAdp = rh.GetAdapter();
-		
+		final StartPageAdapter sPageAdp = new StartPageAdapter(this);
 		
 		ListView listView = (ListView) findViewById(R.id.startPageListView);
 		listView.setAdapter(sPageAdp);
@@ -123,7 +122,7 @@ public class StartActivity extends Activity
 
 			@Override
 			public void OnComplete(View v) {
-				((StartPageAdapter)sPageAdp).updateRestaurants(rh.getRestaurants());
+				sPageAdp.updateRestaurants(rh.getRestaurants());
 
 			}
 		});
@@ -136,11 +135,14 @@ public class StartActivity extends Activity
 				System.out.println("KIR");
 				Intent intent = new Intent(getApplicationContext(), ListMapActivity.class);
 				intent.putParcelableArrayListExtra("Restaurants", m_webHandler.GetRestaurantHandler().getRestaurants());
+				intent.putExtra("loggedIn", m_webHandler.isLoggedIn());
 				startActivity(intent);
 
 			}
 		});
-
+		
+		m_customListView = (LinearLayout) findViewById(R.id.linearLayoutWithHorizView); 
+		
 	}
 
 
@@ -156,16 +158,15 @@ public class StartActivity extends Activity
 	protected void onResume()
 	{
 		super.onResume();
-		m_locationhdlr.update();
 	}
 
 	@Override
 	protected void onPause()
 	{
 		super.onPause();
-		m_locationhdlr.pause();
 	}
-	public void Sort(Comparator<Restaurants> method)
+	
+	private void Sort(Comparator<Restaurants> method)
 	{
 		RestaurantHandler rh = m_webHandler.GetRestaurantHandler();
 		ArrayList<Restaurants> list = rh.getRestaurants();
@@ -181,70 +182,59 @@ public class StartActivity extends Activity
 		((StartPageAdapter) sp).updateRestaurants(list);
 
 	}
-
-	private void SetUpNavMenu()
+	
+	private void SetupNavMenu()
 	{
-
-		m_sideNavigation = (SideNavigationView) findViewById(R.id.side_navigation_view);
-		m_sideNavigation.setMenuItems(R.menu.side_navigation_menu);
-		m_sideNavigation.setMenuClickCallback(new ISideNavigationListener() {
-
+		super.SetupNavMenu(new IEventListener() {
+			
 			@Override
-			public void onSideNavigationItemClick(int itemId) {
-				AnimateView(false);
-
-			}
-
-			@Override
-			public void onOutSideNavigationClick() {
+			public void onCloseClick() {
 				AnimateView(false);
 			}
 		});
-
+		
 	}
 
 	private void SetUpActionBar()
 	{
 		
-		View.OnClickListener homeButton = new OnClickListener() {
+		super.SetupActionBar(new IEventListener() {
+			
 			@Override
-			public void onClick(View v) {
-				
-				m_sideNavigation.toggleMenu();
+			public void onCloseClick() {
 				AnimateView(m_sideNavigation.isShown());
-
+				
 			}
-		};
-		
-		m_actionBar = (ActionBar) findViewById(R.id.actionbar);
-		m_actionBar.setTitle(R.string.app_name);
-		m_actionBar.setHomeLogo(R.drawable.ic_launcher, homeButton);
+		});
 		
 		m_actionBar.addActionIcon(R.drawable.ic_launcher, new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				System.out.println("new button");
-
-
+				
 			}
 		});
 		
 	}
 	
-	private void AnimateView(boolean sideBarShowing)
+	protected void AnimateView(boolean sideBarShowing)
 	{
+		super.AnimateView(sideBarShowing);
+		Animation anim = null;
 		
 		if (sideBarShowing) {
 			//2
-			m_actionBar.Animate(R.anim.action_bar_out_to_right, getApplicationContext());
+			anim = AnimationUtils.loadAnimation(this, R.anim.underlying_view_out_to_right);
+			anim.setFillAfter(true);
 			m_bottomBar.Animate(R.anim.bottom_button_fade_out, getApplicationContext());
+			m_customListView.startAnimation(anim);
+			
 		}
 		else
 		{
-			//3
-			m_actionBar.Animate(R.anim.action_bar_in_from_left, getApplicationContext());
 			m_bottomBar.Animate(R.anim.bottom_button_fade_in, getApplicationContext());
+			m_customListView.startAnimation(AnimationUtils.loadAnimation(this, R.anim.underlying_view_in_from_right));
 		}
 		
 	}
@@ -275,8 +265,8 @@ public class StartActivity extends Activity
 			public void onClick(View v) {
 				if(m_webHandler.isLoggedIn())
 				{
-					String location = Double.toString(m_locationhdlr.getLocation().getLongitude()) 
-							+ "," + Double.toString(m_locationhdlr.getLocation().getLatitude());
+					String location = Double.toString(m_locationHndlr.getLocation().getLongitude()) 
+							+ "," + Double.toString(m_locationHndlr.getLocation().getLatitude());
 					m_webHandler.RetrieveData(m_webHandler.UrlBuilder(location, URLS.CLOSEST));
 				}
 				

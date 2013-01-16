@@ -17,6 +17,8 @@ public final class R {
         public static final int side_navigation_fade_out=0x7f040005;
         public static final int side_navigation_in_from_left=0x7f040006;
         public static final int side_navigation_out_to_left=0x7f040007;
+        public static final int underlying_view_in_from_right=0x7f040008;
+        public static final int underlying_view_out_to_right=0x7f040009;
     }
     public static final class array {
         public static final int KitchenArray=0x7f0a0000;
@@ -65,19 +67,21 @@ containing a value of this type.
         public static final int side_navigation_shadow=0x7f020003;
     }
     public static final class id {
-        public static final int RelativeLayout1=0x7f0c001e;
+        public static final int RelativeLayout1=0x7f0c0022;
+        public static final int RelativeLayoutRestList=0x7f0c001f;
         public static final int action_bar_container=0x7f0c0000;
         public static final int actionbar=0x7f0c001b;
         public static final int actionbar_actionIcons=0x7f0c0002;
         public static final int actionbar_item=0x7f0c0004;
         public static final int actionbar_title=0x7f0c0003;
-        public static final int add_option=0x7f0c0028;
-        public static final int addressText=0x7f0c0020;
+        public static final int add_option=0x7f0c002d;
+        public static final int addressText=0x7f0c0024;
         public static final int autoCompletePlaces=0x7f0c0005;
         public static final int autoCompleteVarious=0x7f0c0007;
         public static final int bottom_bar_container=0x7f0c0016;
         public static final int bottom_button_bar=0x7f0c0014;
         public static final int bottombar=0x7f0c001a;
+        public static final int distanceText=0x7f0c0025;
         public static final int frameLayout=0x7f0c000b;
         public static final int horiz2ndSlide=0x7f0c0010;
         public static final int horizRestImage=0x7f0c0011;
@@ -86,32 +90,35 @@ containing a value of this type.
         public static final int horizRestText2=0x7f0c0013;
         public static final int horizScrollView=0x7f0c000e;
         public static final int kitchenTopText=0x7f0c000a;
+        public static final int layoutlistmap=0x7f0c001c;
         public static final int leftActionBarBtn=0x7f0c0001;
         public static final int linearLayoutWithHorizView=0x7f0c000c;
-        public static final int listMapView=0x7f0c001d;
+        public static final int linearlayoutListView=0x7f0c0020;
+        public static final int listMapView=0x7f0c001e;
         public static final int locationButton=0x7f0c0006;
         public static final int location_sort_button=0x7f0c0018;
-        public static final int mapView=0x7f0c001c;
-        public static final int menu_settings=0x7f0c0027;
+        public static final int mapView=0x7f0c001d;
+        public static final int menu_settings=0x7f0c002c;
         public static final int name_sort_button=0x7f0c0017;
         public static final int placesTopText=0x7f0c0009;
         public static final int rating_sort_button=0x7f0c0019;
-        public static final int restaurantName=0x7f0c001f;
+        public static final int restaurantName=0x7f0c0023;
+        public static final int restaurant_list_view=0x7f0c0021;
         public static final int searchButton=0x7f0c0008;
-        public static final int shadow=0x7f0c0024;
-        public static final int side_navigation_item_icon=0x7f0c0025;
-        public static final int side_navigation_item_text=0x7f0c0026;
-        public static final int side_navigation_listview=0x7f0c0023;
-        public static final int side_navigation_menu=0x7f0c0022;
-        public static final int side_navigation_menu_item1=0x7f0c0029;
-        public static final int side_navigation_menu_item2=0x7f0c002a;
-        public static final int side_navigation_menu_item3=0x7f0c002b;
-        public static final int side_navigation_menu_item4=0x7f0c002c;
-        public static final int side_navigation_menu_item5=0x7f0c002d;
-        public static final int side_navigation_menu_item6=0x7f0c002e;
-        public static final int side_navigation_menu_item7=0x7f0c002f;
-        public static final int side_navigation_menu_item8=0x7f0c0030;
-        public static final int side_navigation_outside_view=0x7f0c0021;
+        public static final int shadow=0x7f0c0029;
+        public static final int side_navigation_item_icon=0x7f0c002a;
+        public static final int side_navigation_item_text=0x7f0c002b;
+        public static final int side_navigation_listview=0x7f0c0028;
+        public static final int side_navigation_menu=0x7f0c0027;
+        public static final int side_navigation_menu_item1=0x7f0c002e;
+        public static final int side_navigation_menu_item2=0x7f0c002f;
+        public static final int side_navigation_menu_item3=0x7f0c0030;
+        public static final int side_navigation_menu_item4=0x7f0c0031;
+        public static final int side_navigation_menu_item5=0x7f0c0032;
+        public static final int side_navigation_menu_item6=0x7f0c0033;
+        public static final int side_navigation_menu_item7=0x7f0c0034;
+        public static final int side_navigation_menu_item8=0x7f0c0035;
+        public static final int side_navigation_outside_view=0x7f0c0026;
         public static final int side_navigation_view=0x7f0c0015;
         public static final int startPageListView=0x7f0c000d;
     }
@@ -125,9 +132,10 @@ containing a value of this type.
         public static final int custom_bottom_layout=0x7f030006;
         public static final int cutom_title=0x7f030007;
         public static final int list_map_activity=0x7f030008;
-        public static final int row_view=0x7f030009;
-        public static final int side_navigation=0x7f03000a;
-        public static final int side_navigation_item=0x7f03000b;
+        public static final int restaurant_list_activity=0x7f030009;
+        public static final int restaurant_row_view=0x7f03000a;
+        public static final int side_navigation=0x7f03000b;
+        public static final int side_navigation_item=0x7f03000c;
     }
     public static final class menu {
         public static final int activity_main=0x7f0b0000;
