@@ -67,7 +67,7 @@ public class BaseActivity extends Activity {
 	{
 		m_actionBar = (ActionBar) findViewById(R.id.actionbar);
 		m_actionBar.setTitle(R.string.app_name);
-		m_actionBar.setHomeLogo(R.drawable.ic_launcher, new OnClickListener() {
+		m_actionBar.setHomeLogo(R.drawable.menu_button, new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				

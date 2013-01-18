@@ -9,7 +9,6 @@
         android:layout_alignParentLeft="true"
         android:layout_width = "wrap_content"
         android:layout_height="fill_parent"
-        android:background = "@drawable/ic_launcher"
         android:padding = "0dip"
         android:contentDescription="@string/imageDesc"/>
      <LinearLayout android:id="@+id/actionbar_actionIcons"

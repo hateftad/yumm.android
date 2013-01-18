@@ -28,7 +28,7 @@ public class GetPlaces extends AsyncTask<String, Void, ArrayList<Restaurants>>
 		ArrayList<Restaurants> list = null;
 		//String result = null;
 		JsonHandler json = new JsonHandler(m_context);
-		json.JsonSorter(params[0]);
+		json.RestaurantsJsonSorter(params[0]);
 		/*
 		try
 		{

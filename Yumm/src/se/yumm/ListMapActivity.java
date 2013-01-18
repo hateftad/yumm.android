@@ -12,7 +12,7 @@ import java.util.Comparator;
 
 import se.yumm.adapters.ListMapAdapter;
 import se.yumm.handlers.LocationHandler;
-import se.yumm.handlers.RestaurantHandler;
+import se.yumm.handlers.TaskHandler;
 import se.yumm.handlers.WebServiceHandler;
 import se.yumm.items.Restaurants;
 import se.yumm.listeners.ISideNavigationListener;
@@ -89,7 +89,7 @@ public class ListMapActivity extends MapActivity
 		
 		
 		Location location = m_locationHndlr.getLocation();
-		final RestaurantHandler rh = m_webHandler.GetRestaurantHandler();
+		final TaskHandler rh = m_webHandler.GetTaskHandler();
 		rh.setRestaurants(restaurants);
 		
 		ListMapAdapter listMapAdp = new ListMapAdapter(getBaseContext());
@@ -169,7 +169,7 @@ public class ListMapActivity extends MapActivity
 	
 	public void Sort(Comparator<Restaurants> method)
 	{
-		RestaurantHandler rh = m_webHandler.GetRestaurantHandler();
+		TaskHandler rh = m_webHandler.GetTaskHandler();
 		ArrayList<Restaurants> list = rh.getRestaurants();
 		if (rh.isAscending()) {
 			Collections.sort(list, method);
@@ -220,14 +220,14 @@ public class ListMapActivity extends MapActivity
 		
 		m_actionBar = (ActionBar) findViewById(R.id.actionbar);
 		m_actionBar.setTitle(R.string.app_name);
-		m_actionBar.setHomeLogo(R.drawable.ic_launcher, homeButton);
+		m_actionBar.setHomeLogo(R.drawable.menu_button, homeButton);
 		
-		m_actionBar.addActionIcon(R.drawable.ic_launcher, new OnClickListener() {
+		m_actionBar.addActionIcon(R.drawable.list_view_button, new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(getApplicationContext(), RestaurantListActivity.class);
-				intent.putParcelableArrayListExtra("Restaurants", m_webHandler.GetRestaurantHandler().getRestaurants());
+				intent.putParcelableArrayListExtra("Restaurants", m_webHandler.GetTaskHandler().getRestaurants());
 				intent.putExtra("loggedIn", m_webHandler.isLoggedIn());
 				startActivity(intent);
 				
@@ -268,7 +268,7 @@ public class ListMapActivity extends MapActivity
 			
 			@Override
 			public void onClick(View v) {
-				Sort(RestaurantHandler.NameComparator);
+				Sort(TaskHandler.NameComparator);
 				
 			}
 		});
@@ -276,7 +276,7 @@ public class ListMapActivity extends MapActivity
 			
 			@Override
 			public void onClick(View v) {
-				Sort(RestaurantHandler.RatingComparator);
+				Sort(TaskHandler.RatingComparator);
 				
 			}
 		});

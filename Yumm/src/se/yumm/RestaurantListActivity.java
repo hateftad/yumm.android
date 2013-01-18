@@ -6,7 +6,7 @@ import java.util.Comparator;
 
 import se.yumm.adapters.ListMapAdapter;
 import se.yumm.handlers.LocationHandler;
-import se.yumm.handlers.RestaurantHandler;
+import se.yumm.handlers.TaskHandler;
 import se.yumm.handlers.WebServiceHandler;
 import se.yumm.items.Restaurants;
 import se.yumm.listeners.IEventListener;
@@ -16,6 +16,7 @@ import se.yumm.views.ActionBar;
 import se.yumm.views.BottomButtonBar;
 import se.yumm.views.SideNavigationView;
 import android.app.Activity;
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
@@ -63,7 +64,7 @@ public class RestaurantListActivity extends BaseActivity{
 		
 		
 		Location location = m_locationHndlr.getLocation();
-		final RestaurantHandler rh = m_webHandler.GetRestaurantHandler();
+		final TaskHandler rh = m_webHandler.GetTaskHandler();
 		rh.setRestaurants(restaurants);
 		
 		ListMapAdapter listMapAdp = new ListMapAdapter(getBaseContext());
@@ -79,8 +80,6 @@ public class RestaurantListActivity extends BaseActivity{
 					long id) {
 				Restaurants r = rh.getRestaurants().get(position);
 				//Intent intent = new Intent(getApplicationContext());
-				
-				
 			}
 		});
 		
@@ -109,7 +108,7 @@ public class RestaurantListActivity extends BaseActivity{
 			}
 		});
 		
-		m_customListView = (LinearLayout) findViewById(R.id.RelativeLayoutRestList);
+		m_customListView = (LinearLayout) findViewById(R.id.linearlayoutListView);
 	}
 	
 	@Override
@@ -147,7 +146,7 @@ public class RestaurantListActivity extends BaseActivity{
 	
 	private void Sort(Comparator<Restaurants> method)
 	{
-		RestaurantHandler rh = m_webHandler.GetRestaurantHandler();
+		TaskHandler rh = m_webHandler.GetTaskHandler();
 		ArrayList<Restaurants> list = rh.getRestaurants();
 		if (rh.isAscending()) {
 			Collections.sort(list, method);
@@ -181,15 +180,18 @@ public class RestaurantListActivity extends BaseActivity{
 			
 			@Override
 			public void onCloseClick() {
-				AnimateView(false);
+				AnimateView(m_sideNavigation.isShown());
 			}
 		});
 		
-		m_actionBar.addActionIcon(R.drawable.ic_launcher, new OnClickListener() {
+		m_actionBar.addActionIcon(R.drawable.map_button, new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				System.out.println("new button");
+				Intent intent = new Intent(getApplicationContext(), ListMapActivity.class);
+				intent.putParcelableArrayListExtra("Restaurants", m_webHandler.GetTaskHandler().getRestaurants());
+				intent.putExtra("loggedIn", m_webHandler.isLoggedIn());
+				startActivity(intent);
 				
 			}
 		});
@@ -199,7 +201,7 @@ public class RestaurantListActivity extends BaseActivity{
 	protected void AnimateView(boolean sideBarShowing)
 	{
 		super.AnimateView(sideBarShowing);
-		LinearLayout l = (LinearLayout) findViewById(R.id.linearlayoutListView);
+		
 		Animation anim = null;
 		
 		if (sideBarShowing) {
@@ -209,7 +211,7 @@ public class RestaurantListActivity extends BaseActivity{
 			
 			m_bottomBar.Animate(R.anim.bottom_button_fade_out, getApplicationContext());
 			m_customListView.startAnimation(anim);
-			l.startAnimation(anim);
+			
 		}
 		else
 		{
@@ -227,7 +229,7 @@ public class RestaurantListActivity extends BaseActivity{
 			
 			@Override
 			public void onClick(View v) {
-				Sort(RestaurantHandler.NameComparator);
+				Sort(TaskHandler.NameComparator);
 				
 			}
 		});
@@ -235,7 +237,7 @@ public class RestaurantListActivity extends BaseActivity{
 			
 			@Override
 			public void onClick(View v) {
-				Sort(RestaurantHandler.RatingComparator);
+				Sort(TaskHandler.RatingComparator);
 				
 			}
 		});

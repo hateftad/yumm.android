@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <se.yumm.views.SideNavigationView
+        android:id="@+id/side_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </se.yumm.views.SideNavigationView>
+
+    <ListView
+        android:id="@+id/menu_headers_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="296dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true" >
+    </ListView>
+
+    <ImageView
+        android:id="@+id/info_square_image"
+        android:layout_width="wrap_content"
+        android:layout_height="110dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:contentDescription="@string/imageDesc"
+        android:src="@drawable/info_square" />
+
+    <TextView
+        android:id="@+id/info_square_main_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/info_square_rating_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/menu_headers_list_view"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="16dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+</RelativeLayout>

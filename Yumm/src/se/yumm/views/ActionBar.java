@@ -69,7 +69,7 @@ public class ActionBar extends RelativeLayout {
 	public void addActionIcon(int iconResourceId, OnClickListener onClickListener) {
 		// Inflate
 		View view = m_inflater.inflate(R.layout.actionbar_icon, m_iconContainer, false);
-		ImageButton imgButton = (ImageButton) view.findViewById(R.id.actionbar_item);
+		ImageView imgButton = (ImageView) view.findViewById(R.id.actionbar_item);
 		imgButton.setImageResource(iconResourceId);
 		imgButton.setOnClickListener(onClickListener);
 

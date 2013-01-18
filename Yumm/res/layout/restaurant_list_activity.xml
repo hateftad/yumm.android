@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/RelativeLayoutRestList"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,19 +15,25 @@
             android:layout_width="match_parent"
             android:layout_height="300dp" >
         </ListView>
+
     </LinearLayout>
+
+    <se.yumm.views.SideNavigationView
+        android:id="@+id/side_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/restaurant_list_view" >
+
+    </se.yumm.views.SideNavigationView>
 
     <se.yumm.views.BottomButtonBar
         android:id="@+id/bottom_button_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/bottom_bar_height"
+        android:layout_alignParentBottom="true"
         android:focusable="true"
         android:gravity="bottom" >
+
     </se.yumm.views.BottomButtonBar>
 
-    <se.yumm.views.SideNavigationView
-        android:id="@+id/side_navigation_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-</LinearLayout>
+</RelativeLayout>

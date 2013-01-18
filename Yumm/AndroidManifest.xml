@@ -24,6 +24,7 @@
         <activity android:name="se.yumm.ListMapActivity" android:label="@string/app_name" android:theme="@style/CustomTheme">
         </activity>
         <activity android:name="RestaurantListActivity"></activity>
+        <activity android:name="RestaurantMenuActivity"></activity>
         
     </application>
 

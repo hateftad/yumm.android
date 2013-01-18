@@ -191,12 +191,12 @@ public class Restaurants implements Parcelable
 		this.m_webpage = m_webpage;
 	}
 
-	public List<String> getMenuHeaders()
+	public ArrayList<String> getMenuHeaders()
 	{
 		return m_menuHeaders;
 	}
 
-	public void setMenuHeaders(String menuHdr)
+	public void addMenuHeaders(String menuHdr)
 	{
 		this.m_menuHeaders.add(menuHdr);
 	}
@@ -233,7 +233,7 @@ public class Restaurants implements Parcelable
 		return m_menu;
 	}
 
-	public void setMenuItems(MenuItems menuItem) {
+	public void addMenuItems(MenuItems menuItem) {
 		this.m_menu.add(menuItem);
 	}
 

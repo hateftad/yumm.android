@@ -89,11 +89,12 @@ public class StartPageAdapter extends BaseAdapter {
 		else
 			imgView.setImageResource(R.drawable.redfish);
 		
+		final int pos = position;
 		imgView.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				m_eventListener.OnComplete(v);
+				m_eventListener.OnComplete(pos);
 				
 			}
 		});

@@ -40,6 +40,7 @@ public class WebServiceHandler
 	private static final String OUT_JSON = "/json";
 	private static final String YUMM_JSON = "/places/?q=&json=true";
 	private static final String LOGIN = "/login/";
+	private static final String USERLOGIN = "/login/?json=true";
 	private static final String PROXIMITY = "/places/proximity/?location=";
 	private static final String RADIUS = "&json=true&radius=100000";
 	
@@ -48,12 +49,12 @@ public class WebServiceHandler
 	private PersistentCookieStore m_cookieStore;
 	private Cookie m_cookie;
 	private boolean m_loggedIn;
-	private RestaurantHandler m_restHndlr;
+	private TaskHandler m_taskHndlr;
 	
 	public WebServiceHandler(Activity context)
 	{
 		m_context = context;
-		m_restHndlr = new RestaurantHandler(context);
+		m_taskHndlr = new TaskHandler(context);
 		
 	}
 	
@@ -135,12 +136,12 @@ public class WebServiceHandler
 		params.put("email", username);
 		params.put("password", password);
 		YummWebClient.GetClient().addHeader("Content", "application/x-www-form-urlencoded");
-		YummWebClient.post(LOGIN, params, new AsyncHttpResponseHandler(){
+		YummWebClient.post(USERLOGIN, params, new AsyncHttpResponseHandler(){
 		    
-			public ProgressDialog m_dialog;
+			
 			@Override
 			public void onStart() {
-				m_dialog = ProgressDialog.show(m_context, "Logging In..", "Please Wait", true, false);
+				
 			}
 			
 			@Override
@@ -152,14 +153,12 @@ public class WebServiceHandler
 						m_cookie = cookie;
 				}
 				setLoggedIn(true);
-				m_dialog.dismiss();
-				RetrieveData(YUMM_JSON);
+				m_taskHndlr.HandleUserJson(response);
 			}
 			@Override
 			public void onFailure(Throwable e, String response) 
 			{
 				setLoggedIn(false);
-				m_dialog.dismiss();
 				Toast.makeText(m_context, "Login Failed! Check Connection.", Toast.LENGTH_LONG).show();
 			}
 		});
@@ -187,7 +186,7 @@ public class WebServiceHandler
 		    	 System.out.println("Retrieving Data Success!");
 		    	 if(isLoggedIn())
 		    	 {
-		    		 m_restHndlr.RestaurantsFromJson(response);
+		    		 m_taskHndlr.HandleRestaurantsJson(response);
 		    	 }
 		    	 m_dialog.dismiss();
 		     }
@@ -204,18 +203,20 @@ public class WebServiceHandler
 	
 	public String UrlBuilder(String in, URLS tag )
 	{
-		String url = null;
+		StringBuilder url = new StringBuilder();
 		
 		switch (tag) {
 		case CLOSEST:
-			url = PROXIMITY + in + RADIUS;
+			url.append(PROXIMITY + in + RADIUS);
 			break;
-
+		case RETRIEVE:
+			url.append(YUMM_JSON);
+			break;
 		default:
 			break;
 		}
 		
-		return url;
+		return url.toString();
 	}
 
 	public boolean isLoggedIn() {
@@ -226,9 +227,9 @@ public class WebServiceHandler
 		this.m_loggedIn = m_loggedIn;
 	}
 
-	public RestaurantHandler GetRestaurantHandler()
+	public TaskHandler GetTaskHandler()
 	{
-		return m_restHndlr;
+		return m_taskHndlr;
 	}
 	public AsyncHttpClient GetClient()
 	{

@@ -13,21 +13,18 @@ import java.util.Comparator;
 import com.loopj.android.http.PersistentCookieStore;
 
 import se.yumm.adapters.StartPageAdapter;
-import se.yumm.handlers.LocationHandler;
-import se.yumm.handlers.RestaurantHandler;
+import se.yumm.handlers.TaskHandler;
 import se.yumm.handlers.WebServiceHandler;
 import se.yumm.items.Restaurants;
 import se.yumm.listeners.IActionListener;
 import se.yumm.listeners.IEventListener;
-import se.yumm.listeners.ISideNavigationListener;
+import se.yumm.listeners.ITaskEventListener;
 import se.yumm.utils.PropertiesManager;
 import se.yumm.utils.URLS;
-import se.yumm.views.ActionBar;
 import se.yumm.views.BottomButtonBar;
-import se.yumm.views.SideNavigationView;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
-import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Point;
 import android.view.Display;
@@ -50,6 +47,7 @@ public class StartActivity extends BaseActivity
 	
 	private BottomButtonBar m_bottomBar;
 	private LinearLayout m_customListView;
+	public ProgressDialog m_dialog;
 
 	// TODO fix library so it can support old API's
 	@SuppressLint("NewApi")
@@ -74,6 +72,8 @@ public class StartActivity extends BaseActivity
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.cutom_title);
 		
 		
+		
+		
 		//sorting buttons
 		SetUpBottomButtons();
 		//home and list button
@@ -85,10 +85,13 @@ public class StartActivity extends BaseActivity
 		m_webHandler = new WebServiceHandler(this);
 		m_webHandler.SetCookieStore(new PersistentCookieStore(this));
 		m_webHandler.LoginClient();
+		if(!m_webHandler.isLoggedIn()){
+			m_dialog = ProgressDialog.show(this, "Logging In..", "Please Wait", true, false);	
+		}
 		//m_webHandler = new WebServices(this);
 		//m_webHandler.LoginClient();
 		
-		final RestaurantHandler rh = m_webHandler.GetRestaurantHandler();
+		final TaskHandler taskHandler = m_webHandler.GetTaskHandler();
 		final StartPageAdapter sPageAdp = new StartPageAdapter(this);
 		
 		ListView listView = (ListView) findViewById(R.id.startPageListView);
@@ -99,14 +102,10 @@ public class StartActivity extends BaseActivity
 			public void onScrollStateChanged(AbsListView view, int scrollState) {
 
 				if (scrollState == 0) {
-					//0
 					m_bottomBar.Animate(R.anim.bottom_button_fade_in, getApplicationContext());
 				}
-				else if(scrollState == 1)
-				{
-					//1
+				else if(scrollState == 1){
 					m_bottomBar.Animate(R.anim.bottom_button_fade_out, getApplicationContext());
-					
 				}
 			}
 			
@@ -118,24 +117,29 @@ public class StartActivity extends BaseActivity
 			}
 		});
 
-		rh.SetEventListener(new IActionListener() {
+		taskHandler.SetEventListener(new ITaskEventListener() {
 
 			@Override
-			public void OnComplete(View v) {
-				sPageAdp.updateRestaurants(rh.getRestaurants());
+			public void onRestaurantComplete() {
+				sPageAdp.updateRestaurants(taskHandler.getRestaurants());
+				
+			}
 
+			@Override
+			public void onUserComplete() {
+				m_dialog.dismiss();
+				m_webHandler.RetrieveData(m_webHandler.UrlBuilder(null, URLS.RETRIEVE));
 			}
 		});
 
 		((StartPageAdapter) sPageAdp).SetEventListener(new IActionListener() {
-
+			//OnClick
 			@Override
-			public void OnComplete(View v) {
+			public void OnComplete(int itemId) {
 
-				System.out.println("KIR");
-				Intent intent = new Intent(getApplicationContext(), ListMapActivity.class);
-				intent.putParcelableArrayListExtra("Restaurants", m_webHandler.GetRestaurantHandler().getRestaurants());
-				intent.putExtra("loggedIn", m_webHandler.isLoggedIn());
+				Restaurants restaurant = m_webHandler.GetTaskHandler().getRestaurant(itemId);
+				Intent intent = new Intent(getApplicationContext(), RestaurantMenuActivity.class);
+				intent.putExtra("Restaurant", restaurant);
 				startActivity(intent);
 
 			}
@@ -168,7 +172,7 @@ public class StartActivity extends BaseActivity
 	
 	private void Sort(Comparator<Restaurants> method)
 	{
-		RestaurantHandler rh = m_webHandler.GetRestaurantHandler();
+		TaskHandler rh = m_webHandler.GetTaskHandler();
 		ArrayList<Restaurants> list = rh.getRestaurants();
 		if (rh.isAscending()) {
 			Collections.sort(list, method);
@@ -207,11 +211,15 @@ public class StartActivity extends BaseActivity
 			}
 		});
 		
-		m_actionBar.addActionIcon(R.drawable.ic_launcher, new OnClickListener() {
+		m_actionBar.addActionIcon(R.drawable.map_button, new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				System.out.println("new button");
+				
+				Intent intent = new Intent(getApplicationContext(), ListMapActivity.class);
+				intent.putParcelableArrayListExtra("Restaurants", m_webHandler.GetTaskHandler().getRestaurants());
+				intent.putExtra("loggedIn", m_webHandler.isLoggedIn());
+				startActivity(intent);
 				
 			}
 		});
@@ -247,7 +255,7 @@ public class StartActivity extends BaseActivity
 			
 			@Override
 			public void onClick(View v) {
-				Sort(RestaurantHandler.NameComparator);
+				Sort(TaskHandler.NameComparator);
 				
 			}
 		});
@@ -255,7 +263,7 @@ public class StartActivity extends BaseActivity
 			
 			@Override
 			public void onClick(View v) {
-				Sort(RestaurantHandler.RatingComparator);
+				Sort(TaskHandler.RatingComparator);
 				
 			}
 		});

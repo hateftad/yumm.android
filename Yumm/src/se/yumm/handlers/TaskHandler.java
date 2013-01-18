@@ -10,40 +10,52 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Locale;
 
-import se.yumm.adapters.StartPageAdapter;
 import se.yumm.items.Restaurants;
+import se.yumm.items.User;
 import se.yumm.listeners.IActionListener;
+import se.yumm.listeners.ITaskEventListener;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.BaseAdapter;
 
-public class RestaurantHandler {
+public class TaskHandler {
 	
 	private JsonHandler m_jsonHndlr;
 	private ArrayList<Restaurants> m_restaurants;
 	private BaseAdapter m_pageAdapter;
-	private IActionListener m_eventListener = null;
+	private ITaskEventListener m_eventListener = null;
 	private boolean m_ascending = true;
 	
 	
-	public RestaurantHandler(Context context)
+	public TaskHandler(Context context)
 	{
 		m_jsonHndlr = new JsonHandler(context);
 		m_restaurants = new ArrayList<Restaurants>();
 		
 	}
 	
-	public void RestaurantsFromJson(String jsonString)
+	public void HandleRestaurantsJson(String jsonString)
 	{
 		//private class 
 		GetRestaurantTask rt = new GetRestaurantTask();
 		rt.execute(jsonString);
 	}
 	
+	public void HandleUserJson(String jsonString)
+	{
+		GetUserTask ut = new GetUserTask();
+		ut.execute(jsonString);
+	}
+	
 	public ArrayList<Restaurants> getRestaurants() {
 		return m_restaurants;
 	}
-
+	
+	public Restaurants getRestaurant(int index)
+	{
+		return m_restaurants.get(index);
+		
+	}
 	public void setRestaurants(ArrayList<Restaurants> m_restaurants) 
 	{
 		this.m_restaurants = m_restaurants;
@@ -75,14 +87,31 @@ public class RestaurantHandler {
 		@Override
 		protected ArrayList<Restaurants> doInBackground(String... params) {
 			
-			return m_jsonHndlr.JsonSorter(params[0]);
+			return m_jsonHndlr.RestaurantsJsonSorter(params[0]);
 		}
 		
 		@Override
 		protected void onPostExecute(ArrayList<Restaurants> result)
 		{
 			setRestaurants(result);
-			m_eventListener.OnComplete(null);
+			m_eventListener.onRestaurantComplete();
+		}
+	}
+	
+	private class GetUserTask extends AsyncTask<String, Void, User>
+	{
+
+		@Override
+		protected User doInBackground(String... params) {
+			
+			return m_jsonHndlr.HandleUserJson(params[0]);
+		}
+		
+		@Override
+		protected void onPostExecute(User result)
+		{
+			//sharedPreferences
+			m_eventListener.onUserComplete();
 		}
 	}
 	
@@ -119,7 +148,7 @@ public class RestaurantHandler {
 		}
 	};
 
-	public void SetEventListener(IActionListener listener)
+	public void SetEventListener(ITaskEventListener listener)
 	{
 		this.m_eventListener = listener;
 	}
