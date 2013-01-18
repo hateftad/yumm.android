@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import se.yumm.adapters.MenuItemsAdapter;
+import se.yumm.items.MenuItems;
 import se.yumm.items.Restaurants;
 import se.yumm.listeners.IEventListener;
 import android.content.Intent;
@@ -13,6 +14,8 @@ import android.view.Window;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -39,6 +42,17 @@ public class RestaurantMenuActivity extends BaseActivity {
 		
 		ListView list = (ListView) findViewById(R.id.menu_headers_list_view);
 		list.setAdapter(adp);
+		list.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position,
+					long id) {
+				ArrayList<MenuItems> menuItems = m_webHandler.GetTaskHandler().getRestaurant(position).getMenuItems();
+				Intent intent = new Intent(getApplicationContext(), RestaurantMenuActivity.class);
+				intent.putParcelableArrayListExtra("menuItems", menuItems);
+				startActivity(intent);
+			}
+		});
 		
 	}
 	

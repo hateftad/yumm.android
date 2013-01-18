@@ -21,10 +21,10 @@ public class ActionBar extends RelativeLayout {
 
 	private LayoutInflater m_inflater;
 
+	private ImageView m_background;
 	private ImageView m_homeBtn;
 	private TextView m_title;
 	private LinearLayout m_iconContainer;
-	private Animation[] m_animations;
 	private boolean m_pushedAside = false;
 
 
@@ -36,12 +36,10 @@ public class ActionBar extends RelativeLayout {
 		RelativeLayout barView = (RelativeLayout) m_inflater.inflate(R.layout.actionbar, null);
 		addView(barView);
 
+		m_background = (ImageView) barView.findViewById(R.id.action_bar_background);
 		m_homeBtn = (ImageView) barView.findViewById(R.id.leftActionBarBtn);
 		m_title = (TextView) barView.findViewById(R.id.actionbar_title);
 		m_iconContainer = (LinearLayout) barView.findViewById(R.id.actionbar_actionIcons);
-		m_animations = new Animation[2];
-		m_animations[AnimationTags.FADEOUT] = AnimationUtils.loadAnimation(getContext(), R.anim.action_bar_out_to_right);
-		m_animations[AnimationTags.FADEIN] = AnimationUtils.loadAnimation(getContext(), R.anim.action_bar_in_from_left);
 		
 	}
 
@@ -155,7 +153,7 @@ public class ActionBar extends RelativeLayout {
 		Animation textAnim = AnimationUtils.loadAnimation(context, animationId);
 		textAnim.setFillAfter(true);
 		m_title.startAnimation(textAnim);
-
+		m_background.startAnimation(textAnim);
 		for(int i=0; i < m_iconContainer.getChildCount(); i++)
 		{
 			m_iconContainer.getChildAt(i).startAnimation(TranslateAnim);

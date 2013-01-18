@@ -30,7 +30,8 @@
         android:layout_height="200dp"
         android:layout_alignParentBottom="true"
         android:drawSelectorOnTop="false"
-        android:scrollbars="vertical" >
+        android:scrollbars="vertical"
+        android:background="@color/light_grey" >
 
     </ListView>
 

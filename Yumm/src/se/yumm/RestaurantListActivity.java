@@ -78,8 +78,10 @@ public class RestaurantListActivity extends BaseActivity{
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position,
 					long id) {
-				Restaurants r = rh.getRestaurants().get(position);
-				//Intent intent = new Intent(getApplicationContext());
+				Restaurants restaurant = m_webHandler.GetTaskHandler().getRestaurant(position);
+				Intent intent = new Intent(getApplicationContext(), RestaurantMenuActivity.class);
+				intent.putExtra("Restaurant", restaurant);
+				startActivity(intent);
 			}
 		});
 		

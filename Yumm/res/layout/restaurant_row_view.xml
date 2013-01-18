@@ -4,14 +4,16 @@
     android:id="@+id/RelativeLayout1"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="5dp" >
+    android:padding="5dp"
+    android:background="@color/light_grey" >
 
     <TextView
         android:id="@+id/restaurantName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="top|left"
-        android:textSize="16sp" >
+        android:textSize="16sp"
+        android:textColor="@color/black"  >
 
     </TextView>
 
@@ -21,13 +23,15 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/restaurantName"
         android:gravity="bottom|left"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:textColor="@color/black"  />
 
     <TextView
         android:id="@+id/distanceText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/restaurantName"/>
+        android:layout_alignTop="@+id/restaurantName"
+        android:textColor="@color/black" />
 
 </RelativeLayout>

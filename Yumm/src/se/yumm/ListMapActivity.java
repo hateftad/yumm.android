@@ -1,10 +1,10 @@
 package se.yumm;
 
 /*
-* @author Hatef Tadayon
-*
-* 
-*/
+ * @author Hatef Tadayon
+ *
+ * 
+ */
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -55,63 +55,71 @@ public class ListMapActivity extends MapActivity
 	public void onCreate(Bundle icicle)
 	{
 		super.onCreate(icicle);
-		
-		
+
+
 		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 		setContentView(R.layout.list_map_activity);
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.cutom_title);
-		
+
 		m_mapView = (MapView) findViewById(R.id.mapView);
 		m_mapView.setBuiltInZoomControls(true);
 		m_mapCtrl = m_mapView.getController();
-		
-		
+
+
 		m_locationHndlr = new LocationHandler(this);
-		
-		
+
+
 		ArrayList<Restaurants> restaurants = getIntent().getParcelableArrayListExtra("Restaurants");
 		boolean loggedIn = getIntent().getBooleanExtra("loggedIn", false);
-		
-		
+
+
 		//Location l = m_locationHndlr.getLocation();
 		AnimateToPoint(m_locationHndlr.getLocation());
-		
+
 		//m_mapCtrl.zoomIn();
-		
+
 		SetUpBottomButtons();
-		
+
 		SetUpActionBar();
-		
+
 		SetUpNavMenu();
-		
+
 		m_webHandler = new WebServiceHandler(getParent());
 		m_webHandler.setLoggedIn(loggedIn);
-		
-		
+
+
 		Location location = m_locationHndlr.getLocation();
-		final TaskHandler rh = m_webHandler.GetTaskHandler();
-		rh.setRestaurants(restaurants);
-		
+		final TaskHandler taskHandler = m_webHandler.GetTaskHandler();
+		taskHandler.setRestaurants(restaurants);
+
 		ListMapAdapter listMapAdp = new ListMapAdapter(getBaseContext());
 		listMapAdp.updateRestaurants(restaurants);
 		listMapAdp.setLocation(location);
-		rh.SetAdapter(listMapAdp);
+		taskHandler.SetAdapter(listMapAdp);
 		ListView listView = (ListView) findViewById(R.id.listMapView);
 		listView.setAdapter(listMapAdp);
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
+			public int lastPos = -1;
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position,
 					long id) {
-				Restaurants r = rh.getRestaurants().get(position);
-				//Intent intent = new Intent(getApplicationContext());
-				AnimateToPoint(r.getLocation());
-				
+				Restaurants r = taskHandler.getRestaurants().get(position);
+				if (lastPos == position) {
+					Intent intent = new Intent(getApplicationContext(), RestaurantMenuActivity.class);
+					intent.putExtra("Restaurant", r);
+					startActivity(intent);
+					lastPos = -1;
+				}
+				else{
+					AnimateToPoint(r.getLocation());
+					lastPos = position;
+				}
 			}
 		});
-		
+
 		listView.setOnScrollListener(new OnScrollListener() {
-			
+
 			@Override
 			public void onScrollStateChanged(AbsListView view, int scrollState) {
 				if (scrollState == 0) {
@@ -122,19 +130,19 @@ public class ListMapActivity extends MapActivity
 				{
 					//1
 					m_bottomBar.Animate(R.anim.bottom_button_fade_out, getApplicationContext());
-					
+
 				}
-				
+
 			}
-			
+
 			@Override
 			public void onScroll(AbsListView view, int firstVisibleItem,
 					int visibleItemCount, int totalItemCount) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
-		
+
 	}
 
 	@Override
@@ -143,7 +151,7 @@ public class ListMapActivity extends MapActivity
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+
 	@Override
 	protected void onResume()
 	{
@@ -157,7 +165,7 @@ public class ListMapActivity extends MapActivity
 		super.onPause();
 		m_locationHndlr.pause();
 	}
-	
+
 	private void AnimateToPoint(Location location)
 	{
 		int lat = ((int)(location.getLatitude() * 1E6));
@@ -166,7 +174,7 @@ public class ListMapActivity extends MapActivity
 		m_mapCtrl.animateTo(point);
 		m_mapCtrl.setZoom(14);
 	}
-	
+
 	public void Sort(Comparator<Restaurants> method)
 	{
 		TaskHandler rh = m_webHandler.GetTaskHandler();
@@ -206,22 +214,22 @@ public class ListMapActivity extends MapActivity
 
 	private void SetUpActionBar()
 	{
-		
+
 		View.OnClickListener homeButton = new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				
+
 				m_sideNavigation.toggleMenu();
 				AnimateView(m_sideNavigation.isShown());
-				
+
 
 			}
 		};
-		
+
 		m_actionBar = (ActionBar) findViewById(R.id.actionbar);
 		m_actionBar.setTitle(R.string.app_name);
 		m_actionBar.setHomeLogo(R.drawable.menu_button, homeButton);
-		
+
 		m_actionBar.addActionIcon(R.drawable.list_view_button, new OnClickListener() {
 
 			@Override
@@ -230,25 +238,25 @@ public class ListMapActivity extends MapActivity
 				intent.putParcelableArrayListExtra("Restaurants", m_webHandler.GetTaskHandler().getRestaurants());
 				intent.putExtra("loggedIn", m_webHandler.isLoggedIn());
 				startActivity(intent);
-				
+
 			}
 		});
-		
+
 	}
-	
+
 	private void AnimateView(boolean sideBarShowing)
 	{
 		Animation anim = null;
-		
+
 		if (sideBarShowing) {
 			//2
 			anim = AnimationUtils.loadAnimation(this, R.anim.underlying_view_out_to_right);
 			anim.setFillAfter(true);
-			
+
 			m_actionBar.Animate(R.anim.action_bar_out_to_right, getApplicationContext());
 			m_bottomBar.Animate(R.anim.bottom_button_fade_out, getApplicationContext());
 			//m_customListView.startAnimation(anim);
-			
+
 		}
 		else
 		{
@@ -257,32 +265,32 @@ public class ListMapActivity extends MapActivity
 			m_bottomBar.Animate(R.anim.bottom_button_fade_in, getApplicationContext());
 			//m_customListView.startAnimation(AnimationUtils.loadAnimation(this, R.anim.underlying_view_in_from_right));
 		}
-		
+
 	}
-	
-	
+
+
 	private void SetUpBottomButtons() {
 
 		m_bottomBar = (BottomButtonBar) findViewById(R.id.bottom_button_bar);
 		m_bottomBar.SetUpButton(1, R.drawable.ic_launcher, new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				Sort(TaskHandler.NameComparator);
-				
+
 			}
 		});
 		m_bottomBar.SetUpButton(2, R.drawable.ic_launcher, new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				Sort(TaskHandler.RatingComparator);
-				
+
 			}
 		});
-		
+
 		m_bottomBar.SetUpButton(3, R.drawable.ic_launcher, new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				if(m_webHandler.isLoggedIn())
@@ -291,11 +299,11 @@ public class ListMapActivity extends MapActivity
 							+ "," + Double.toString(m_locationHndlr.getLocation().getLatitude());
 					m_webHandler.RetrieveData(m_webHandler.UrlBuilder(location, URLS.CLOSEST));
 				}
-				
+
 			}
 		});
-		
-		
+
+
 
 	}
 
